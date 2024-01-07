@@ -1,0 +1,96 @@
+%%info_test_name{ch.banana.africa.devprojectbalancesheet.test}
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[margin=1cm]{geometry}
+\begin{document}
+\newenvironment{tablevalue}[2]{\textbf{Table: #1}\begin{longtable}[l]{#2}}{\end{longtable}}
+\newenvironment{reportvalue}[1]{\textbf{Report: #1}\\}{}
+\lstnewenvironment{jsonvalue}[1]{\textbf{Json: #1}\lstset{language=Java}}{}
+\lstnewenvironment{xmlvalue}[1]{\textbf{Xml: #1}\lstset{language=Xml}}{}
+\newcommand{\info}[2]{\textit{#1: #2}\\}
+\newcommand{\fatalerror}[1]{\textbf{\textcolor[rgb]{1,0,0}{Fatal error: #1}}\\}
+\newcommand{\keyvalue}[2]{\textbf{Keyvalue: #1} #2\\}
+\newcommand{\textvalue}[1]{#1\\}
+\newcommand{\excltest}[1]{\\Excluded from compare: #1}
+\newcommand{\lognewpage}{\newpage}
+\newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
+\newenvironment{test}[1]{\section*{Test case: #1}}{}
+%Begin test data
+%%SCRIPT{C:/Users/joemb/Banana/OHADA/sycebnl/development/extensions/test/ch.banana.africa.devprojectbalancesheet.test.js}
+%
+\begin{testcase}{DevProjectBalanceSheetReport}
+\begin{test}{testBananaExtension}
+\begin{reportvalue}{Test 'Bilan'}
+\begin{longtable}[l]{ l  l  l }
+Projet  de l'Entrepreneuriat de la Jeunesse Congolaise  & \multicolumn{2}{l}{Exercice clos le 31.12.2024 }\\
+KONDI N°28  Q. MIBU; N'SELE -  - KINSHASA  & \multicolumn{2}{l}{Durée (en mois) 12 }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{BILAN ACTIF AU 31 DÉCEMBRE 2024 }\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l  l  l }
+\multicolumn{5}{l}{  }\\
+REF  & ACTIF  & Note  & EXERCICE AU 31/12/2024  & EXERCICE AU 31/12/2023 \\
+ &  &  &  & \\
+AA  & Immobilisations incorporelles  & 2  & 8'700'000.00  & 8'700'000.00 \\
+AB  & Terrains et bâtiments  & 2  & 104'800'000.00  & 44'800'000.00 \\
+AC  & Aménagements agencements et installations  & 2  & 0.00  & 0.00 \\
+AD  & Matériel, mobilier et actifs biologiques  & 2  & 41'800'000.00  & 24'800'000.00 \\
+AE  & Matériel de tansport  & 2  & 35'000'000.00  & 0.00 \\
+AF  & Avances et acomptes versées su immobilisations  & 2  & 5'600'000.00  & 5'600'000.00 \\
+AG  & Dépôts et cautionnements  & 2  & 700'000.00  & 700'000.00 \\
+AH  & Autres immobilisations corporelles et incoporelles  & 2  & 4'000'000.00  & 4'000'000.00 \\
+AZ  & TOTAL ACTIF IMMOBILISE  &    & 200'600'000.00  & 88'600'000.00 \\
+BA  & Actif circulant HAO  & 3  & 4'500'000.00  & 4'500'000.00 \\
+BB  & Stocks et encours  & 4  & 22'000'000.00  & 22'000'000.00 \\
+BC  & Fournisseurs débiteurs  & 5  & 0.00  & 0.00 \\
+BD  & Clients-usagers  & 5  & 6'500'000.00  & 6'500'000.00 \\
+BE  & Autres créances  & 5  & 6'900'000.00  & 6'900'000.00 \\
+BT  & TOTAL ACTIF CIRCULANT  &    & 39'900'000.00  & 39'900'000.00 \\
+BV  & Valeurs à encaisser  & 6  & 4'000'000.00  & 4'000'000.00 \\
+BW  & Banques, établissements financiers, caisse et assimiles  & 6  & 24'404'200.00  & 14'400'000.00 \\
+BX  & TOTAL TRESORERIE ACTIF  &    & 28'404'200.00  & 18'400'000.00 \\
+BY  & Ecart de conversion-Actif   & 7  & 0.00  & 0.00 \\
+BZ  & TOTAL GENERAL  &    & 268'904'200.00  & 146'900'000.00 \\
+\end{longtable}
+  \\
+  \\
+\begin{longtable}[l]{ l  l  l }
+Projet  de l'Entrepreneuriat de la Jeunesse Congolaise  & \multicolumn{2}{l}{Exercice clos le 31.12.2024 }\\
+KONDI N°28  Q. MIBU; N'SELE -  - KINSHASA  & \multicolumn{2}{l}{Durée (en mois) 12 }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{BILAN PASSIF AU 31 DÉCEMBRE 2024 }\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l  l  l }
+\multicolumn{5}{l}{  }\\
+REF  & PASSIF  & Note  & EXERCICE AU 31/12/2024  & EXERCICE AU 31/12/2023 \\
+ &  &  & NET  & NET \\
+CA  & Fonds affectés aux investissements  & 8  & 160'000'000.00  & 40'000'000.00 \\
+CB  & Report à nouveau (+ou-)  &    & 8'000'000.00  & 8'000'000.00 \\
+CC  & Solde des opérations de l'exercice  &    & 13'900'000.00  & 13'900'000.00 \\
+CD  & Subventions d'investissement  & 9  & 7'200'000.00  & 7'200'000.00 \\
+CZ  & TOTAL RESSOURCES PROPRES ET ASSIMILEES  &    & 189'100'000.00  & 69'100'000.00 \\
+DA  & Emprunts et dettes assimilées  & 10  & 16'000'000.00  & 16'000'000.00 \\
+DB  & Provisions pour risques et charges  & 10  & 0.00  & 0.00 \\
+DC  & TOTAL DES DETTES FINANCIERES ET RESSOURCES ASSIMILEES  &    & 16'000'000.00  & 16'000'000.00 \\
+DD  & TOTAL DES RESSOURCES STABLES  &    & 205'100'000.00  & 85'100'000.00 \\
+DE  & Dettes circulantes HAO  & 3  & 5'800'000.00  & 5'800'000.00 \\
+DF  & Fonds d'administation  & 8  & 45'404'200.00  & 43'400'000.00 \\
+DG  & Fournisseurs  & 11  & 9'600'000.00  & 9'600'000.00 \\
+DH  & Autres dettes  & 11  & 1'600'000.00  & 1'600'000.00 \\
+DI  & Provisions pour risques et charges à court terme  & 20  & 0.00  & 0.00 \\
+DJ  & TOTAL PASSIF CIRCULANT  &    & 62'404'200.00  & 60'400'000.00 \\
+DW  & Banques, établissements financiers et crédits de trésorerie  & 12  & 800'000.00  & 800'000.00 \\
+DX  & TOTAL TRESORERIE PASSIF  &    & 800'000.00  & 800'000.00 \\
+DY  & Ecart de conversion-Passif  & 7  & 600'000.00  & 600'000.00 \\
+DZ  & TOTAL GENERAL  &    & 268'904'200.00  & 146'900'000.00 \\
+\end{longtable}
+-  \#page-nr  - \\
+\end{reportvalue}
+\keyvalue{Result}{Passed}
+\end{test}
+\end{testcase}
+\end{document}
