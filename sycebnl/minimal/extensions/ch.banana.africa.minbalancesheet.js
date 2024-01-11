@@ -205,19 +205,35 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     /* GZ */
     printRow(userParam, bReport, table, "GZ", "description-groups", "amount-groups-totals");
     
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
+    tableRow = table.addRow();
+    tableRow.addCell(" ", "", 5);
 
-    if (userParam.stampa) {
-        report.addPageBreak();
+   //  if (userParam.stampa) {
+   //      report.addPageBreak();
   
-        if (userParam.printtitle) {
-           report.addParagraph(" ", "");
-           // report.addParagraph(title, "heading2");
-           report.addParagraph(" ", "");
-        }
-     } else {
-        report.addParagraph(" ", "");
-        report.addParagraph(" ", "");      
-     }
+   //      if (userParam.printtitle) {
+   //         report.addParagraph(" ", "");
+   //         // report.addParagraph(title, "heading2");
+   //         report.addParagraph(" ", "");
+   //      }
+   //   } else {
+   //      report.addParagraph(" ", "");
+   //      report.addParagraph(" ", "");      
+   //   }
     /**************************************************************************************
      * PASSIVE
      **************************************************************************************/
@@ -259,11 +275,11 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     tableRow.addCell("EXERCICE AU 31/12/" + currentYear,"bold align-center", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell("EXERCICE AU 31/12/" + previousYear, "bold align-center", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow = table.addRow();
-    tableRow.addCell("","",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell("","",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell("","",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell("NET","bold align-center", 1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell("NET", "bold align-center", 1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
     /* HA */
     printRow(userParam, bReport, table, "HA", "description-groups", "amount-groups");
@@ -273,8 +289,8 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     printRow(userParam, bReport, table, "HC", "description-groups", "amount-groups");
     /* HD */
     printRow(userParam, bReport, table, "HD", "description-groups", "amount-groups");
-    /* CZ */
-    printRow(userParam, bReport, table, "CZ", "description-groups", "amount-groups-totals");
+    /* GZ */
+    printRow(userParam, bReport, table, "GZ", "description-groups", "amount-groups-totals");
 
    addFooter(report);
    return report;
