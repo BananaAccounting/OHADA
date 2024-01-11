@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// @id = ch.banana.africa.devprojectohadareports
+// @id = ch.banana.africa.minsycebnlohadareports
 // @api = 1.0
 // @pubdate = 2024-01-11
 // @publisher = Banana.ch SA
