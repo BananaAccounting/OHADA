@@ -86,9 +86,9 @@ function createReportStructureProfitLoss() {
     reportStructure.push({"id":"JX", "type":"total", "note":"", "description":"TOTAL DEPENSES SUR CHARGES (B)", "sum":"TA;TB;TC;TD;TG;TH;TI;TJ;TK;TL;TM;TN"});
     reportStructure.push({"id":"KZ", "type":"total", "note":"", "description":"SOLDE: Excédent (+) ou Insuffisance (-) de recettes (C= A-B)", "sum":"-XA;-XB"});
     reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"4", "description":"+ Variation des stocks sur achats [N-(N-1)]"});
-    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"4", "description":"+ Variation des créances [N-(N-1)]"});
-    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"4", "description":"- Variation des dettes d'exploitation [N-(N-1)]"});
-    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"4", "description":"-DOTATIONS AUX AMORTISSEMENTS"});
+    reportStructure.push({"id":"VB", "type":"group", "note":"", "bclass":"4", "description":"+ Variation des créances [N-(N-1)]"});
+    reportStructure.push({"id":"VC", "type":"group", "note":"", "bclass":"4", "description":"- Variation des dettes d'exploitation [N-(N-1)]"});
+    reportStructure.push({"id":"JG", "type":"group", "note":"", "bclass":"4", "description":"-DOTATIONS AUX AMORTISSEMENTS"});
     reportStructure.push({"id":"KZ", "type":"total", "note":"", "description":"RESULTAT DE L'EXERCICE", "sum":"-XA;-XB"});
 
     

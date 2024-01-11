@@ -192,46 +192,19 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell("","bold align-center",1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");    
 
-    /* AA */
-    printRow(userParam, bReport, table, "AA", "description-groups", "amount-groups");
-    /* AB */
-    printRow(userParam, bReport, table, "AB", "description-groups", "amount-groups");
-    /* AC */
-    printRow(userParam, bReport, table, "AC", "description-groups", "amount-groups");
-    /* AD */
-    printRow(userParam, bReport, table, "AD", "description-groups", "amount-groups");
-    /* AE */
-    printRow(userParam, bReport, table, "AE", "description-groups", "amount-groups");
-    /* AF */
-    printRow(userParam, bReport, table, "AF", "description-groups", "amount-groups");
-    /* AG */
-    printRow(userParam, bReport, table, "AG", "description-groups", "amount-groups");
-    /* AH */
-    printRow(userParam, bReport, table, "AH", "description-groups", "amount-groups");
-    /* AZ */
-    printRow(userParam, bReport, table, "AZ", "description-groups", "amount-groups-totals");
-    /* BA */
-    printRow(userParam, bReport, table, "BA", "description-groups", "amount-groups");
-    /* BB */
-    printRow(userParam, bReport, table, "BB", "description-groups", "amount-groups");
-    /* BC */
-    printRow(userParam, bReport, table, "BC", "description-groups", "amount-groups");
-    /* BD */
-    printRow(userParam, bReport, table, "BD", "description-groups", "amount-groups");
-    /* BE */
-    printRow(userParam, bReport, table, "BE", "description-groups", "amount-groups");
-    /* BT */
-    printRow(userParam, bReport, table, "BT", "description-groups", "amount-groups-totals");
-    /* BV */
-    printRow(userParam, bReport, table, "BV", "description-groups", "amount-groups");
-    /* BW */
-    printRow(userParam, bReport, table, "BW", "description-groups", "amount-groups");
-    /* BX */
-    printRow(userParam, bReport, table, "BX", "description-groups", "amount-groups-totals");
-    /* BY */
-    printRow(userParam, bReport, table, "BY", "description-groups", "amount-groups");
-    /* BZ */
-    printRow(userParam, bReport, table, "BZ", "description-groups", "amount-groups-totals");
+    /* GA */
+    printRow(userParam, bReport, table, "GA", "description-groups", "amount-groups");
+    /* GB */
+    printRow(userParam, bReport, table, "GB", "description-groups", "amount-groups");
+    /* GC */
+    printRow(userParam, bReport, table, "GC", "description-groups", "amount-groups");
+    /* GD */
+    printRow(userParam, bReport, table, "GD", "description-groups", "amount-groups");
+    /* GE */
+    printRow(userParam, bReport, table, "GE", "description-groups", "amount-groups");
+    /* GZ */
+    printRow(userParam, bReport, table, "GZ", "description-groups", "amount-groups-totals");
+    
 
     if (userParam.stampa) {
         report.addPageBreak();
@@ -292,44 +265,16 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     tableRow.addCell("NET","bold align-center", 1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell("NET", "bold align-center", 1).setStyleAttributes("border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
-    /* CA */
-    printRow(userParam, bReport, table, "CA", "description-groups", "amount-groups");
-    /* CB */
-    printRow(userParam, bReport, table, "CB", "description-groups", "amount-groups");
-    /* CC */
-    printRow(userParam, bReport, table, "CC", "description-groups", "amount-groups");
-    /* CD */
-    printRow(userParam, bReport, table, "CD", "description-groups", "amount-groups");
+    /* HA */
+    printRow(userParam, bReport, table, "HA", "description-groups", "amount-groups");
+    /* HB */
+    printRow(userParam, bReport, table, "HB", "description-groups", "amount-groups");
+    /* HC */
+    printRow(userParam, bReport, table, "HC", "description-groups", "amount-groups");
+    /* HD */
+    printRow(userParam, bReport, table, "HD", "description-groups", "amount-groups");
     /* CZ */
     printRow(userParam, bReport, table, "CZ", "description-groups", "amount-groups-totals");
-    /* DA */
-    printRow(userParam, bReport, table, "DA", "description-groups", "amount-groups");
-    /* DB */
-    printRow(userParam, bReport, table, "DB", "description-groups", "amount-groups");
-    /* DC */
-    printRow(userParam, bReport, table, "DC", "description-groups", "amount-groups-totals");
-    /* DD */
-    printRow(userParam, bReport, table, "DD", "description-groups", "amount-groups-totals");
-    /* DE */
-    printRow(userParam, bReport, table, "DE", "description-groups", "amount-groups");
-    /* DF */
-    printRow(userParam, bReport, table, "DF", "description-groups", "amount-groups");
-    /* DG */
-    printRow(userParam, bReport, table, "DG", "description-groups", "amount-groups");
-    /* DH */
-    printRow(userParam, bReport, table, "DH", "description-groups", "amount-groups");
-    /* DI */
-    printRow(userParam, bReport, table, "DI", "description-groups", "amount-groups");
-    /* DJ */
-    printRow(userParam, bReport, table, "DJ", "description-groups", "amount-groups-totals");
-    /* DW */
-    printRow(userParam, bReport, table, "DW", "description-groups", "amount-groups");
-    /* DX */ 
-    printRow(userParam, bReport, table, "DX", "description-groups", "amount-groups-totals");
-    /* DY */
-    printRow(userParam, bReport, table, "DY", "description-groups", "amount-groups");
-    /* DZ */
-    printRow(userParam, bReport, table, "DZ", "description-groups", "amount-groups-totals");
 
    addFooter(report);
    return report;
