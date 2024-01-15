@@ -65,22 +65,26 @@ function createReportStructureBalanceSheet() {
 function createReportStructureProfitLoss() {
     var reportStructure = [];
 
+    reportStructure.push({"id":"GC", "type":"group", "note":"3", "bclass":"1", "description":"Adhérents, Clients-Usages et Autres Débiteurs"});
+
+    reportStructure.push({"id":"HD", "type":"group", "note":"9", "bclass":"2", "description":"Fournisseurs et autres créditeurs"});
+
     reportStructure.push({"id":"KA", "type":"group", "note":"4", "bclass":"4", "description":"Revenus encaissés"});
     reportStructure.push({"id":"KB", "type":"group", "note":"4", "bclass":"4", "description":"Autres recettes sur activités"});
-    reportStructure.push({"id":"XA", "type":"total", "note":"", "description":"REVENUS ENCAISSES (A)", "sum":"KA;KB"});
-    reportStructure.push({"id":"JA", "type":"group", "note":"14", "bclass":"4", "description":"Dépenses sur achat"});
-    reportStructure.push({"id":"JB", "type":"group", "note":"14", "bclass":"4", "description":"Dépenses sur loyers"});
-    reportStructure.push({"id":"JC", "type":"group", "note":"4", "bclass":"4", "description":"Dépenses sur Salaires"});
-    reportStructure.push({"id":"JD", "type":"group", "note":"15", "bclass":"4", "description":"Dépenses sur impôts et Taxes"});
-    reportStructure.push({"id":"JE", "type":"group", "note":"16", "bclass":"4", "description":"Charges d'intérêts"});
-    reportStructure.push({"id":"JF", "type":"group", "note":"17", "bclass":"4", "description":"Autres dépenses sur activités"});
-    reportStructure.push({"id":"JX", "type":"total", "note":"", "description":"TOTAL DEPENSES SUR CHARGES (B)", "sum":"TA;TB;TC;TD;TG;TH;TI;TJ;TK;TL;TM;TN"});
-    reportStructure.push({"id":"KZ", "type":"total", "note":"", "description":"SOLDE: Excédent (+) ou Insuffisance (-) de recettes (C= A-B)", "sum":"-XA;-XB"});
-    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"4", "description":"+ Variation des stocks sur achats [N-(N-1)]"});
-    reportStructure.push({"id":"VB", "type":"group", "note":"", "bclass":"4", "description":"+ Variation des créances [N-(N-1)]"});
-    reportStructure.push({"id":"VC", "type":"group", "note":"", "bclass":"4", "description":"- Variation des dettes d'exploitation [N-(N-1)]"});
-    reportStructure.push({"id":"JG", "type":"group", "note":"", "bclass":"4", "description":"-DOTATIONS AUX AMORTISSEMENTS"});
-    reportStructure.push({"id":"KZC", "type":"total", "note":"", "description":"RESULTAT DE L'EXERCICE", "sum":"-XA;-XB"});
+    reportStructure.push({"id":"KX", "type":"total", "note":"", "description":"REVENUS ENCAISSES (A)", "sum":"KA;KB"});
+    reportStructure.push({"id":"JA", "type":"group", "note":"14", "bclass":"3", "description":"Dépenses sur achat"});
+    reportStructure.push({"id":"JB", "type":"group", "note":"14", "bclass":"3", "description":"Dépenses sur loyers"});
+    reportStructure.push({"id":"JC", "type":"group", "note":"4", "bclass":"3", "description":"Dépenses sur Salaires"});
+    reportStructure.push({"id":"JD", "type":"group", "note":"15", "bclass":"3", "description":"Dépenses sur impôts et Taxes"});
+    reportStructure.push({"id":"JE", "type":"group", "note":"16", "bclass":"3", "description":"Charges d'intérêts"});
+    reportStructure.push({"id":"JF", "type":"group", "note":"17", "bclass":"3", "description":"Autres dépenses sur activités"});
+    reportStructure.push({"id":"JX", "type":"total", "note":"", "description":"TOTAL DEPENSES SUR CHARGES (B)", "sum":"JA;JB;JC;JD;JE;JF"});
+    reportStructure.push({"id":"KZ", "type":"total", "note":"", "description":"SOLDE: Excédent (+) ou Insuffisance (-) de recettes (C= A-B)", "sum":"KX;-JX"});
+    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"3", "description":"+ Variation des stocks sur achats [N-(N-1)]"});
+    reportStructure.push({"id":"VB", "type":"group", "note":"", "bclass":"3", "description":"+ Variation des créances [N-(N-1)]"});
+    reportStructure.push({"id":"VC", "type":"group", "note":"", "bclass":"3", "description":"- Variation des dettes d'exploitation [N-(N-1)]"});
+    reportStructure.push({"id":"JG", "type":"group", "note":"", "bclass":"3", "description":"-DOTATIONS AUX AMORTISSEMENTS"});
+    reportStructure.push({"id":"KZC", "type":"total", "note":"", "description":"RESULTAT DE L'EXERCICE", "sum":"VA;VB;VC;JG;KZ"});
 
     
     return reportStructure;

@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// @id = ch.banana.africa.devprojectohadareports
+// @id = ch.banana.africa.minsycebnlohadareports
 // @api = 1.0
-// @pubdate = 2024-01-02
+// @pubdate = 2024-01-11
 // @publisher = Banana.ch SA
-// @description = 2. Profit & Loss Dev Statement (OHADA) [BETA]
-// @description.fr = 2. Compte de résultat (OHADA) [BETA]
+// @description = 2. Profit & Loss - Minimal SYCEBNL (OHADA) [BETA]
+// @description.fr = 2. Compte de résultat - SYCEBNL (OHADA) [BETA]
 // @task = app.command
 // @doctype = 100.100;100.110;130.100
 // @docproperties = 
@@ -154,173 +154,128 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
    tableRow.addCell("","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
    tableRow.addCell("","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
-   tableRow.addCell("NET","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
-   tableRow.addCell("NET","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
+   tableRow.addCell("","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
+   tableRow.addCell("","bold align-center",1).setStyleAttributes("padding-bottom:2px;padding-top:5px");
 
-   /* RA */
+   /* KA */
    tableRow = table.addRow();
-   tableRow.addCell("RA", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RA"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("RA"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RA"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RA"), "align-right", 1);
-
-   /* RB */
+   tableRow.addCell("KA", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("KA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("KA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("KA"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("KA"), "align-right", 1);
+   /* KB */
    tableRow = table.addRow();
-   tableRow.addCell("RB", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RB"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("RB"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RB"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RB"), "align-right", 1);
-
-   /* RC */
+   tableRow.addCell("KB", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("KB"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("KB"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("KB"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("KB"), "align-right", 1);
+   /* KX */
    tableRow = table.addRow();
-   tableRow.addCell("RC", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RC"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("RC"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RC"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RC"), "align-right", 1);
-
-   /* RD */
+   tableRow.addCell("KX", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("KX"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectNote("KX"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("KX"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("KX"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   /* JA */
    tableRow = table.addRow();
-   tableRow.addCell("RD", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RD"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("RD"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RD"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RD"), "align-right", 1);
-
-   /* RE */
+   tableRow.addCell("JA", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JA"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JA"), "align-right", 1);
+   /* JB */
    tableRow = table.addRow();
-   tableRow.addCell("RE", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RE"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("RE"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RE"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RE"), "align-right", 1);
-
-   /* XA */
+   tableRow.addCell("JB", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JB"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JB"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JB"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JB"), "align-right", 1);
+   /* JC */
    tableRow = table.addRow();
-   tableRow.addCell("XA", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectDescription("XA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectNote("XA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-
-   /* TA */   
+   tableRow.addCell("JC", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JC"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JC"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JC"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JC"), "align-right", 1);
+   /* JD */
    tableRow = table.addRow();
-   tableRow.addCell("TA", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TA"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TA"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TA"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TA"))), 2), "align-right", 1);
-
-   /* TB */
+   tableRow.addCell("JD", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JD"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JD"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JD"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JD"), "align-right", 1);
+   /* JE */
    tableRow = table.addRow();
-   tableRow.addCell("TB", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TB"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TB"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TB"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TB"))), 2), "align-right", 1);
-
-   /* TC */
+   tableRow.addCell("JE", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JE"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JE"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JE"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JE"), "align-right", 1);
+   /* JF */
    tableRow = table.addRow();
-   tableRow.addCell("TC", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TC"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TC"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TC"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TC"))), 2), "align-right", 1);
-
-   /* TD */
+   tableRow.addCell("JF", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JF"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JF"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JF"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JF"), "align-right", 1);
+   /* JX */
    tableRow = table.addRow();
-   tableRow.addCell("TD", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TD"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TD"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TD"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TD"))), 2), "align-right", 1);
-
-   /* TG */
+   tableRow.addCell("JX", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("JX"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectNote("JX"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JX"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JX"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   /* KZ */
    tableRow = table.addRow();
-   tableRow.addCell("TG", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TG"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TG"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TG"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TG"))), 2), "align-right", 1);
-
-   /* TH */
+   tableRow.addCell("KZ", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("KZ"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectNote("KZ"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("KZ"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("KZ"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   /* VA */
    tableRow = table.addRow();
-   tableRow.addCell("TH", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TH"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TH"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TH"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TH"))), 2), "align-right", 1);
-
-   /* TI */
+   tableRow.addCell("VA", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("VA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("VA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("VA"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("VA"), "align-right", 1);
+   /* VB */
    tableRow = table.addRow();
-   tableRow.addCell("TI", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TI"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TI"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TI"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TI"))), 2), "align-right", 1);
-
-   /* TJ */
+   var group_vb = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("GC")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("GC")));
+   tableRow.addCell("VB", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("VB"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("VB"), "align-left", 1);
+   tableRow.addCell(formatValues(group_vb), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("VB"), "align-right", 1);
+   /* VC */
    tableRow = table.addRow();
-   tableRow.addCell("TJ", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TJ"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TJ"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TJ"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TJ"))), 2), "align-right", 1);
-
-   /* TK */
+   var group_vc = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("HD"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("HD"))));
+   tableRow.addCell("VC", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("VC"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("VC"), "align-left", 1);
+   tableRow.addCell(formatValues(group_vc), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("VC"), "align-right", 1);
+   /* JG */
    tableRow = table.addRow();
-   tableRow.addCell("TK", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TK"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TK"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TK"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TK"))), 2), "align-right", 1);
-
-   /* TL */
+   tableRow.addCell("JG", "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("JG"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectNote("JG"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("JG"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("JG"), "align-right", 1);
+   /* KZC */
    tableRow = table.addRow();
-   tableRow.addCell("TL", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TL"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TL"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TL"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TL"))), 2), "align-right", 1);
-
-   /* TM */
-   tableRow = table.addRow();
-   tableRow.addCell("TM", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TM"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TM"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TM"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TM"))), 2), "align-right", 1);
-
-   /* TN */
-   tableRow = table.addRow();
-   tableRow.addCell("TN", "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TN"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectNote("TN"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TN"), "align-right", 1);
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("TN"))), 2), "align-right", 1);
-
-   /* XB */
-   tableRow = table.addRow();
-   tableRow.addCell("XB", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectDescription("XB"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectNote("XB"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XB"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(formatValues(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("XB"))), 2), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
-
-   /* XC */
-   tableRow = table.addRow();
-   tableRow.addCell("XC", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectDescription("XC"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectNote("XC"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
-
-   //checkResults(banDoc, startDate, endDate);
-
-
-
+   var group_kzc = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("KZ")), 
+                     Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("VA")));
+   group_kzc = Banana.SDecimal.add(group_kzc, group_vb);
+   group_kzc = Banana.SDecimal.subtract(group_kzc, group_vc);
+   group_kzc = Banana.SDecimal.subtract(group_kzc, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("JG"))); 
+   tableRow.addCell("KZC", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("KZC"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectNote("KZC"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValues(group_kzc), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("KZC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    //addFooter(report);
    return report;
 }
@@ -453,8 +408,8 @@ function convertParam(userParam) {
    currentParam.name = 'column';
    currentParam.title = "Colonne de regroupement (Nom XML de la colonne)";
    currentParam.type = 'string';
-   currentParam.value = userParam.column ? userParam.column : 'Gr';
-   currentParam.defaultvalue = 'Gr';
+   currentParam.value = userParam.column ? userParam.column : 'Gr1';
+   currentParam.defaultvalue = 'Gr1';
    currentParam.readValue = function() {
       userParam.column = this.value;
    }
@@ -481,7 +436,7 @@ function initUserParam() {
    userParam.printheader = false;
    userParam.printtitle = true;
    userParam.title = '';
-   userParam.column = 'Gr';
+   userParam.column = 'Gr1';
    return userParam;
 }
 
