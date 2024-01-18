@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(ch.banana.africa.devprojectohadareports)
-set(EXTENSION_ID "ch.banana.africa.devprojectohadareports")
+project(ch.banana.africa.minsycebnlohadareports)
+set(EXTENSION_ID "ch.banana.africa.minsycebnlohadareports")
 
 find_package(Qt6 COMPONENTS Core REQUIRED)
 find_package(Qt6 COMPONENTS LinguistTools REQUIRED)
 
-# The target ch.banana.africa.devprojectohadareports is used to build the extension to a sbaa package
+# The target ch.banana.africa.minsycebnlohadareports is used to build the extension to a sbaa package
 # and set the source files for the IDE
-add_custom_target(ch.banana.africa.devprojectohadareports ALL
+add_custom_target(ch.banana.africa.minsycebnlohadareports ALL
     COMMAND ${QT_CMAKE_EXPORT_NAMESPACE}::rcc -o ${EXTENSION_ID}.sbaa --binary ${EXTENSION_ID}.qrc
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     SOURCES ${EXTENSION_ID}.qrc

@@ -37,7 +37,7 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"GC", "type":"group", "note":"3", "bclass":"1", "description":"Adhérents, Clients-Usages et Autres Débiteurs"});
     reportStructure.push({"id":"GD", "type":"group", "note":"4", "bclass":"1", "description":"Caisses"});
     reportStructure.push({"id":"GE", "type":"group", "note":"4", "bclass":"1", "description":"Banques"});
-    reportStructure.push({"id":"GZ", "type":"total", "note":"", "description":"TOTAL ACTIF IMMOBILISE", "sum":"GA;GB;GC;GD;GE"});
+    reportStructure.push({"id":"GZ", "type":"total", "note":"", "description":"TOTAL ACTIF (somme GA à GE)", "sum":"GA;GB;GC;GD;GE"});
     
     // To get CC, we sum up products and subtract by charges
     reportStructure.push({"id":"KA", "type":"group", "note":"4", "bclass":"4", "description":"Revenus encaissés"});
@@ -55,7 +55,7 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"HB", "type":"group", "note":"", "description":"Résultat de l'Exercice (en + ou en )", "sum":"HBT;KA;KB;-JA;-JB;-JC;-JD;-JE;-JF"});
     reportStructure.push({"id":"HC", "type":"group", "note":"", "bclass":"2", "description":"Autres fonds propres"});
     reportStructure.push({"id":"HD", "type":"group", "note":"9", "bclass":"2", "description":"Fournisseurs et autres créditeurs"});
-    reportStructure.push({"id":"GZ", "type":"total", "note":"", "description":"TOTAL RESSOURCES PROPRES ET ASSIMILEES", "sum":"HA;HB;HC;HD"});
+    reportStructure.push({"id":"GZ", "type":"total", "note":"", "description":"TOTAL PASSIF (somme HA à HD)", "sum":"HA;HB;HC;HD"});
     
     return reportStructure;
 }
