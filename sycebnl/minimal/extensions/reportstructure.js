@@ -48,14 +48,16 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"JD", "type":"group", "note":"15", "bclass":"3", "description":"Dépenses sur impôts et Taxes"});
     reportStructure.push({"id":"JE", "type":"group", "note":"16", "bclass":"3", "description":"Charges d'intérêts"});
     reportStructure.push({"id":"JF", "type":"group", "note":"17", "bclass":"3", "description":"Autres dépenses sur activités"});
+    reportStructure.push({"id":"VA", "type":"group", "note":"", "bclass":"3", "description":"+ Variation des stocks sur achats [N-(N-1)]"});
+    reportStructure.push({"id":"JG", "type":"group", "note":"", "bclass":"3", "description":"-DOTATIONS AUX AMORTISSEMENTS"});
 
     /* PASSIVE */
     reportStructure.push({"id":"HA", "type":"group", "note":"8", "bclass":"2", "description":"Dotations"});
     reportStructure.push({"id":"HBT", "type":"group", "note":"", "bclass":"2", "description":"Résultat de l'Exercice (en + ou en )"});
-    reportStructure.push({"id":"HB", "type":"group", "note":"", "description":"Résultat de l'Exercice (en + ou en )", "sum":"HBT;KA;KB;-JA;-JB;-JC;-JD;-JE;-JF"});
+    reportStructure.push({"id":"HB", "type":"group", "note":"", "description":"Résultat de l'Exercice (en + ou en )", "sum":"HBT;KA;KB;-JA;-JB;-JC;-JD;-JE;-JF;-VA;-JG"});
     reportStructure.push({"id":"HC", "type":"group", "note":"", "bclass":"2", "description":"Autres fonds propres"});
     reportStructure.push({"id":"HD", "type":"group", "note":"9", "bclass":"2", "description":"Fournisseurs et autres créditeurs"});
-    reportStructure.push({"id":"GZ", "type":"total", "note":"", "description":"TOTAL PASSIF (somme HA à HD)", "sum":"HA;HB;HC;HD"});
+    reportStructure.push({"id":"HZ", "type":"total", "note":"", "description":"TOTAL PASSIF (somme HA à HD)", "sum":"HA;HB;HC;HD"});
     
     return reportStructure;
 }

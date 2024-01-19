@@ -19,7 +19,7 @@
 // @description = 1. Balance Sheet - Minimal SYCEBNL (OHADA) [BETA]
 // @description.fr = 1. Bilan Minimal - SYCEBNL (OHADA) [BETA]
 // @task = app.command
-// @doctype = 100.100;100.110;130.100
+// @doctype = 100.100;110.100;130.100
 // @docproperties = 
 // @outputformat = none
 // @inputdatasource = none
@@ -290,7 +290,12 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     /* HD */
     printRow(userParam, bReport, table, "HD", "description-groups", "amount-groups");
     /* GZ */
-    printRow(userParam, bReport, table, "GZ", "description-groups", "amount-groups-totals");
+    tableRow = table.addRow();
+   tableRow.addCell("GZ", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("HZ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectNote("HZ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("HZ"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("HZ"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0; font-weight: bold");
 
    addFooter(report);
    return report;
