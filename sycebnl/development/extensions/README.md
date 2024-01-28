@@ -3,7 +3,7 @@ La configuration du plan des comptes doit se faire selon le système comptable d
 
 Un modèle prêt à l'emploi est fourni :
 
-Comptabilité Projet de Développement SYCEBNL | Comptabilité en Partie Double
+[Comptabilité Projet de Développement SYCEBNL | Comptabilité en Partie Double](https://github.com/BananaAccounting/OHADA/raw/main/sycebnl/development/templates/proj_dev_ohada_template.ac2)
 
 Il faut noter que la colonne de regroupement utilisée est la colonne **Gr1**.
 
