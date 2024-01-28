@@ -1,6 +1,6 @@
 # Modèles des Projets de Développement - SYCEBNL
 
-[Banana.ch](banana.ch) offre un modèle de fichier Banana pour tenir une comptabilité pour les projets de développement des entités à but non lucratif selon le système comptable des entités à but non lucratif (SYCEBNL) dans la zone OHADA.
+[Banana.ch](https://banana.ch) offre un modèle de fichier Banana pour tenir une comptabilité pour les projets de développement des entités à but non lucratif selon le système comptable des entités à but non lucratif (SYCEBNL) dans la zone OHADA.
 
 ## Modèle Comptabilité en Partie Double
 
