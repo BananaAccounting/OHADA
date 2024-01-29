@@ -4,3 +4,7 @@
 ~$*
 debug.log
 /build-*
+*.test.diff.txt
+**test/testresults
+*.tmp
+~*.*
