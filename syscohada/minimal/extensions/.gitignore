@@ -1,10 +1,7 @@
 .DS_Store
-*.bak
-*.autosave
-~$*
-debug.log
-/build-*
 *.test.diff.txt
 **test/testresults
+*.bak
+*.autosave
 *.tmp
 ~*.*
