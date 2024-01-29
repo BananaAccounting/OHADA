@@ -12,7 +12,7 @@ Ce [modèle](https://github.com/BananaAccounting/OHADA/raw/main/syscohada/minima
 
 ## Rapports financiers
 
-L'extension [Rapports de Comptabilité Minimale (SYSCOHADA)]() est préalablement installée dans le modèle pour permettre à l'utilisateur de générer les rapports financiers suivants :
+L'extension [Rapports de Comptabilité Minimale (SYSCOHADA)](https://github.com/BananaAccounting/OHADA/raw/main/syscohada/minimal/extensions/ch.banana.africa.minsyscohadareports.sbaa) est préalablement installée dans le modèle pour permettre à l'utilisateur de générer les rapports financiers suivants :
 
 - Bilan
 - Compte de résultat
