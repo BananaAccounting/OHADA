@@ -4,11 +4,11 @@
 
 ## Modèle Comptabilité en Partie Double
 
-Ce [modèle]() est prévu pour être utilisé lorsque l'on veut tenir une comptabilité en partie double.
+Ce [modèle](https://github.com/BananaAccounting/OHADA/raw/main/syscohada/minimal/templates/minimal_ohada_double_entry_model.ac2) est prévu pour être utilisé lorsque l'on veut tenir une comptabilité en partie double.
 
 ## Modèle Comptabilité Recettes Dépenses
 
-Ce [modèle]() est prévu pour être utilisé lorsque l'on veut tenir une comptabilité en partie double.
+Ce [modèle](https://github.com/BananaAccounting/OHADA/raw/main/syscohada/minimal/templates/minimal_ohada_income_expenses_model.ac2) est prévu pour être utilisé lorsque l'on veut tenir une comptabilité de recettes dépenses.
 
 ## Rapports financiers
 
