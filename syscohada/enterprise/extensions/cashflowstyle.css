@@ -1,0 +1,128 @@
+
+/* CSS update: 2023-11-09 */
+
+td {
+    vertical-align: top;
+  }
+  
+  @page {
+    margin-top: 7mm;
+    margin-bottom: 7mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+  }
+  
+  body {
+    font-family: Helvetica;
+  }
+  
+  table {
+    font-size: 9px;
+    width: 100%;
+  }
+
+  .column1 {
+    width: 74%;
+  }
+  
+  .column2 {
+    width: 13%;
+  }
+  
+  .column3 {
+    width: 13%;
+  }
+  
+  .column-cash-flow1 {
+    width: 5%;
+  }
+  
+  .column-cash-flow2 {
+    width: 62%;
+  }
+  
+  .column-cash-flow3 {
+    width: 5%;
+  }
+  
+  .column-cash-flow4 {
+    width: 15%;
+  }
+  
+  .column-cash-flow5 {
+    width: 13%;
+  }
+  
+  .address-header {
+    font-size: 8px;
+  }
+  
+  .heading2 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .table-header {
+    color: #ffffff;
+    background-color: #337ab7;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    font-weight: bold;
+  }
+  
+  table.table-cash-flow td {
+    font-size: 9px;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }
+  
+  table-cash-flow {
+    font-size: 9px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }
+  
+  .align-left {
+    text-align: left;
+  }
+  
+  .align-center {
+    text-align: center;
+  }
+  
+  .align-right {
+    text-align: right;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .footer {
+    font-family: Helvetica;
+    font-size: 8px;
+    text-align: center;
+  }
+  
