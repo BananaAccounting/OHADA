@@ -273,6 +273,8 @@ function exec(string) {
     
     /* FA */
     tableRow = table.addRow();
+    var xd = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentyAmountFormatted("XD")));  
+    var fa = Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentyAmountFormatted("FA2"));
     tableRow.addCell("FA", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectDescription("FA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectNote("FA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
