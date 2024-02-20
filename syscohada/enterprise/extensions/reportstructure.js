@@ -406,8 +406,24 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"FE7", "type":"group", "note":"16", "bclass":"2", "description":"Emprunts et dettes financières diverses"});
     reportStructure.push({"id":"FE8", "type":"group", "note":"16", "bclass":"2", "description":"Dettes de location acquisition"});
 
+    reportStructure.push({"id":"FH1", "type":"group", "note":"", "bclass":"1", "description":""});
+    reportStructure.push({"id":"FH2", "type":"group", "note":"", "bclass":"2", "description":""});
+    reportStructure.push({"id":"FH3", "type":"group", "note":"", "bclass":"1", "description":""});
+    reportStructure.push({"id":"FH4", "type":"group", "note":"", "bclass":"2", "description":""});
+
+    reportStructure.push({"id":"FI1", "type":"group", "note":"", "bclass":"1", "description":""});
+    reportStructure.push({"id":"FI2", "type":"group", "note":"", "bclass":"4", "description":""});
+    reportStructure.push({"id":"FI3", "type":"group", "note":"", "bclass":"1", "description":""});
+
+    reportStructure.push({"id":"FJ1", "type":"group", "note":"", "bclass":"4", "description":""});
+    reportStructure.push({"id":"FJ2", "type":"group", "note":"", "bclass":"1", "description":""});
+
+    reportStructure.push({"id":"FO1", "type":"group", "note":"", "bclass":"2", "description":""});
+    reportStructure.push({"id":"FO2", "type":"group", "note":"", "bclass":"2", "description":""});
+    reportStructure.push({"id":"FO3", "type":"group", "note":"", "bclass":"1", "description":""});
+
     reportStructure.push({"id":"ZA", "type":"total", "note":"A", "description":"ZA= Trésorerie nette au 1er janvier (Trésorerie actif N-1 - trésorerie passif N-1)", "sum":"BQ;BR;BS;-DQ;-DR"});
-    reportStructure.push({"id":"FA", "type":"group", "note":"", "bclass":"1", "description":"Capacité d'Autofinancement Globale (CAFG)", "sum":"-XD;RJ1;TH1;-TK;-TL;-TM;-RM;-RN;-TO;-RP;-RQ;-RS"});
+    reportStructure.push({"id":"FA", "type":"group", "note":"", "bclass":"1", "description":"Capacité d'Autofinancement Globale (CAFG)", "sum":""});
     reportStructure.push({"id":"FB", "type":"group", "note":"", "bclass":"1", "description":"(-) Variation actif circulant HAO"});
     reportStructure.push({"id":"FC", "type":"group", "note":"", "bclass":"1", "description":"(-) Variation des stocks"});
     reportStructure.push({"id":"FD", "type":"group", "note":"", "bclass":"1", "description":"(-) Variation des créances"});
