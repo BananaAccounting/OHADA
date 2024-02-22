@@ -422,6 +422,9 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"FO2", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FO3", "type":"group", "note":"", "bclass":"1", "description":""});
 
+    reportStructure.push({"id":"BU5", "type":"group", "note":"", "bclass":"1", "description":""});
+    reportStructure.push({"id":"DV5", "type":"group", "note":"", "bclass":"2", "description":""});
+
     reportStructure.push({"id":"ZA", "type":"total", "note":"A", "description":"ZA= Trésorerie nette au 1er janvier (Trésorerie actif N-1 - trésorerie passif N-1)", "sum":"BQ;BR;BS;-DQ;-DR"});
     reportStructure.push({"id":"FA", "type":"group", "note":"", "bclass":"1", "description":"Capacité d'Autofinancement Globale (CAFG)", "sum":""});
     reportStructure.push({"id":"FB", "type":"group", "note":"", "bclass":"1", "description":"(-) Variation actif circulant HAO"});
