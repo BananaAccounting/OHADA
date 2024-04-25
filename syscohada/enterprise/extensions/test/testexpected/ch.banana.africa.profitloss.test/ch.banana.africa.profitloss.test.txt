@@ -1,0 +1,84 @@
+%%info_test_name{ch.banana.africa.profitloss.test}
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[margin=1cm]{geometry}
+\begin{document}
+\newenvironment{tablevalue}[2]{\textbf{Table: #1}\begin{longtable}[l]{#2}}{\end{longtable}}
+\newenvironment{reportvalue}[1]{\textbf{Report: #1}\\}{}
+\lstnewenvironment{jsonvalue}[1]{\textbf{Json: #1}\lstset{language=Java}}{}
+\lstnewenvironment{xmlvalue}[1]{\textbf{Xml: #1}\lstset{language=Xml}}{}
+\newcommand{\info}[2]{\textit{#1: #2}\\}
+\newcommand{\fatalerror}[1]{\textbf{\textcolor[rgb]{1,0,0}{Fatal error: #1}}\\}
+\newcommand{\keyvalue}[2]{\textbf{Keyvalue: #1} #2\\}
+\newcommand{\textvalue}[1]{#1\\}
+\newcommand{\excltest}[1]{\\Excluded from compare: #1}
+\newcommand{\lognewpage}{\newpage}
+\newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
+\newenvironment{test}[1]{\section*{Test case: #1}}{}
+%Begin test data
+%%SCRIPT{C:/Users/joemb/Banana/OHADA/syscohada/enterprise/extensions/test/ch.banana.africa.profitloss.test.js}
+%
+\begin{testcase}{ProfitLossReport}
+\begin{test}{testBananaExtension}
+\begin{reportvalue}{Test 'Compte de résultat'}
+\begin{longtable}[l]{ l  l  l  l  l  l }
+LA COM  RDC SA  & \multicolumn{2}{l}{Exercice clos le 31.12.2022 }\\
+Avenue Tshibangu n°007, C/ LEMBA - KINSHASA I - RD Congo  & \multicolumn{2}{l}{Durée (en mois) 12 }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{COMPTE DE RÉSULTAT AU 31 DÉCEMBRE 2022 }\\
+\multicolumn{6}{l}{  }\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l  l  l  l }
+REF  & LIBELLÉS  &  & Note  & EXERCICE AU 31/12/2022  & EXERCICE AU 31/12/2021 \\
+ &  &  &  & NET  & NET \\
+TA  & Ventes de marchandises  & +  & 21  & 333'160'000.00  & 0.00 \\
+RA  & Achats de marchandises  & -  & 22  & 218'910'000.00  & 0.00 \\
+RB  & Variation de stocks de marchandises  & -  & 6  & -11'755'000.00  & 0.00 \\
+XA  & MARGE COMMERCIALE (Somme TA à RB)  &  &  & 126'005'000.00  & 0.00 \\
+TB  & Ventes de produits fabriqués  & +  & 21  & 0.00  & 0.00 \\
+TC  & Travaux, services vendus  & +  & 21  & 0.00  & 0.00 \\
+TD  & Produits accessoires  & +  & 21  & 3'000'000.00  & 0.00 \\
+XB  & CHIFFRE D'AFFAIRES (A + B + C + D)  &  &  & 336'160'000.00  & 0.00 \\
+TE  & Production stockée (ou déstockage)  & +  & 6  & 0.00  & 0.00 \\
+TF  & Production immobilisée  &  & 21  & 187'000.00  & 0.00 \\
+TG  & Subventions d’exploitation  &  & 21  & 0.00  & 0.00 \\
+TH  & Autres produits  & +  & 21  & 0.00  & 0.00 \\
+TI  & Transferts de charges d'exploitation  & +  & 12  & 0.00  & 0.00 \\
+RC  & Achats de matières premières et fournitures liées  & -  & 22  & 100'000.00  & 0.00 \\
+RD  & Variation de stocks de matières premières et fournitures liées  & -  & 6  & 0.00  & 0.00 \\
+RE  & Autres achats  & -  & 22  & 40'000.00  & 0.00 \\
+RF  & Variation de stocks d’autres approvisionnements  & -  & 6  & 0.00  & 0.00 \\
+RG  & Transports  & -  & 23  & 0.00  & 0.00 \\
+RH  & Services extérieurs  & -  & 24  & 3'780'600.00  & 0.00 \\
+RI  & Impôts et taxes  & -  & 25  & 0.00  & 0.00 \\
+RJ  & Autres charges  & -  & 26  & 0.00  & 0.00 \\
+XC  & VALEUR AJOUTEE (XB+RA+RB) + (somme TE à RJ)  &  &  & 125'271'400.00  & 0.00 \\
+RK  & Charges de personnel  & -  & 27  & 8'473'600.00  & 0.00 \\
+XD  & EXCEDENT BRUT D'EXPLOITATION (XC+RK)  &  & 28  & 116'797'800.00  & 0.00 \\
+TJ  & Reprises d’amortissements, provisions et dépréciations  & +  & 28  & 0.00  & 0.00 \\
+RL  & Dotations aux amortissements, aux provisions et dépréciations  & -  & 3C\&28  & 53'333.00  & 0.00 \\
+XE  & RESULTAT D'EXPLOITATION (XD+TJ+RL)  &  &  & 116'744'467.00  & 0.00 \\
+TK  & Revenus financiers et assimilés  & +  & 29  & 0.00  & 0.00 \\
+TL  & Reprises de provisions  et dépréciations financières  & +  & 28  & 0.00  & 0.00 \\
+TM  & Transferts de charges financières  & +  & 12  & 0.00  & 0.00 \\
+RM  & Frais financiers et charges assimilées  & -  & 29  & 4'595'000.00  & 0.00 \\
+RN  & Dotations aux provisions et aux dépréciations financières  & -  & 3C\&28  & 0.00  & 0.00 \\
+XF  & RESULTAT FINANCIER (somme TK à RN)  &  &  & -4'595'000.00  & 0.00 \\
+XG  & RESULTAT DES ACTIVITES ORDINAIRES (XE+XF)  &  &  & 112'149'467.00  & 0.00 \\
+TN  & Produits des cessions d'immobilisations  & +  & 3D  & 29'800'000.00  & 0.00 \\
+TO  & Autres Produits HAO  & +  & 30  & 300'000.00  & 0.00 \\
+RO  & Valeurs comptables des cessions d'immobilisations  & -  & 3D  & 22'916'267.00  & 0.00 \\
+RP  & Autres Charges HAO  & -  & 30  & 250'000.00  & 0.00 \\
+XH  & RESULTAT HORS ACTIVITES ORDINAIRES (somme TN à RP)  &  &  & 6'933'733.00  & 0.00 \\
+RQ  & Participation des travailleurs  & -  & 30  & 0.00  & 0.00 \\
+RS  & Impôts sur le résultat  & -  &  & 300'000.00  & 0.00 \\
+XI  & RESULTAT NET (XG+XH+RQ+RS)  &  &  & 118'783'200.00  & 0.00 \\
+\end{longtable}
+\end{reportvalue}
+\keyvalue{Result}{Passed}
+\end{test}
+\end{testcase}
+\end{document}
