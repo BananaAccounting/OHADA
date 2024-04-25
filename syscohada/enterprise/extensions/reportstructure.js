@@ -32,8 +32,8 @@ function createReportStructureBalanceSheet() {
     var reportStructure = [];
 
     /* ACTIVE */
-    reportStructure.push({"id":"AD", "type":"total", "note":"3", "description":"IMMOBILISATIONS INCORPORELLES", "sum":"AF"});
-    reportStructure.push({"id":"ADA", "type":"total", "note":"3", "description":"IMMOBILISATIONS INCORPORELLES", "sum":"AFA"});
+    reportStructure.push({"id":"AD", "type":"total", "note":"3", "description":"IMMOBILISATIONS INCORPORELLES", "sum":"AE;AF;AG;AH"});
+    reportStructure.push({"id":"ADA", "type":"total", "note":"3", "description":"IMMOBILISATIONS INCORPORELLES", "sum":"AEA;AFA;AGA;AHA"});
     reportStructure.push({"id":"AD-(ADA)", "type":"total", "note":"3", "description":"IMMOBILISATIONS INCORPORELLES", "sum":"AD;ADA"});
 
     reportStructure.push({"id":"AE", "type":"group", "note":"", "bclass":"1", "description":"Frais de développement et de prospection"});
@@ -52,8 +52,8 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"AHA", "type":"group", "note":"", "bclass":"1", "description":"Autres immobilisations incorporelles"});
     reportStructure.push({"id":"AH-(AHA)", "type":"total", "note":"", "description":"Autres immobilisations incorporelles", "sum":"AH;AHA"});
 
-    reportStructure.push({"id":"AI", "type":"total", "note":"3", "description":"IMMOBILISATIONS CORPORELLES", "sum":"AJ;AK;AM;AN;AP"}); 
-    reportStructure.push({"id":"AIA", "type":"total", "note":"3", "description":"IMMOBILISATIONS CORPORELLES", "sum":"AKA;AMA;ANA;APA"});
+    reportStructure.push({"id":"AI", "type":"total", "note":"3", "description":"IMMOBILISATIONS CORPORELLES", "sum":"AJ;AK;AL;AM;AN;AP"}); 
+    reportStructure.push({"id":"AIA", "type":"total", "note":"3", "description":"IMMOBILISATIONS CORPORELLES", "sum":"AJA;AKA;ALA;AMA;ANA;APA"});
     reportStructure.push({"id":"AI-(AIA)", "type":"total", "note":"3", "description":"IMMOBILISATIONS CORPORELLES", "sum":"AI;AIA"});
 
     reportStructure.push({"id":"AJ", "type":"group", "note":"", "bclass":"1", "description":"Terrains (1) dont Placement en  Net......./......."});
@@ -81,8 +81,8 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"AP-(APA)", "type":"total", "note":"3", "description":"Avances et acomptes versés sur immobilisations", "sum":"AP;APA"});
 
     reportStructure.push({"id":"AQ", "type":"total", "note":"4", "description":"IMMOBILISATIONS FINANCIERES", "sum":"AR;AS"});
-    reportStructure.push({"id":"AQA", "type":"total", "note":"4", "description":"IMMOBILISATIONS FINANCIERES", "sum":""});
-    reportStructure.push({"id":"AQ-(AQA)", "type":"total", "note":"4", "description":"IMMOBILISATIONS FINANCIERES", "sum":"AQ"});
+    reportStructure.push({"id":"AQA", "type":"total", "note":"4", "description":"IMMOBILISATIONS FINANCIERES", "sum":"ARA;ASA"});
+    reportStructure.push({"id":"AQ-(AQA)", "type":"total", "note":"4", "description":"IMMOBILISATIONS FINANCIERES", "sum":"AQ;AQA"});
 
     reportStructure.push({"id":"AR", "type":"group", "note":"", "bclass":"1", "description":"Titres de participation"});
     reportStructure.push({"id":"ARA", "type":"group", "note":"", "bclass":"1", "description":"Titres de participation"});
@@ -93,7 +93,7 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"AS-(ASA)", "type":"total", "note":"", "description":"Autres immobilisations financières", "sum":"AS;ASA"});
 
     reportStructure.push({"id":"AZ", "type":"total", "note":"", "description":"TOTAL ACTIF IMMOBILISE", "sum":"AD;AI;AQ"});
-    reportStructure.push({"id":"AZA", "type":"total", "note":"", "description":"TOTAL ACTIF IMMOBILISE", "sum":"ADA;AIA"});
+    reportStructure.push({"id":"AZA", "type":"total", "note":"", "description":"TOTAL ACTIF IMMOBILISE", "sum":"ADA;AIA;AQA"});
     reportStructure.push({"id":"AZ-(AZA)", "type":"total", "note":"", "description":"TOTAL ACTIF IMMOBILISE", "sum":"AZ;AZA"});
 
     reportStructure.push({"id":"BA", "type":"group", "note":"5", "bclass":"1", "description":"ACTIF CIRCULANT HAO"});
@@ -121,8 +121,8 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"BJ-(BJA)", "type":"total", "note":"8", "description":"Autres créances", "sum":"BJ;BJA"});
 
     reportStructure.push({"id":"BK", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BA;BB;BG"});
-    reportStructure.push({"id":"BKA", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BBA;BGA"});
-    reportStructure.push({"id":"BK-(BKA)", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BK;BGA"});
+    reportStructure.push({"id":"BKA", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BAA;BBA;BGA"});
+    reportStructure.push({"id":"BK-(BKA)", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BK;BKA"});
 
     reportStructure.push({"id":"BQ", "type":"group", "note":"9", "bclass":"1", "description":"Titres de placement"});
     reportStructure.push({"id":"BQA", "type":"group", "note":"9", "bclass":"1", "description":"Titres de placement"});
@@ -136,8 +136,8 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"BSA", "type":"group", "note":"11", "bclass":"1", "description":"Banques, chèques postaux, caisse et assimilés"});
     reportStructure.push({"id":"BS-(BSA)", "type":"total", "note":"11", "description":"Banques, chèques postaux, caisse et assimilés", "sum":"BS;BSA"});
 
-    reportStructure.push({"id":"BT", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BR;BS"});
-    reportStructure.push({"id":"BTA", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BSA"});
+    reportStructure.push({"id":"BT", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BQ;BR;BS"});
+    reportStructure.push({"id":"BTA", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BQA;BRA;BSA"});
     reportStructure.push({"id":"BT-(BTA)", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BT;BTA"});
 
     reportStructure.push({"id":"BU", "type":"group", "note":"12", "bclass":"1", "description":"Ecart de conversion-Actif"});
@@ -145,7 +145,7 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"BU-(BUA)", "type":"total", "note":"12", "description":"Ecart de conversion-Actif", "sum":"BU;BUA"});
 
     reportStructure.push({"id":"BZ", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"AZ;BK;BT;BU"});
-    reportStructure.push({"id":"BZA", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"AZA;BKA;BTA"});
+    reportStructure.push({"id":"BZA", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"AZA;BKA;BTA;BUA"});
     reportStructure.push({"id":"BZ-(BZA)", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"BZ;BZA"});
 
     // To get CJ, we sum up products and subtract by charges
@@ -405,6 +405,7 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"FE6", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FE7", "type":"group", "note":"16", "bclass":"2", "description":"Emprunts et dettes financières diverses"});
     reportStructure.push({"id":"FE8", "type":"group", "note":"16", "bclass":"2", "description":"Dettes de location acquisition"});
+    reportStructure.push({"id":"FE9", "type":"group", "note":"", "bclass":"2", "description":""});
 
     reportStructure.push({"id":"FH1", "type":"group", "note":"", "bclass":"1", "description":""});
     reportStructure.push({"id":"FH2", "type":"group", "note":"", "bclass":"2", "description":""});

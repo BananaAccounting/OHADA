@@ -79,8 +79,8 @@ function exec(string) {
    const bReport = new BReport(Banana.document, userParam, reportStructure);
    bReport.validateGroups(userParam.column);
    bReport.loadBalances();
-   bReport.calculateTotals(["currentAmount", "previousAmount"]);
-   bReport.formatValues(["currentAmount", "previousAmount"]);
+   bReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount"]);
+   bReport.formatValues(["currentAmount", "previousAmount", "openingAmount"]);
    //Banana.console.log(JSON.stringify(reportStructure, "", " "));
 
    /**
@@ -167,7 +167,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TA"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TA"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TA"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TA"), "align-right", 1);
 
    /* RA */
    tableRow = table.addRow();
@@ -176,7 +176,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RA"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RA"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RA"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RA"), "align-right", 1);
 
    /* RB */
    tableRow = table.addRow();
@@ -185,7 +185,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RB"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RB"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RB"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RB"), "align-right", 1);
 
    /* XA */
    tableRow = table.addRow();
@@ -194,7 +194,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    /* TB */
    tableRow = table.addRow();
@@ -203,7 +203,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TB"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TB"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TB"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TB"), "align-right", 1);
 
    /* TC */
    tableRow = table.addRow();
@@ -212,7 +212,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TC"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TC"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TC"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TC"), "align-right", 1);
 
    /* TD */
    tableRow = table.addRow();
@@ -221,7 +221,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TD"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TD"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TD"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TD"), "align-right", 1);
 
    /* XB */
    tableRow = table.addRow();
@@ -230,7 +230,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XB"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XB"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XB"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XB"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* TE */
    tableRow = table.addRow();
@@ -239,7 +239,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TE"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TE"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TE"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TE"), "align-right", 1);
 
    /* TF */
    tableRow = table.addRow();
@@ -248,7 +248,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TF"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TF"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TF"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TF"), "align-right", 1);
 
    /* TG */
    tableRow = table.addRow();
@@ -257,7 +257,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TG"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TG"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TG"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TG"), "align-right", 1);
 
    /* TH */
    tableRow = table.addRow();
@@ -266,7 +266,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TH"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TH"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TH"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TH"), "align-right", 1);
 
    /* TI */
    tableRow = table.addRow();
@@ -275,7 +275,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TI"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TI"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TI"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TI"), "align-right", 1);
 
    /* RC */
    tableRow = table.addRow();
@@ -284,7 +284,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RC"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RC"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RC"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RC"), "align-right", 1);
 
    /* RD */
    tableRow = table.addRow();
@@ -293,7 +293,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RD"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RD"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RD"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RD"), "align-right", 1);
 
    /* RE */
    tableRow = table.addRow();
@@ -302,7 +302,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RE"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RE"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RE"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RE"), "align-right", 1);
 
    /* RF */
    tableRow = table.addRow();
@@ -311,7 +311,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RF"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RF"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RF"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RF"), "align-right", 1);
 
    /* RG */
    tableRow = table.addRow();
@@ -320,7 +320,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RG"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RG"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RG"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RG"), "align-right", 1);
 
    /* RH */
    tableRow = table.addRow();
@@ -329,7 +329,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RH"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RH"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RH"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RH"), "align-right", 1);
 
    /* RI */
    tableRow = table.addRow();
@@ -338,7 +338,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RI"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RI"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RI"), "align-right", 1);   
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RI"), "align-right", 1);   
 
    /* RJ */
    tableRow = table.addRow();
@@ -347,7 +347,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RJ"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RJ"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RJ"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RJ"), "align-right", 1);
 
    /* XC */
    tableRow = table.addRow();
@@ -356,7 +356,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XC"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XC"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* RK */
    tableRow = table.addRow();
@@ -365,7 +365,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RK"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RK"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RK"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RK"), "align-right", 1);
 
    /* XD */
    tableRow = table.addRow();
@@ -374,7 +374,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XD"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XD"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XD"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XD"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* TJ */
    tableRow = table.addRow();
@@ -383,7 +383,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TJ"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TJ"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TJ"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TJ"), "align-right", 1);
 
    /* RL */
    tableRow = table.addRow();
@@ -392,7 +392,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RL"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RL"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RL"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RL"), "align-right", 1);
 
    /* XE */
    tableRow = table.addRow();
@@ -401,7 +401,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XE"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XE"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XE"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XE"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* TK */
    tableRow = table.addRow();
@@ -410,7 +410,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TK"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TK"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TK"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TK"), "align-right", 1);
 
    /* TL */
    tableRow = table.addRow();
@@ -419,7 +419,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TL"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TL"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TL"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TL"), "align-right", 1);
 
    /* TM */
    tableRow = table.addRow();
@@ -428,7 +428,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TM"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TM"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TM"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TM"), "align-right", 1);
 
    /* RM */
    tableRow = table.addRow();
@@ -437,7 +437,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RM"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RM"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RM"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RM"), "align-right", 1);
 
    /* RN */
    tableRow = table.addRow();
@@ -446,7 +446,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RN"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RN"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RN"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RN"), "align-right", 1);
 
    /* XF */
    tableRow = table.addRow();
@@ -455,7 +455,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XF"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XF"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XF"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XF"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* XG */
    tableRow = table.addRow();
@@ -464,7 +464,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XG"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XG"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XG"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XG"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* TN */
    tableRow = table.addRow();
@@ -473,7 +473,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TN"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TN"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TN"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TN"), "align-right", 1);
 
    /* TO */
    tableRow = table.addRow();
@@ -482,7 +482,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("+", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("TO"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TO"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("TO"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("TO"), "align-right", 1);
 
    /* RO */
    tableRow = table.addRow();
@@ -491,7 +491,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RO"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RO"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RO"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RO"), "align-right", 1);
 
    /* RP */
    tableRow = table.addRow();
@@ -500,7 +500,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RP"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RP"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RP"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RP"), "align-right", 1);
 
    /* XH */
    tableRow = table.addRow();
@@ -509,7 +509,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XH"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XH"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XH"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XH"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    /* RQ */
    tableRow = table.addRow();
@@ -518,7 +518,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RQ"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RQ"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RQ"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RQ"), "align-right", 1);
 
    /* RS */
    tableRow = table.addRow();
@@ -527,7 +527,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("-", "align-left", 1);
    tableRow.addCell(bReport.getObjectNote("RS"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RS"), "align-right", 1);
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("RS"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("RS"), "align-right", 1);
 
    /* XI */
    tableRow = table.addRow();
@@ -536,7 +536,7 @@ function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("XI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("XI"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("XI"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
+   tableRow.addCell(bReport.getObjectOpeningAmountFormatted("XI"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold"); 
 
    //checkResults(banDoc, startDate, endDate);
 
