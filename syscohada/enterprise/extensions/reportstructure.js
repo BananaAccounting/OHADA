@@ -383,12 +383,15 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"FG4", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FG5", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FG6", "type":"group", "note":"", "bclass":"4", "description":""});
+    reportStructure.push({"id":"FG7", "type":"group", "note":"", "bclass":"2", "description":""});
+    reportStructure.push({"id":"FG8", "type":"group", "note":"", "bclass":"2", "description":""});
 
     reportStructure.push({"id":"FF1", "type":"group", "note":"", "bclass":"1", "description":""});
     reportStructure.push({"id":"FF2", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FF3", "type":"group", "note":"", "bclass":"1", "description":""});
     reportStructure.push({"id":"FF4", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FF5", "type":"group", "note":"", "bclass":"4", "description":""});
+    reportStructure.push({"id":"FF6", "type":"group", "note":"", "bclass":"2", "description":""});
 
     reportStructure.push({"id":"DI", "type":"group", "note":"7", "bclass":"2", "description":"Clients, avances reçues"});
     reportStructure.push({"id":"DJ", "type":"group", "note":"17", "bclass":"2", "description":"Fournisseurs d'exploitation"});
@@ -419,7 +422,7 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"FJ1", "type":"group", "note":"", "bclass":"4", "description":""});
     reportStructure.push({"id":"FJ2", "type":"group", "note":"", "bclass":"1", "description":""});
 
-    reportStructure.push({"id":"FO1", "type":"group", "note":"", "bclass":"2", "description":""});
+    reportStructure.push({"id":"FO1", "type":"group", "note":"", "bclass":"1", "description":""});
     reportStructure.push({"id":"FO2", "type":"group", "note":"", "bclass":"2", "description":""});
     reportStructure.push({"id":"FO3", "type":"group", "note":"", "bclass":"1", "description":""});
 
