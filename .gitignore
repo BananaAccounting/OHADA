@@ -8,8 +8,7 @@ debug.log
 **test/testresults
 *.tmp
 ~*.*
-build
-build-*
-.vscode
-CMakeLists.txt.*
-CMakeLists.txt.user
+*.user
+**/build/
+~$*
+**/.vscode/
