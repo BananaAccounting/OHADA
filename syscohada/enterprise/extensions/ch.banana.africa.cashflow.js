@@ -294,7 +294,7 @@ function exec(string) {
     var sub_total_1 = Banana.SDecimal.add(xd, fa2);
     var sub_total_2 = Banana.SDecimal.add(sub_total_1, Banana.SDecimal.invert(fa1));
     var sub_total_3 = Banana.SDecimal.add(sub_total_2, sub_total_t_r);
-    var sub_total_4 = Banana.SDecimal.add(sub_total_3, Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("TO"))));
+    var sub_total_4 = Banana.SDecimal.add(sub_total_3, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("TO")));
     var sub_total_5 = Banana.SDecimal.subtract(sub_total_4, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RP")));
     var sub_total_6 = Banana.SDecimal.subtract(sub_total_5, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RQ")));
     var total_fa = Banana.SDecimal.subtract(sub_total_6, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RS")));
@@ -458,7 +458,7 @@ function exec(string) {
    var sub_total_fg_10 = Banana.SDecimal.subtract(sub_total_fg_9, fg_6);
    var sub_total_fg_11 = Banana.SDecimal.subtract(sub_total_fg_10, fg_7);
    var total_fg = Banana.SDecimal.subtract(sub_total_fg_11, fg_8);
-   // var total_fg = Banana.SDecimal.subtract(sub_total_fg_13, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG6")));
+   total_fg = Banana.SDecimal.subtract(total_fg, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG6")));
    
    tableRow.addCell("FG", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FG"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
