@@ -8,3 +8,7 @@ debug.log
 **test/testresults
 *.tmp
 ~*.*
+*.user
+**/build/
+~$*
+**/.vscode/
