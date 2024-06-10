@@ -269,7 +269,8 @@ function printprofitlossstatement(banDoc, previous, userParam, bReport, styleshe
 
    /* 19 */
    tableRow = table.addRow();
-   var resultVarStock = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("2")), Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("2")));
+   var resultVarStock = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("2"))), 
+                        Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("2"))));
    tableRow.addCell("19", "align-left", 1).setStyleAttributes("padding-bottom:4px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("19"), "align-left", 1).setStyleAttributes("padding-bottom:4px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("19"), "align-center", 1).setStyleAttributes("padding-bottom:4px;padding-top:5px");
