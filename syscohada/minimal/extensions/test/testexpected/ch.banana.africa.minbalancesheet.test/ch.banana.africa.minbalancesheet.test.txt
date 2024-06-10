@@ -38,11 +38,11 @@ ETS DIENA  & \multicolumn{2}{l}{Exercice clos le 31.12.2024 }\\
 Nº  & ACTIF  & NOTE  & MONTANT  & \\
  &  &  & EXERCICE 2024  & EXERCICE 2023 \\
 1  & Immobilisations  & 1  & 11'860'000.00  & 12'000'000.00 \\
-2  & Stocks  & 2  & 1'500'000.00  & 2'550'000.00 \\
+2  & Stocks  & 2  & 2'500'000.00  & 2'550'000.00 \\
 3  & Clients et débiteurs divers  & 3  & 600'000.00  & 1'800'000.00 \\
 4  & Caisse  &    & 2'250'000.00  & 500'000.00 \\
 5  & Banque (en + ou en -)  &    & 1'925'000.00  & 800'000.00 \\
- & Total actif  &    & 18'135'000.00  & 17'650'000.00 \\
+ & Total actif  &    & 19'135'000.00  & 17'650'000.00 \\
 \multicolumn{5}{l}{  }\\
 \multicolumn{5}{l}{  }\\
 \multicolumn{5}{l}{  }\\
@@ -50,14 +50,14 @@ Nº  & ACTIF  & NOTE  & MONTANT  & \\
 \multicolumn{5}{l}{BILAN PASSIF AU 31 DÉCEMBRE 2024 }\\
 \multicolumn{5}{l}{  }\\
 \multicolumn{5}{l}{  }\\
-Nº  & ACTIF  & NOTE  & MONTANT  & \\
+Nº  & PASSIF  & NOTE  & MONTANT  & \\
  &  &  & EXERCICE 2024  & EXERCICE 2023 \\
 6  & Compte d'exploitant  &    & 15'500'000.00  & 15'500'000.00 \\
- & Résultat exercice  &    & 935'000.00  & 0.00 \\
+ & Résultat exercice  &    & 1'935'000.00  & 0.00 \\
 8  & Emprunt  &    & 1'500'000.00  & 1'500'000.00 \\
 9  & Fournisseurs et créditeurs divers  & 3  & 200'000.00  & 650'000.00 \\
 10  & Impôt dû  &    & 0.00  & 0.00 \\
- & Total passif  &    & 18'135'000.00  & 17'650'000.00 \\
+ & Total passif  &    & 19'135'000.00  & 17'650'000.00 \\
 \end{longtable}
 -  \#page-nr  - \\
 \end{reportvalue}
