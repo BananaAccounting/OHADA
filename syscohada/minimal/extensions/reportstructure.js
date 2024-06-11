@@ -63,17 +63,9 @@ function createReportStructure() {
     reportStructure.push({"id":"B", "type":"total", "note":"B", "description":"TOTAL DÉPENSES SUR CHARGES", "sum":"13;14;15;16;17;18"});
     reportStructure.push({"id":"C", "type":"total", "note":"C", "description":"SOLDE: Excédent (+) ou insuffisance (-) de recettes (C=A-B)", "sum":"RP;-B"});
     reportStructure.push({"id":"19", "type":"group", "note":"2", "bclass":"3", "description":"- Variations des stocks N / N-1"});
-    reportStructure.push({"id":"20", "type":"group", "note":"3", "bclass":"3", "description":"- Variations des créances N / N-1", "sum":"3"});
-    reportStructure.push({"id":"21", "type":"group", "note":"3", "bclass":"3", "description":"+ Variations des dettes d'exploitation N / N-1", "sum":"9;10"});
-    reportStructure.push({"id":"D", "type":"total", "note":"D", "description":"VARIATION A COURT TERME", "sum":"19;20;21"});
-    reportStructure.push({"id":"22", "type":"group", "note":"", "bclass":"3", "description":"Acquisition des Immobilisations"});
-    reportStructure.push({"id":"23", "type":"group", "note":"", "bclass":"3", "description":"Apport en Numéraire"});
-    reportStructure.push({"id":"24", "type":"group", "note":"", "bclass":"3", "description":"Prélèvement"});
-    reportStructure.push({"id":"28", "type":"group", "note":"", "bclass":"3", "description":"Emprunt"});
-    reportStructure.push({"id":"29", "type":"group", "note":"", "bclass":"3", "description":"Remboursement des Emprunts"});
-    reportStructure.push({"id":"E", "type":"total", "note":"E", "description":"VARIATION A LONG TERME", "sum":"22;23;24;28;29"});
-    reportStructure.push({"id":"30", "type":"group", "note":"F", "bclass":"3", "description":"DOTATIONS AMORTISSEMENTS"});
-    reportStructure.push({"id":"G", "type":"group", "note":"G", "description":"RESULTAT EXERCICE (G=C-D+E-F)", "sum":"C;-D;E;-30"});
+    reportStructure.push({"id":"D", "type":"total", "note":"D", "description":"VARIATION A COURT TERME", "sum":"19"});
+    reportStructure.push({"id":"30", "type":"group", "note":"E", "bclass":"3", "description":"DOTATIONS AMORTISSEMENTS"});
+    reportStructure.push({"id":"F", "type":"total", "note":"F", "description":"RESULTAT EXERCICE (F=C-D-E)", "sum":"C;-D;-30"});
 
 
 
