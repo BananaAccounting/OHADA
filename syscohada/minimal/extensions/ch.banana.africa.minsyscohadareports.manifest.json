@@ -1,0 +1,15 @@
+{
+    "category": "productivity",
+    "country":"africa",
+    "countryCode":"af",
+    "description": "Minimal Accounting Reports (OHADA) [BETA]",
+    "description.en": "Minimal Accounting Reports (OHADA) [BETA]",
+    "description.fr": "Système Minimal de Trésorerie (OHADA) [BETA]",
+    "id":"ch.banana.africa.minsyscohadareports",
+    "language":"fr",
+    "publisher": "Banana.ch",
+    "title": "Minimal Accounting Reports (OHADA) [BETA]",
+    "title.en": "Minimal Accounting Reports (OHADA) [BETA]",
+    "title.fr": "Système Minimal de Trésorerie (OHADA) [BETA]",
+    "version": "1.0"
+}

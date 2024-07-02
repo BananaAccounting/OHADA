@@ -4,8 +4,11 @@
 ~$*
 debug.log
 /build-*
-build
-build-*
-.vscode
-CMakeLists.txt.*
-CMakeLists.txt.user
+*.test.diff.txt
+**test/testresults
+*.tmp
+~*.*
+*.user
+**/build/
+~$*
+**/.vscode/

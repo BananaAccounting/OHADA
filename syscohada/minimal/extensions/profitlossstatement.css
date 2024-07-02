@@ -1,0 +1,128 @@
+
+/* CSS update: 2020-12-30 */
+
+td {
+    vertical-align: top;
+  }
+  
+  @page {
+    margin-top: 7mm;
+    margin-bottom: 7mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+  }
+  
+  body {
+    font-family: Helvetica;
+  }
+  
+  table {
+    font-size: 9px;
+    width: 100%;
+  }
+
+  .column1 {
+    width: 74%;
+  }
+  
+  .column2 {
+    width: 13%;
+  }
+  
+  .column3 {
+    width: 13%;
+  }
+  
+  .column-profit-loss1 {
+    width: 5%;
+  }
+  
+  .column-profit-loss2 {
+    width: 50%;
+  }
+  
+  .column-profit-loss3 {
+    width: 9%;
+  }
+  
+  .column-profit-loss4 {
+    width: 18%;
+  }
+  
+  .column-profit-loss5 {
+    width: 18%;
+  }
+  
+  .address-header {
+    font-size: 8px;
+  }
+  
+  .heading2 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .table-header {
+    color: #ffffff;
+    background-color: #337ab7;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    font-weight: bold;
+  }
+  
+  table.table-profit-loss td {
+    font-size: 9px;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }
+  
+  table-profit-loss {
+    font-size: 9px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }
+  
+  .align-left {
+    text-align: left;
+  }
+  
+  .align-center {
+    text-align: center;
+  }
+  
+  .align-right {
+    text-align: right;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .footer {
+    font-family: Helvetica;
+    font-size: 8px;
+    text-align: center;
+  }
+  
