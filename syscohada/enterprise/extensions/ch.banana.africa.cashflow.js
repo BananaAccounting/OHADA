@@ -61,7 +61,10 @@ function exec(string) {
     // PREVIOUS year file: Return the previous year document.
     // If the previous year is not defined or it is not foud it returns null */
     var previous = Banana.document.previousYear();
- 
+    
+    if (!previous) {
+      Banana.console.log("No previous year found");
+    }
     /**
      * 1. Loads the report structure
      */
@@ -77,13 +80,21 @@ function exec(string) {
     bReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
     bReport.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
     bReport.excludeEntries();
-    //Banana.console.log(JSON.stringify(reportStructure, "", " "));
+
+    const bReportPrevious = new BReport(previous, userParam, reportStructure);
+    bReportPrevious.validateGroups(userParam.column);
+    bReportPrevious.loadBalances();
+      bReportPrevious.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+      // bReportPrevious.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+    bReportPrevious.excludeEntries();
+      Banana.console.log("bReport: " + JSON.stringify(bReport) + "\n\n");
+      Banana.console.log("bReportPrevious: " + JSON.stringify(bReportPrevious));
  
     /**
      * 3. Creates the report
      */
     var stylesheet = Banana.Report.newStyleSheet();
-    var report = printBalanceSheet(Banana.document, previous, userParam, bReport, stylesheet);
+    var report = printCashFlow(Banana.document, previous, userParam, bReport, bReportPrevious, stylesheet);
     setCss(Banana.document, stylesheet, userParam);
     Banana.Report.preview(report, stylesheet);
  }
@@ -124,7 +135,7 @@ function exec(string) {
     } 
  }
 
- function printBalanceSheet(current, previous, userParam, bReport, stylesheet) {
+ function printCashFlow(current, previous, userParam, bReport, bReportPrevious, stylesheet) {
     var report = Banana.Report.newReport("Tableau des flux de trésorerie");
 
     var startDate = userParam.selectionStartDate;
@@ -261,12 +272,24 @@ function exec(string) {
     var za_result_1 = Banana.SDecimal.add(za_result_0, Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BS")));
     var za_result_2 = Banana.SDecimal.invert(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("DQ")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("DR"))));
     var za_result = Banana.SDecimal.subtract(za_result_1, za_result_2);
+
+    var za_result_0_previous = 0;
+    var za_result_1_previous = 0;
+    var za_result_2_previous = 0;
+    var za_result_previous = 0;
+    if (previous) {
+      za_result_0_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BQ")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BR")));
+      za_result_1_previous = Banana.SDecimal.add(za_result_0_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BS")));
+      za_result_2_previous = Banana.SDecimal.invert(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DQ")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DR"))));
+      za_result_previous = Banana.SDecimal.subtract(za_result_1_previous, za_result_2_previous);
+    }
     tableRow.addCell("ZA", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectDescription("ZA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
     tableRow.addCell(bReport.getObjectNote("ZA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
     tableRow.addCell(formatValues(za_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZA"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    
+    if(previous) {
+      tableRow.addCell(formatValues(za_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    }
     /*  */
     tableRow = table.addRow();
     tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -299,30 +322,55 @@ function exec(string) {
     var sub_total_6 = Banana.SDecimal.subtract(sub_total_5, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RQ")));
     var total_fa = Banana.SDecimal.subtract(sub_total_6, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RS")));
     
+    var ta_tb_td_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TB"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TD")));
+    var te_th_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TE")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TH")));
+      var ff5_fg6_fa1_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FF5")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FG6"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FA1")));
+      var xd_a_previous = Banana.SDecimal.add(Banana.SDecimal.add(ta_tb_td_previous, te_th_previous), ff5_fg6_fa1_previous);
+      var ra_rb_rc_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RB"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RC")));
+      var re_rh_rj_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RE")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RH"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RJ")));
+      var rk_fa2_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RK")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FA2")));
+      var xd_b_previous = Banana.SDecimal.add(Banana.SDecimal.add(ra_rb_rc_previous, re_rh_rj_previous), rk_fa2_previous);
+      var xd_previous = Banana.SDecimal.subtract(xd_a_previous, xd_b_previous);
+      var fa2_previous = Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FA2"));
+      var fa1_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FA1")));
+      var total_tk_tm_tl_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TK")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TM"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TL")));
+      var total_rm_rn_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RM")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RN")));
+      var sub_total_t_r_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(total_tk_tm_tl_previous), total_rm_rn_previous);
+      var sub_total_1_previous = Banana.SDecimal.add(xd_previous, fa2_previous);
+      var sub_total_2_previous = Banana.SDecimal.add(sub_total_1_previous, Banana.SDecimal.invert(fa1_previous));
+      var sub_total_3_previous = Banana.SDecimal.add(sub_total_2_previous, sub_total_t_r_previous);
+      var sub_total_4_previous = Banana.SDecimal.add(sub_total_3_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("TO")));
+      var sub_total_5_previous = Banana.SDecimal.subtract(sub_total_4_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RP")));
+      var sub_total_6_previous = Banana.SDecimal.subtract(sub_total_5_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RQ")));
+      var total_fa_previous = Banana.SDecimal.subtract(sub_total_6_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("RS")));
     tableRow.addCell("FA", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectDescription("FA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectNote("FA"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(formatValues(total_fa), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FA"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell(formatValues(total_fa_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
     /* FB */
     tableRow = table.addRow();
     var total_fb = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BA")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BA")));
 
+    var total_fb_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BA")));
+
     tableRow.addCell("FB", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectDescription("FB"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(bReport.getObjectNote("FB"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     tableRow.addCell(formatValues(total_fb), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-    tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FB"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+    tableRow.addCell(formatValues(total_fb_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FC */
    tableRow = table.addRow();
    var total_fc = Banana.SDecimal.subtract(Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BB")), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BBA")))), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BB")));
+   
+   var total_fc_previous = Banana.SDecimal.subtract(Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BB")), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BBA")))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BB")));
    tableRow.addCell("FC", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FC"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FC"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fc), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FC"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fc_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FD */
    tableRow = table.addRow();
@@ -345,11 +393,31 @@ function exec(string) {
    var sub_total_fd_final_4 = Banana.SDecimal.add(sub_total_fd_final_3, sub_total_fd_5); // Not sure
    var sub_total_fd_final_5 = Banana.SDecimal.subtract(sub_total_fd_final_4, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD5")));
    var total_fd = Banana.SDecimal.subtract(sub_total_fd_final_5, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD6")));
+   
+   var total_bh_bi_bj_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BJ")));
+   total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD5")));
+   total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD6")));
+   var total_bha_bia_bja_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BJA")));
+   var total_bh_bi_bj_opening_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BJ")));
+   var total_bha_bia_bja_opening_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BJA")));
+   var sub_total_1_balance_previous = Banana.SDecimal.subtract(total_bh_bi_bj_previous, Banana.SDecimal.invert(total_bha_bia_bja_previous));
+   var sub_total_1_opening_previous = Banana.SDecimal.subtract(total_bh_bi_bj_opening_previous, Banana.SDecimal.invert(total_bha_bia_bja_opening_previous));
+   var sub_total_fd_1_previous = Banana.SDecimal.subtract(sub_total_1_balance_previous, sub_total_1_opening_previous);
+   var sub_total_fd_2_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD1")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FD1")));
+   var sub_total_fd_3_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD2")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FD2")));
+   var sub_total_fd_4_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD3")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FD3")));
+   var sub_total_fd_5_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD4")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FD4")));
+   var sub_total_fd_final_1_previous = Banana.SDecimal.add(sub_total_fd_1_previous, sub_total_fd_2_previous);
+   var sub_total_fd_final_2_previous = Banana.SDecimal.add(sub_total_fd_final_1_previous, sub_total_fd_3_previous);
+   var sub_total_fd_final_3_previous = Banana.SDecimal.subtract(sub_total_fd_final_2_previous, sub_total_fd_4_previous);
+   var sub_total_fd_final_4_previous = Banana.SDecimal.add(sub_total_fd_final_3_previous, sub_total_fd_5_previous); // Not sure
+   var sub_total_fd_final_5_previous = Banana.SDecimal.subtract(sub_total_fd_final_4_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD5")));
+   var total_fd_previous = Banana.SDecimal.subtract(sub_total_fd_final_5_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD6")));
    tableRow.addCell("FD", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FD"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FD"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fd), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FD"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fd_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FE */
    tableRow = table.addRow();
@@ -377,22 +445,49 @@ function exec(string) {
    var sub_total_fe_final_8 = Banana.SDecimal.add(Banana.SDecimal.invert(sub_total_fe_final_7), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE8"))));
    var total_fe = Banana.SDecimal.add(sub_total_fe_final_8, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE9")));
    
+   var total_di_dj_dk_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("DI")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("DJ"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("DK")));
+   var total_dm_dn_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("DM")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("DN")));
+   var sub_total_fe_1_balance_previous = Banana.SDecimal.add(total_di_dj_dk_previous, total_dm_dn_previous);
+   var total_di_dj_dk_opening_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DI")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DJ"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DK")));
+   var total_dm_dn_opening_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DM")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("DN")));
+   var sub_total_fe_1_opening_previous = Banana.SDecimal.add(total_di_dj_dk_opening_previous, total_dm_dn_opening_previous);
+   var sub_total_fe_1_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(sub_total_fe_1_balance_previous), Banana.SDecimal.invert(sub_total_fe_1_opening_previous));
+   var sub_total_fe_2_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE1"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE1"))));
+   var sub_total_fe_3_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE2"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE2"))));
+   var sub_total_fe_4_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE3"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE3"))));
+   var sub_total_fe_5_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE4"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE4"))));
+   var sub_total_fe_6_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE5"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE5"))));
+   var sub_total_fe_7_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE6"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE6"))));
+   var sub_total_fe_8_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FE7"))), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("FE7"))));
+   var sub_total_fe_final_1_previous = Banana.SDecimal.add(sub_total_fe_1_previous, sub_total_fe_2_previous);
+   var sub_total_fe_final_2_previous = Banana.SDecimal.subtract(sub_total_fe_final_1_previous, sub_total_fe_3_previous);
+   var sub_total_fe_final_3_previous = Banana.SDecimal.subtract(sub_total_fe_final_2_previous, sub_total_fe_4_previous);
+   var sub_total_fe_final_4_previous = Banana.SDecimal.subtract(sub_total_fe_final_3_previous, sub_total_fe_5_previous);
+   var sub_total_fe_final_5_previous = Banana.SDecimal.subtract(sub_total_fe_final_4_previous, sub_total_fe_6_previous);
+   var sub_total_fe_final_6_previous = Banana.SDecimal.subtract(sub_total_fe_final_5_previous, sub_total_fe_7_previous);
+   var sub_total_fe_final_7_previous = Banana.SDecimal.subtract(sub_total_fe_final_6_previous, sub_total_fe_8_previous);
+   var sub_total_fe_final_8_previous = Banana.SDecimal.add(Banana.SDecimal.invert(sub_total_fe_final_7_previous), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FE8"))));
+   var total_fe_previous = Banana.SDecimal.add(sub_total_fe_final_8_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FE9")));
    tableRow.addCell("FE", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FE"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FE"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fe), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FE"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fe_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /*  */
    tableRow = table.addRow();
    var var_bf_0 = Banana.SDecimal.subtract(Banana.SDecimal.invert(total_fb), total_fc);
    var var_bf_1 = Banana.SDecimal.subtract(var_bf_0, total_fd);
    var var_bf = Banana.SDecimal.add(var_bf_1, total_fe);
+
+   var var_bf_0_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(total_fb_previous), total_fc_previous);
+   var var_bf_1_previous = Banana.SDecimal.subtract(var_bf_0_previous, total_fd_previous);
+   var var_bf_previous = Banana.SDecimal.add(var_bf_1_previous, total_fe_previous);
    tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("Variation du BF lié aux activités opérationnelles (FB+FC+FD+FE)", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(var_bf), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell("", "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(var_bf_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
     
    /* ZB */
    tableRow = table.addRow();
@@ -400,11 +495,16 @@ function exec(string) {
    var zb_result_1 = Banana.SDecimal.subtract(zb_result_0, total_fc);
    var zb_result_2 = Banana.SDecimal.subtract(zb_result_1, total_fd);
    var zb_result = Banana.SDecimal.add(zb_result_2, total_fe);
+
+   var zb_result_0_previous = Banana.SDecimal.subtract(total_fa_previous, total_fb_previous);
+   var zb_result_1_previous = Banana.SDecimal.subtract(zb_result_0_previous, total_fc_previous);
+   var zb_result_2_previous = Banana.SDecimal.subtract(zb_result_1_previous, total_fd_previous);
+   var zb_result_previous = Banana.SDecimal.add(zb_result_2_previous, total_fe_previous);
    tableRow.addCell("ZB", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZB"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZB"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(formatValues(zb_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZB"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zb_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    
    /*  */
    tableRow = table.addRow();
@@ -430,11 +530,24 @@ function exec(string) {
    var sub_total_ff_10 = Banana.SDecimal.subtract(sub_total_ff_9, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FF4")));
    var total_ff = Banana.SDecimal.subtract(sub_total_ff_10, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FF5")));
    
+   var sub_total_ae_af_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AE")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AF")));
+   var sub_total_ag_ah_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AG")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AH")));
+   var sub_total_ff_1_previous = Banana.SDecimal.add(sub_total_ae_af_previous, sub_total_ag_ah_previous);
+   var sub_total_ff_2_previous = Banana.SDecimal.subtract(sub_total_ff_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FF1")));
+   var sub_total_ff_3_previous = Banana.SDecimal.add(sub_total_ff_2_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD5")));
+   var sub_total_ff_4_previous = Banana.SDecimal.subtract(sub_total_ff_3_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FF2")));
+   var sub_total_ff_5_previous = Banana.SDecimal.add(sub_total_ff_4_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FF2")));
+   var sub_total_ff_6_previous = Banana.SDecimal.subtract(sub_total_ff_5_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FE2")));
+   var sub_total_ff_7_previous = Banana.SDecimal.add(sub_total_ff_6_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FE2")));
+   var sub_total_ff_8_previous = Banana.SDecimal.add(sub_total_ff_7_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FF3")));
+   var sub_total_ff_9_previous = Banana.SDecimal.subtract(sub_total_ff_8_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FF3")));
+   var sub_total_ff_10_previous = Banana.SDecimal.subtract(sub_total_ff_9_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FF4")));
+   var total_ff_previous = Banana.SDecimal.subtract(sub_total_ff_10_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FF5")));
    tableRow.addCell("FF", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FF"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FF"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_ff), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FF"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_ff_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FG */
    tableRow = table.addRow();
@@ -460,11 +573,32 @@ function exec(string) {
    var total_fg = Banana.SDecimal.subtract(sub_total_fg_11, fg_8);
    total_fg = Banana.SDecimal.subtract(total_fg, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG6")));
    
+   var sub_total_fg_0_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AJ")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AK")));
+   var sub_total_fg_1_previous = Banana.SDecimal.add(sub_total_fg_0_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AL")));
+   var sub_total_fg_2_previous = Banana.SDecimal.add(sub_total_fg_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AM")));
+   var sub_total_fg_3_previous = Banana.SDecimal.add(sub_total_fg_2_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("AN")));
+   var sub_total_fg_4_previous = Banana.SDecimal.subtract(sub_total_fg_3_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG1")));
+   var sub_total_fg_5_previous = Banana.SDecimal.add(sub_total_fg_4_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD6")));
+   var fe_3_previous = Banana.SDecimal.add(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FE3"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FE3")));
+   var fg_2_previous = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FG2")), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG2"))));
+   var fg_4_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG4")));
+   var fg_5_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG5")));
+   var fg_6_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG6")));
+   var fg_7_previous = Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FG7"));
+   var fg_8_previous = Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FG8"));
+   var sub_total_fg_6_previous = Banana.SDecimal.subtract(sub_total_fg_5_previous, fe_3_previous);
+   var sub_total_fg_7_previous = Banana.SDecimal.subtract(sub_total_fg_6_previous, fg_2_previous);
+   var sub_total_fg_8_previous = Banana.SDecimal.subtract(sub_total_fg_7_previous, fg_4_previous);
+   var sub_total_fg_9_previous = Banana.SDecimal.subtract(sub_total_fg_8_previous, fg_5_previous);
+   var sub_total_fg_10_previous = Banana.SDecimal.subtract(sub_total_fg_9_previous, fg_6_previous);
+   var sub_total_fg_11_previous = Banana.SDecimal.subtract(sub_total_fg_10_previous, fg_7_previous);
+   var total_fg_previous = Banana.SDecimal.subtract(sub_total_fg_11_previous, fg_8_previous);
+   total_fg_previous = Banana.SDecimal.subtract(total_fg_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG6")));
    tableRow.addCell("FG", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FG"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FG"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fg), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FG"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fg_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FH */
    tableRow = table.addRow();
@@ -473,11 +607,15 @@ function exec(string) {
    var total_fh = Banana.SDecimal.subtract(sub_total_fh_1, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FH4")));
    total_fh = Banana.SDecimal.add(total_fh, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FH2")));
 
+   var sub_total_fh_0_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FH1")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FH2")));
+   var sub_total_fh_1_previous = Banana.SDecimal.subtract(sub_total_fh_0_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FH3")));
+   var total_fh_previous = Banana.SDecimal.subtract(sub_total_fh_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FH4")));
+   total_fh_previous = Banana.SDecimal.add(total_fh_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FH2")));
    tableRow.addCell("FH", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FH"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FH"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fh), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FH"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fh_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FI */
    tableRow = table.addRow();
@@ -486,11 +624,17 @@ function exec(string) {
    var sub_total_fi_2 = Banana.SDecimal.subtract(sub_total_fi_1, Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FA1"))));
    var sub_total_fi_3 = Banana.SDecimal.subtract(sub_total_fi_2, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FI3")));
    var total_fi = Banana.SDecimal.add(Banana.SDecimal.invert(sub_total_fi_3), Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FI3")));
+   
+   var sub_total_fi_0_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FI2")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FI1")));
+   var sub_total_fi_1_previous = Banana.SDecimal.add(sub_total_fi_0_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FI1")));
+   var sub_total_fi_2_previous = Banana.SDecimal.subtract(sub_total_fi_1_previous, Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FA1"))));
+   var sub_total_fi_3_previous = Banana.SDecimal.subtract(sub_total_fi_2_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FI3")));
+   var total_fi_previous = Banana.SDecimal.add(Banana.SDecimal.invert(sub_total_fi_3_previous), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FI3")));
    tableRow.addCell("FI", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FI"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FI"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fi), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FI"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fi_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FJ */
    tableRow = table.addRow();
@@ -499,11 +643,17 @@ function exec(string) {
    var sub_total_fj_2 = Banana.SDecimal.add(sub_total_fj_1, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("AS")));
    var sub_total_fj_3 = Banana.SDecimal.subtract(sub_total_fj_2, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FH3")));
    var total_fj = Banana.SDecimal.subtract(Banana.SDecimal.invert(sub_total_fj_3), Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FH4")));
+   
+   var sub_total_fj_0_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FJ1")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FJ2")));
+   var sub_total_fj_1_previous = Banana.SDecimal.add(sub_total_fj_0_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FJ2")));
+   var sub_total_fj_2_previous = Banana.SDecimal.add(sub_total_fj_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("AS")));
+   var sub_total_fj_3_previous = Banana.SDecimal.subtract(sub_total_fj_2_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FH3")));
+   var total_fj_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(sub_total_fj_3_previous), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FH4")));
    tableRow.addCell("FJ", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FJ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FJ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fj), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FJ"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fj_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZC */
    tableRow = table.addRow();
@@ -511,11 +661,16 @@ function exec(string) {
    var zc_result_1 = Banana.SDecimal.subtract(zc_result_0, total_fh);
    var zc_result_2 = Banana.SDecimal.add(zc_result_1, total_fi);
    var zc_result = Banana.SDecimal.add(zc_result_2, total_fj);
+
+   var zc_result_0_previous = Banana.SDecimal.subtract(Banana.SDecimal.invert(total_ff_previous), total_fg_previous);
+   var zc_result_1_previous = Banana.SDecimal.subtract(zc_result_0_previous, total_fh_previous);
+   var zc_result_2_previous = Banana.SDecimal.add(zc_result_1_previous, total_fi_previous);
+   var zc_result_previous = Banana.SDecimal.add(zc_result_2_previous, total_fj_previous);
    tableRow.addCell("ZC", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZC"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZC"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(formatValues(zc_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZC"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zc_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /*  */
    tableRow = table.addRow();
@@ -528,49 +683,57 @@ function exec(string) {
    /* FK */
    tableRow = table.addRow();
    var total_fk = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE4")));
+   var total_fk_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE4"))); 
    tableRow.addCell("FK", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FK"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FK"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fk), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FK"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fk_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FL */
    tableRow = table.addRow();
    var total_fl = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FL")));
+   var total_fl_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FL")));
    tableRow.addCell("FL", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FL"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FL"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fl), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FL"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fl_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FM */
    tableRow = table.addRow();
    var total_fm = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE6")));
+   var total_fm_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE6")));
    tableRow.addCell("FM", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FM"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FM"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fm), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FM"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fm_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FN */
    tableRow = table.addRow();
    var total_fn = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE7")));
+   var total_fn_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE7")));
    tableRow.addCell("FN", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FN"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FN"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fn), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FN"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fn_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZD */
    tableRow = table.addRow();
    var zd_result_0 = Banana.SDecimal.add(total_fk, total_fl);
    var zd_result_1 = Banana.SDecimal.subtract(zd_result_0, total_fm);
    var zd_result = Banana.SDecimal.subtract(zd_result_1, total_fn);
+
+   var zd_result_0_previous = Banana.SDecimal.add(total_fk_previous, total_fl_previous);
+   var zd_result_1_previous = Banana.SDecimal.subtract(zd_result_0_previous, total_fm_previous);
+   var zd_result_previous = Banana.SDecimal.subtract(zd_result_1_previous, total_fn_previous);
    tableRow.addCell("ZD", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZD"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZD"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(formatValues(zd_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZD"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zd_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /*  */
    tableRow = table.addRow();
@@ -584,11 +747,14 @@ function exec(string) {
    tableRow = table.addRow();
    var sub_total_fo_1 = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FO1")), Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FO2")));
    var total_fo = Banana.SDecimal.subtract(sub_total_fo_1, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FO3")));
+   
+   var sub_total_fo_1_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FO1")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FO2")));
+   var total_fo_previous = Banana.SDecimal.subtract(sub_total_fo_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FO3")));
    tableRow.addCell("FO", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FO"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FO"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fo), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FO"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fo_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* FP */
    tableRow = table.addRow();
@@ -602,49 +768,60 @@ function exec(string) {
    tableRow = table.addRow();
    var sub_total_fq_1 = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FO1")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FO2")));
    var total_fq = Banana.SDecimal.subtract(sub_total_fq_1, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FO3")));
+   
+   var sub_total_fq_1_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FO1")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FO2")));
+   var total_fq_previous = Banana.SDecimal.subtract(sub_total_fq_1_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FO3")));
    tableRow.addCell("FQ", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FQ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectNote("FQ"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(formatValues(total_fq), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("FQ"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(total_fq_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZE */
    tableRow = table.addRow();
    var ze_result_0 = Banana.SDecimal.add(total_fo, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("FP")));
    var ze_result = Banana.SDecimal.subtract(ze_result_0, total_fq);
+   
+   var ze_result_0_previous = Banana.SDecimal.add(total_fo_previous, Banana.Converter.toInternalNumberFormat(bReport.getObjectPreviousAmountFormatted("FP")));
+   var ze_result_previous = Banana.SDecimal.subtract(ze_result_0_previous, total_fq_previous);
    tableRow.addCell("ZE", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZE"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #C0C0C0;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZE"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #C0C0C0;font-weight: bold");
    tableRow.addCell(formatValues(ze_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZE"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(ze_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZF */
    tableRow = table.addRow();
    var zf_result = Banana.SDecimal.add(zd_result, ze_result);
+   var zf_result_previous = Banana.SDecimal.add(zd_result_previous, ze_result_previous);
    tableRow.addCell("ZF", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZF"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZF"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(formatValues(zf_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZF"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zf_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZG */
    tableRow = table.addRow();
    var zg_result_0 = Banana.SDecimal.add(zb_result, zc_result);
    var zg_result = Banana.SDecimal.add(zg_result_0, zf_result);
+
+   var zg_result_0_previous = Banana.SDecimal.add(zb_result_previous, zc_result_previous);
+   var zg_result_previous = Banana.SDecimal.add(zg_result_0_previous, zf_result_previous);
    tableRow.addCell("ZG", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZG"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZG"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;font-weight: bold");
    tableRow.addCell(formatValues(zg_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZG"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zg_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
 
    /* ZH */
    tableRow = table.addRow();
    var zh_result = Banana.SDecimal.add(za_result, zg_result);
+   var zh_result_previous = Banana.SDecimal.add(za_result_previous, zg_result_previous);
    tableRow.addCell("ZH", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("ZH"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(bReport.getObjectNote("ZH"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5p;background-color: #000000;color: #FFFFFF;font-weight: bold");
    tableRow.addCell(formatValues(zh_result), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell(bReport.getObjectPreviousAmountFormatted("ZH"), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell(formatValues(zh_result_previous), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
   
 
    addFooter(report);
