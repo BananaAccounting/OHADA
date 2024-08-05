@@ -18,7 +18,7 @@
 \newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
 \newenvironment{test}[1]{\section*{Test case: #1}}{}
 %Begin test data
-%%SCRIPT{C:/Users/joemb/Banana/OHADA/syscohada/enterprise/extensions/test/ch.banana.africa.balancesheet.test.js}
+%%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/syscohada/enterprise/extensions/test/ch.banana.africa.balancesheet.test.js}
 %
 \begin{testcase}{BalanceSheetReport}
 \begin{test}{testBananaExtension}
@@ -84,15 +84,15 @@ CE  & Ecarts de réévaluation  & 3e  & 2'604'400.00  & 450'000.00 \\
 CF  & Réserves indisponibles  & 14  & 15'679'000.00  & 0.00 \\
 CG  & Réserves libres  & 14  & 0.00  & 0.00 \\
 CH  & Report à nouveau (+ ou -)  & 14  & 7'361'000.00  & 0.00 \\
-CJ  & Résultat net de l'exercice (bénéfice + ou perte -)  &    & 118'783'200.00  & 124'540'000.00 \\
+CJ  & Résultat net de l'exercice (bénéfice + ou perte -)  &    & 118'783'200.00  & 123'040'000.00 \\
 CL  & Subventions d'investissement  & 15  & 30'000'000.00  & 15'000'000.00 \\
 CM  & Provisions réglementées  & 15  & 0.00  & 0.00 \\
-CP  & TOTAL CAPITAUX PROPRES ET RESSOURCES ASSIMILEES  &    & 359'427'600.00  & 274'990'000.00 \\
+CP  & TOTAL CAPITAUX PROPRES ET RESSOURCES ASSIMILEES  &    & 359'427'600.00  & 273'490'000.00 \\
 DA  & Emprunts et dettes financières diverses  & 16  & 181'475'000.00  & 114'130'000.00 \\
 DB  & Dettes de location acquisition  & 16  & 155'000'000.00  & 5'000'000.00 \\
 DC  & Provisions pour risques et charges  & 16  & 0.00  & 0.00 \\
 DD  & TOTAL DETTES FINANCIERES ET RESSOURCES ASSIMILEES  &    & 336'475'000.00  & 119'130'000.00 \\
-DF  & TOTAL RESSOURCES STABLES  &    & 695'902'600.00  & 394'120'000.00 \\
+DF  & TOTAL RESSOURCES STABLES  &    & 695'902'600.00  & 392'620'000.00 \\
 DH  & Dettes circulantes HAO  & 5  & 75'284'000.00  & 36'888'000.00 \\
 DI  & Clients, avances reçues  & 7  & 0.00  & 0.00 \\
 DJ  & Fournisseurs d'exploitation  & 17  & 499'626'400.00  & 252'976'000.00 \\
@@ -104,7 +104,7 @@ DQ  & Banques, crédits d'escompte  & 20  & 0.00  & 0.00 \\
 DR  & Banques, établissements financiers et crédits de trésorerie  & 20  & 0.00  & 0.00 \\
 DT  & TOTAL TRESORERIE-PASSIF  &    & 0.00  & 0.00 \\
 DV  & Ecart de conversion-Passif  & 12  & 1'000'000.00  & 1'000'000.00 \\
-DZ  & TOTAL GENERAL  &    & 1'342'459'528.00  & 684'987'600.00 \\
+DZ  & TOTAL GENERAL  &    & 1'342'459'528.00  & 683'487'600.00 \\
 \end{longtable}
 -  \#page-nr  - \\
 \end{reportvalue}
