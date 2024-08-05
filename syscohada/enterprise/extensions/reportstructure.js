@@ -453,7 +453,7 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"ZE", "type":"total", "note":"E", "description":"Flux de trésorerie provenant des capitaux étrangers (somme FO à FQ)", "sum":"BQ;BR;BS;-DQ;-DR"});
     reportStructure.push({"id":"ZF", "type":"total", "note":"F", "description":"Flux de trésorerie provenant des activités de financement (D+E)", "sum":"BQ;BR;BS;-DQ;-DR"});
     reportStructure.push({"id":"ZG", "type":"total", "note":"G", "description":"VARIATION DE LA TRESORERIE NETTE DE LA PERIODE (B+C+F)", "sum":"BQ;BR;BS;-DQ;-DR"});    
-    reportStructure.push({"id":"ZH", "type":"total", "note":"H", "description":"Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif 2020 - trésorerie passif 2020 =", "sum":"BQ;BR;BS;-DQ;-DR"});
+    reportStructure.push({"id":"ZH", "type":"total", "note":"H", "description":"Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif - trésorerie passif =", "sum":"BQ;BR;BS;-DQ;-DR"});
 
     return reportStructure;
 }
