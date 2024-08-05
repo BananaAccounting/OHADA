@@ -67,9 +67,6 @@ function exec(string) {
       userParamPrevious.selectionEndDate = previous.endPeriod();
    }
    
-   if (!previous) {
-      Banana.console.log("No previous year found");
-   }
    /**
     * 1. Loads the report structure
     */

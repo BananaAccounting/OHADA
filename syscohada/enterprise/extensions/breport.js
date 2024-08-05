@@ -64,12 +64,7 @@ var BReport = class JsClass {
       for (var i in this.reportStructure) {
          if (this.reportStructure[i]["bclass"]) {
             if (this.reportStructure[i]["id"]) {
-               if(Number(this.banDoc.endPeriod().substring(0, this.banDoc.endPeriod().indexOf("-"))) < Number(this.userParam.selectionEndDate.substring(0, this.userParam.selectionEndDate.indexOf("-")))) {
-                  this.reportStructure[i]["currentAmount"] = this.calculateCurrentBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.banDoc.startPeriod(), this.banDoc.endPeriod());
-               } else {
-                  this.reportStructure[i]["currentAmount"] = this.calculateCurrentBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
-               }
-               // this.reportStructure[i]["currentAmount"] = this.calculateCurrentBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
+               this.reportStructure[i]["currentAmount"] = this.calculateCurrentBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
                this.reportStructure[i]["previousAmount"] = this.calculatePreviousBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
                this.reportStructure[i]["openingAmount"] = this.calculateOpeningBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
                this.reportStructure[i]["debitAmount"] = this.calculateDebitBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
