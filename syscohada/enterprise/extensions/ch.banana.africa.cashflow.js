@@ -422,8 +422,8 @@ function exec(string) {
    /* FD */
    tableRow = table.addRow();
    var total_bh_bi_bj = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BJ")));
-   total_bh_bi_bj = Banana.SDecimal.add(total_bh_bi_bj, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("FD5")));
-   total_bh_bi_bj = Banana.SDecimal.add(total_bh_bi_bj, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("FD6")));
+   total_bh_bi_bj = Banana.SDecimal.add(total_bh_bi_bj, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD5")));
+   total_bh_bi_bj = Banana.SDecimal.add(total_bh_bi_bj, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD6")));
    var total_bha_bia_bja = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BJA")));
    var total_bh_bi_bj_opening = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BJ")));
    var total_bha_bia_bja_opening = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BJA")));
@@ -437,7 +437,7 @@ function exec(string) {
    var sub_total_fd_final_1 = Banana.SDecimal.add(sub_total_fd_1, sub_total_fd_2);
    var sub_total_fd_final_2 = Banana.SDecimal.add(sub_total_fd_final_1, sub_total_fd_3);
    var sub_total_fd_final_3 = Banana.SDecimal.subtract(sub_total_fd_final_2, sub_total_fd_4);
-   var sub_total_fd_final_4 = Banana.SDecimal.add(sub_total_fd_final_3, sub_total_fd_5); // Not sure
+   var sub_total_fd_final_4 = Banana.SDecimal.add(sub_total_fd_final_3, sub_total_fd_5); 
    var sub_total_fd_final_5 = Banana.SDecimal.subtract(sub_total_fd_final_4, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD5")));
    var total_fd = Banana.SDecimal.subtract(sub_total_fd_final_5, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD6")));
 
@@ -460,8 +460,8 @@ function exec(string) {
    var total_fd_previous = 0;
    if (previous) {
       total_bh_bi_bj_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BJ")));
-      total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD5")));
-      total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FD6")));
+      total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD5")));
+      total_bh_bi_bj_previous = Banana.SDecimal.add(total_bh_bi_bj_previous, Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FD6")));
       total_bha_bia_bja_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BJA")));
       total_bh_bi_bj_opening_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BH")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BI"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BJ")));
       total_bha_bia_bja_opening_previous = Banana.SDecimal.add(Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BHA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BIA"))), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BJA")));
@@ -695,13 +695,13 @@ function exec(string) {
    var sub_total_fg_3 = Banana.SDecimal.add(sub_total_fg_2, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("AN")));
    var sub_total_fg_4 = Banana.SDecimal.subtract(sub_total_fg_3, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG1")));
    var sub_total_fg_5 = Banana.SDecimal.add(sub_total_fg_4, Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FD6")));
-   var fe_3 = Banana.SDecimal.add(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE3"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE3")));
+   var fe_3 = Banana.SDecimal.add(Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FF3"))), Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FF3")));
    var fg_2 = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FG2")), Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG2"))));
    var fg_4 = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG4")));
    var fg_5 = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG5")));
    var fg_6 = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG6")));
-   var fg_7 = Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("FG7"));
-   var fg_8 = Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("FG8"));
+   var fg_7 = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG7")));
+   var fg_8 = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FG8")));
    var sub_total_fg_6 = Banana.SDecimal.subtract(sub_total_fg_5, fe_3);
    var sub_total_fg_7 = Banana.SDecimal.subtract(sub_total_fg_6, fg_2);
    var sub_total_fg_8 = Banana.SDecimal.subtract(sub_total_fg_7, fg_4); 
@@ -743,8 +743,8 @@ function exec(string) {
       fg_4_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG4")));
       fg_5_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG5")));
       fg_6_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG6")));
-      fg_7_previous = Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FG7"));
-      fg_8_previous = Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("FG8"));
+      fg_7_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG7")));
+      fg_8_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FG8")));
       sub_total_fg_6_previous = Banana.SDecimal.subtract(sub_total_fg_5_previous, fe_3_previous);
       sub_total_fg_7_previous = Banana.SDecimal.subtract(sub_total_fg_6_previous, fg_2_previous);
       sub_total_fg_8_previous = Banana.SDecimal.subtract(sub_total_fg_7_previous, fg_4_previous);
