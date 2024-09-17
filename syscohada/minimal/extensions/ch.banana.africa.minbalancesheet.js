@@ -250,7 +250,7 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
 
   tableRow = table.addRow();
    tableRow.addCell("Nº","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
-   tableRow.addCell("ACTIF","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+   tableRow.addCell("PASSIF","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("NOTE","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("MONTANT","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-left:thin solid black;border-right:thin solid #94B8E3;padding-bottom:2px;padding-top:5px;padding-left:77px");
    tableRow.addCell("","bold align-center",1).setStyleAttributes("background-color:#94B8E3;border-top:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");

@@ -62,8 +62,8 @@ MinimalProfitLossReport.prototype.testBananaExtension = function() {
 	/**
 	 * Test 1: column Gr
 	 */
-	var banDoc = Banana.application.openDocument("file:script/../test/testcases/min_syscohada_test_2024.ac2");
-    var previousDoc = Banana.application.openDocument("file:script/../test/testcases/min_syscohada_test_2023.ac2");
+	var banDoc = Banana.application.openDocument("file:script/../test/testcases/minimal_syscohada_test_2024.ac2");
+    var previousDoc = Banana.application.openDocument("file:script/../test/testcases/minimal_syscohada_test_2023.ac2");
 	Test.assert(banDoc);
     Test.assert(previousDoc);
 
