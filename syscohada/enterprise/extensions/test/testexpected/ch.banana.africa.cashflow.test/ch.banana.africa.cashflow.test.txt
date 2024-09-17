@@ -38,17 +38,17 @@ ZA  & ZA= Trésorerie nette au 1er janvier (Trésorerie actif N-1 - trésorerie 
 FA  & Capacité d'Autofinancement Globale (CAFG)  &  & 111'952'800.00  & 111'952'800.00 \\
 FB  & (-) Variation actif circulant HAO  &  & 0.00  & 0.00 \\
 FC  & (-) Variation des stocks  &  & 11'755'000.00  & 11'755'000.00 \\
-FD  & (-) Variation des créances  &  & 389'785'840.00  & 383'366'320.00 \\
+FD  & (-) Variation des créances  &  & 383'366'320.00  & 383'366'320.00 \\
 FE  & (+) Variation du passif circulant  &  & 320'948'808.00  & 320'948'808.00 \\
- & Variation du BF lié aux activités opérationnelles (FB+FC+FD+FE)  &  & -80'592'032.00  & -74'172'512.00 \\
-ZB  & Flux de trésorerie provenant des activités opérationnelles (somme FA à FE)  & B  & 31'360'768.00  & 37'780'288.00 \\
+ & Variation du BF lié aux activités opérationnelles (FB+FC+FD+FE)  &  & -74'172'512.00  & -74'172'512.00 \\
+ZB  & Flux de trésorerie provenant des activités opérationnelles (somme FA à FE)  & B  & 37'780'288.00  & 37'780'288.00 \\
  & Flux de trésorerie provenant des activités d'investissements  &  &  & \\
 FF  & (-) Décaissements liés aux acquisitions d'immobilisations incorporelles  &  & 295'800.00  & 295'800.00 \\
-FG  & (-) Décaissements liés aux acquisitions d'immobilisations corporelles  &  & 7'530'280.00  & 7'969'800.00 \\
+FG  & (-) Décaissements liés aux acquisitions d'immobilisations corporelles  &  & 7'969'800.00  & 7'969'800.00 \\
 FH  & (-) Décaissements liés aux acquisitions d'immobilisations financières  &  & 50'000'000.00  & 50'000'000.00 \\
 FI  & (+) Encaissements liés aux cessions d'immobilisations incorporelles et corporelles  &  & 2'800'000.00  & 2'800'000.00 \\
 FJ  & (+) Encaissements liés aux cessions d'immobilisations financières  &  & 27'000'000.00  & 27'000'000.00 \\
-ZC  &  Flux de trésorerie provenant des activités d'investissement (somme FF à FJ)  & C  & -28'026'080.00  & -28'465'600.00 \\
+ZC  &  Flux de trésorerie provenant des activités d'investissement (somme FF à FJ)  & C  & -28'465'600.00  & -28'465'600.00 \\
  & Flux de trésorerie provenant du financement par les capitaux propres  &  &  & \\
 FK  & (+) Augmentations de capital par apports nouveaux  &  & 75'000'000.00  & 75'000'000.00 \\
 FL  & (+) Subventions d'investissement reçues  &  & 0.00  & 0.00 \\
@@ -61,8 +61,8 @@ FP  & (+) Autres dettes financières  &  & 0.00  & 0.00 \\
 FQ  & (-) Remboursements des emprunts et autres dettes financières  &  & 5'000'000.00  & 5'000'000.00 \\
 ZE  & Flux de trésorerie provenant des capitaux étrangers (somme FO à FQ)  & E  & 61'500'000.00  & 61'500'000.00 \\
 ZF  & Flux de trésorerie provenant des activités de financement (D+E)  & F  & 11'500'000.00  & 11'500'000.00 \\
-ZG  & VARIATION DE LA TRESORERIE NETTE DE LA PERIODE (B+C+F)  & G  & 14'834'688.00  & 20'814'688.00 \\
-ZH  & Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif - trésorerie passif =  & H  & 303'511'776.00  & 288'677'088.00 \\
+ZG  & VARIATION DE LA TRESORERIE NETTE DE LA PERIODE (B+C+F)  & G  & 20'814'688.00  & 20'814'688.00 \\
+ZH  & Trésorerie nette au 31 Décembre (G+A) Contrôle : Trésorerie actif - trésorerie passif =  & H  & 309'491'776.00  & 288'677'088.00 \\
 \end{longtable}
 -  \#page-nr  - \\
 \end{reportvalue}
