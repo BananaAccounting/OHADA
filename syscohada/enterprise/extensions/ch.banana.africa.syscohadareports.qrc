@@ -1,0 +1,14 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file>ch.banana.africa.syscohadareports.manifest.json</file>
+        <file>reportstructure.js</file>
+        <file>breport.js</file>
+        <file>errors.js</file>
+        <file>ch.banana.africa.balancesheet.js</file>
+        <file>balancesheetstyle.css</file>
+        <file>ch.banana.africa.profitloss.js</file>
+        <file>profitlossstatement.css</file>
+        <file>ch.banana.africa.cashflow.js</file>
+        <file>cashflowstyle.css</file>
+    </qresource>
+</RCC>
