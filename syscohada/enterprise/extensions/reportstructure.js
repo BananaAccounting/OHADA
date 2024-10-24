@@ -276,11 +276,22 @@ function createReportStructureCashFlow() {
     var reportStructure = [];
 
     reportStructure.push({"id":"BQ", "type":"group", "note":"9", "bclass":"1", "description":"Titres de placement"});
+    reportStructure.push({"id":"BQA", "type":"group", "note":"9", "bclass":"1", "description":"Titres de placement"});
     reportStructure.push({"id":"BR", "type":"group", "note":"10", "bclass":"1", "description":"Valeurs à encaisser"});
+    reportStructure.push({"id":"BRA", "type":"group", "note":"10", "bclass":"1", "description":"Valeurs à encaisser"});
     reportStructure.push({"id":"BS", "type":"group", "note":"11", "bclass":"1", "description":"Banques, chèques postaux, caisse et assimilés"});
+    reportStructure.push({"id":"BSA", "type":"group", "note":"11", "bclass":"1", "description":"Banques, chèques postaux, caisse et assimilés"});
+
+    reportStructure.push({"id":"BT", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BQ;BR;BS"});
+    reportStructure.push({"id":"BTA", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BQA;BRA;BSA"});
+    reportStructure.push({"id":"BT-(BTA)", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BT;BTA"});
 
     reportStructure.push({"id":"DQ", "type":"group", "note":"20", "bclass":"2", "description":"Banques, crédits d'escompte"});
     reportStructure.push({"id":"DR", "type":"group", "note":"20", "bclass":"2", "description":"Banques, établissements financiers et crédits de trésorerie"});
+
+    reportStructure.push({"id":"DQ", "type":"group", "note":"20", "bclass":"2", "description":"Banques, crédits d'escompte"});
+    reportStructure.push({"id":"DR", "type":"group", "note":"20", "bclass":"2", "description":"Banques, établissements financiers et crédits de trésorerie"});
+    reportStructure.push({"id":"DT", "type":"total", "note":"", "description":"TOTAL TRESORERIE-PASSIF", "sum":"DQ;DR"});
 
     reportStructure.push({"id":"TA", "type":"group", "note":"21", "bclass":"4", "description":"Ventes de marchandises"});
     reportStructure.push({"id":"RA", "type":"group", "note":"22", "bclass":"3", "description":"Achats de marchandises"});

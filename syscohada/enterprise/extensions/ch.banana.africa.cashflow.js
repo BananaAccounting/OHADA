@@ -94,11 +94,28 @@ function exec(string) {
       bReportPrevious.excludeEntries();
    }
 
+   const bReportBalance = new BReport(Banana.document, userParam, reportStructure);
+   bReportBalance.validateGroups("Gr1");
+   bReportBalance.loadBalances();
+   bReportBalance.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+   bReportBalance.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+   bReportBalance.excludeEntries();
+
+   var bReportBalancePrevious = null;
+   if (previous) {
+      bReportBalancePrevious = new BReport(previous, userParamPrevious, reportStructurePrev);
+      bReportBalancePrevious.validateGroups("Gr1");
+      bReportBalancePrevious.loadBalances();
+      bReportBalancePrevious.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+      bReportBalancePrevious.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+      bReportBalancePrevious.excludeEntries();
+   }
+
    /**
     * 3. Creates the report
     */
    var stylesheet = Banana.Report.newStyleSheet();
-   var report = printCashFlow(Banana.document, previous, userParam, bReport, bReportPrevious, stylesheet);
+   var report = printCashFlow(Banana.document, previous, userParam, bReport, bReportPrevious, bReportBalance, bReportBalancePrevious, stylesheet);
    setCss(Banana.document, stylesheet, userParam);
    Banana.Report.preview(report, stylesheet);
  }
@@ -139,7 +156,7 @@ function exec(string) {
    } 
  }
 
- function printCashFlow(current, previous, userParam, bReport, bReportPrevious, stylesheet) {
+ function printCashFlow(current, previous, userParam, bReport, bReportPrevious, bReportBalance, bReportBalancePrevious, stylesheet) {
    var report = Banana.Report.newReport("Tableau des flux de trésorerie");
 
    var startDate = userParam.selectionStartDate;
@@ -1116,7 +1133,42 @@ function exec(string) {
    } else {
       tableRow.addCell("0.00", "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    }
+
+   // Check results with the balance sheet
+   tableRow = table.addRow();
+   var calculatedCurrentResult = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportBalance.getObjectCurrentAmountFormatted("BT-(BTA)")), Banana.Converter.toInternalNumberFormat(bReportBalance.getObjectCurrentAmountFormatted("DT")));
+   var calculatedPreviousResult = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportBalancePrevious.getObjectCurrentAmountFormatted("BT-(BTA)")), Banana.Converter.toInternalNumberFormat(bReportBalancePrevious.getObjectCurrentAmountFormatted("DT")));
    
+   if (calculatedCurrentResult !== zh_result) {
+      var diff = Banana.SDecimal.subtract(calculatedCurrentResult, zh_result);
+      var diffPrevious = Banana.SDecimal.subtract(calculatedPreviousResult, zh_result_previous);
+      tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      tableRow.addCell("VÉRIFICATION DES RÉSULTATS", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;font-weight: bold");
+      tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      tableRow.addCell(formatValues(calculatedCurrentResult), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;color: #FF0000");
+      if (previous) {
+         if (calculatedPreviousResult !== zh_result_previous) 
+            tableRow.addCell(formatValues(calculatedPreviousResult), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px; color: #FF0000");
+         else
+            tableRow.addCell(formatValues(calculatedPreviousResult), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      } else {
+         tableRow.addCell("0.00", "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      }
+      tableRow = table.addRow();
+      tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      tableRow.addCell("DIFFÉRENCE", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;font-weight: bold");
+      tableRow.addCell("", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      tableRow.addCell(formatValues(diff), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px;color: #FF0000");
+      if (previous) {
+         if (calculatedPreviousResult !== zh_result_previous) 
+            tableRow.addCell(formatValues(diffPrevious), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px; color: #FF0000");
+         else
+            tableRow.addCell(formatValues(diffPrevious), "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      } else {
+         tableRow.addCell("0.00", "align-right", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
+      }
+   }
+
 
    addFooter(report);
     return report;
