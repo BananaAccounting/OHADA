@@ -286,8 +286,8 @@ function createReportStructureCashFlow() {
     reportStructure.push({"id":"BTA", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BQA;BRA;BSA"});
     reportStructure.push({"id":"BT-(BTA)", "type":"total", "note":"", "description":"TOTAL TRESORERIE-ACTIF", "sum":"BT;BTA"});
 
-    reportStructure.push({"id":"DQ", "type":"group", "note":"20", "bclass":"2", "description":"Banques, crédits d'escompte"});
-    reportStructure.push({"id":"DR", "type":"group", "note":"20", "bclass":"2", "description":"Banques, établissements financiers et crédits de trésorerie"});
+    // reportStructure.push({"id":"DQ", "type":"group", "note":"20", "bclass":"2", "description":"Banques, crédits d'escompte"});
+    // reportStructure.push({"id":"DR", "type":"group", "note":"20", "bclass":"2", "description":"Banques, établissements financiers et crédits de trésorerie"});
 
     reportStructure.push({"id":"DQ", "type":"group", "note":"20", "bclass":"2", "description":"Banques, crédits d'escompte"});
     reportStructure.push({"id":"DR", "type":"group", "note":"20", "bclass":"2", "description":"Banques, établissements financiers et crédits de trésorerie"});
