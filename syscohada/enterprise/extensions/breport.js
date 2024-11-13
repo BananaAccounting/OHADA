@@ -66,9 +66,9 @@ var BReport = class JsClass {
             if (this.reportStructure[i]["id"]) {
                this.reportStructure[i]["currentAmount"] = this.calculateCurrentBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
                this.reportStructure[i]["previousAmount"] = this.calculatePreviousBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
-               this.reportStructure[i]["openingAmount"] = this.calculateOpeningBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
-               this.reportStructure[i]["debitAmount"] = this.calculateDebitBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
-               this.reportStructure[i]["creditAmount"] = this.calculateCreditBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column, this.userParam.selectionStartDate, this.userParam.selectionEndDate);
+               this.reportStructure[i]["openingAmount"] = this.calculateOpeningBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
+               this.reportStructure[i]["debitAmount"] = this.calculateDebitBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
+               this.reportStructure[i]["creditAmount"] = this.calculateCreditBalances(this.reportStructure[i]["id"], this.reportStructure[i]["bclass"], this.userParam.column);
             }
          }
       }
@@ -172,7 +172,7 @@ var BReport = class JsClass {
    /**
      * Calculate all the opening balances of the accounts belonging to the same group (grText)
      */ 
-   calculateOpeningBalances(grText, bClass, grColumn, startDate, endDate) {
+   calculateOpeningBalances(grText, bClass, grColumn) {
       if (!grColumn) {
          grColumn = "Gr";
       }
@@ -225,7 +225,7 @@ var BReport = class JsClass {
    /**
      * Calculate all the Debit balances of the accounts belonging to the same group (grText)
      */ 
-   calculateDebitBalances(grText, bClass, grColumn, startDate, endDate) {
+   calculateDebitBalances(grText, bClass, grColumn) {
       if (!grColumn) {
          grColumn = "Gr";
       }
@@ -279,7 +279,7 @@ var BReport = class JsClass {
    /**
      * Calculate all the Credit balances of the accounts belonging to the same group (grText)
      */ 
-   calculateCreditBalances(grText, bClass, grColumn, startDate, endDate) {
+   calculateCreditBalances(grText, bClass, grColumn) {
       if (!grColumn) {
          grColumn = "Gr";
       }
