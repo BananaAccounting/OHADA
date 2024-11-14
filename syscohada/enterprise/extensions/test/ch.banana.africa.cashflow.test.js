@@ -71,25 +71,25 @@ CashFlowReport.prototype.testBananaExtension = function() {
 	var userParam = {};
   	userParam.selectionStartDate = "2023-01-01";
   	userParam.selectionEndDate = "2023-12-31";
-  	userParam.title = "BILAN 2023";
+  	userParam.title = "TABLEAU DES FLUX DE TRESORERIE 2023";
 	userParam.logo = false;
 	userParam.logoname = 'Logo';
 	userParam.printheader = false;
 	userParam.printtitle = true;
 	userParam.title = '';
-	userParam.column = 'Gr2';
+	userParam.column = 'Gr1';
 	userParam.printcolumn = false;
 
     var userParamPrevious = {};
     userParamPrevious.selectionStartDate = "2022-01-01";
     userParamPrevious.selectionEndDate = "2022-12-31";
-    userParamPrevious.title = "BILAN 2022";
+    userParamPrevious.title = "TABLEAU DES FLUX DE TRESORERIE 2022";
 	userParamPrevious.logo = false;
 	userParamPrevious.logoname = 'Logo';
 	userParamPrevious.printheader = false;
 	userParamPrevious.printtitle = true;
 	userParamPrevious.title = '';
-	userParamPrevious.column = 'Gr2';
+	userParamPrevious.column = 'Gr1';
 	userParamPrevious.printcolumn = false;
 
 	var reportStructure = createReportStructureCashFlow();
@@ -112,7 +112,24 @@ CashFlowReport.prototype.testBananaExtension = function() {
         bReportPrevious.excludeEntries();
     }
 
-	var report = printCashFlow(banDoc, previous, userParam, bReport, bReportPrevious);
+	const bReportBalance = new BReport(banDoc, userParam, reportStructure);
+	bReportBalance.validateGroups("Gr1");
+	bReportBalance.loadBalances();
+	bReportBalance.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+	bReportBalance.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+	bReportBalance.excludeEntries();
+
+	var bReportBalancePrevious = null;
+	if (previous) {
+		bReportBalancePrevious = new BReport(previous, userParamPrevious, reportStructurePrev);
+		bReportBalancePrevious.validateGroups("Gr1");
+		bReportBalancePrevious.loadBalances();
+		bReportBalancePrevious.calculateTotals(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+		bReportBalancePrevious.formatValues(["currentAmount", "previousAmount", "openingAmount", "debitAmount", "creditAmount"]);
+		bReportBalancePrevious.excludeEntries();
+	}
+
+	var report = printCashFlow(banDoc, previous, userParam, bReport, bReportPrevious, bReportBalance, bReportBalancePrevious);
 	Test.logger.addReport("Test 'Cash Flow'", report);
 
 
