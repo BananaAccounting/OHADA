@@ -129,38 +129,43 @@ var BReport = class JsClass {
       var balance = "";
 
       if (this.banDoc.table("Categories") && (bClass === "3" || bClass === "4")) {
-      for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
-         var tRow = this.banDoc.table('Categories').row(i);
-         var gr = tRow.value(grColumn);
-         var prior = tRow.value("Prior");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, prior);
+         for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
+            var tRow = this.banDoc.table('Categories').row(i);
+            var gr = tRow.value(grColumn);
+            var prior = tRow.value("Prior");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, prior);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "3") {
-         return Banana.SDecimal.invert(balance);
-      }
-      else if (bClass === "4") {
-         return balance;
-      }
+         //The bClass decides which value to use
+         if (bClass === "3") {
+            return Banana.SDecimal.invert(balance);
+         }
+         else if (bClass === "4") {
+            return balance;
+         }
       }
       else {
-      for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
-         var tRow = this.banDoc.table('Accounts').row(i);
-         var gr = tRow.value(grColumn);
-         var prior = tRow.value("Prior");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, prior);
+         for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
+            var tRow = this.banDoc.table('Accounts').row(i);
+            var gr = tRow.value(grColumn);
+            var codeString = gr;
+            var arrCodeString = codeString.split("-");
+            if (codeString.includes("-")) 
+               gr = arrCodeString[0];
+
+            var prior = tRow.value("Prior");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, prior);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "1" || bClass === "3") {
-         return balance;
-      }
-      else if (bClass === "2" || bClass === "4") {
-         return Banana.SDecimal.invert(balance);
-      }
+         //The bClass decides which value to use
+         if (bClass === "1" || bClass === "3") {
+            return balance;
+         }
+         else if (bClass === "2" || bClass === "4") {
+            return Banana.SDecimal.invert(balance);
+         }
       }
    }
 
@@ -169,43 +174,51 @@ var BReport = class JsClass {
      */ 
    calculateOpeningBalances(grText, bClass, grColumn) {
       if (!grColumn) {
-      grColumn = "Gr";
+         grColumn = "Gr";
       }
       var balance = "";
 
       if (this.banDoc.table("Categories") && (bClass === "3" || bClass === "4")) {
-      for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
-         var tRow = this.banDoc.table('Categories').row(i);
-         var gr = tRow.value(grColumn);
-         var opening = tRow.value("Opening");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, opening);
+         for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
+            var tRow = this.banDoc.table('Categories').row(i);
+            var gr = tRow.value(grColumn);
+            var opening = tRow.value("Opening");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, opening);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "3") {
-         return Banana.SDecimal.invert(balance);
-      }
-      else if (bClass === "4") {
-         return balance;
-      }
+         //The bClass decides which value to use
+         if (bClass === "3") {
+            return Banana.SDecimal.invert(balance);
+         }
+         else if (bClass === "4") {
+            return balance;
+         }
       }
       else {
-      for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
-         var tRow = this.banDoc.table('Accounts').row(i);
-         var gr = tRow.value(grColumn);
-         var opening = tRow.value("Opening");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, opening);
+         for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
+            var tRow = this.banDoc.table('Accounts').row(i);
+            var opening = tRow.value("Opening");
+            var gr = tRow.value(grColumn);
+            var codeString = gr;
+            var arrCodeString = codeString.split("-");
+            for (var j = 0; j < arrCodeString.length; j++) {
+               var codeString1 = arrCodeString[j];
+               if (codeString1 === grText) {            
+                  gr = codeString1;
+               }
+            }
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, opening);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "1" || bClass === "3") {
-         return balance;
-      }
-      else if (bClass === "2" || bClass === "4") {
-         return Banana.SDecimal.invert(balance);
-      }
+         //The bClass decides which value to use
+         if (bClass === "1" || bClass === "3") {
+            return balance;
+         }
+         else if (bClass === "2" || bClass === "4") {
+            return Banana.SDecimal.invert(balance);
+         }
       }
    }
 
@@ -214,43 +227,52 @@ var BReport = class JsClass {
      */ 
    calculateDebitBalances(grText, bClass, grColumn) {
       if (!grColumn) {
-      grColumn = "Gr";
+         grColumn = "Gr";
       }
       var balance = "";
 
       if (this.banDoc.table("Categories") && (bClass === "3" || bClass === "4")) {
-      for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
-         var tRow = this.banDoc.table('Categories').row(i);
-         var gr = tRow.value(grColumn);
-         var debit = tRow.value("Debit");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, debit);
+         for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
+            var tRow = this.banDoc.table('Categories').row(i);
+            var gr = tRow.value(grColumn);
+            var debit = tRow.value("Debit");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, debit);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "3") {
-         return Banana.SDecimal.invert(balance);
-      }
-      else if (bClass === "4") {
-         return balance;
-      }
+         //The bClass decides which value to use
+         if (bClass === "3") {
+            return Banana.SDecimal.invert(balance);
+         }
+         else if (bClass === "4") {
+            return balance;
+         }
       }
       else {
-      for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
-         var tRow = this.banDoc.table('Accounts').row(i);
-         var gr = tRow.value(grColumn);
-         var debit = tRow.value("Debit");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, debit);
+         for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
+            var tRow = this.banDoc.table('Accounts').row(i);
+            var gr = tRow.value(grColumn);
+            var debit = tRow.value("Debit");
+            var codeString = gr;
+            var arrCodeString = codeString.split("-");
+            for (var j = 0; j < arrCodeString.length; j++) {
+               var codeString1 = arrCodeString[j];
+               if (codeString1 === grText) {            
+                  gr = codeString1;
+               }
+            }
+                        
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, debit);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "1" || bClass === "3") {
-         return balance;
-      }
-      else if (bClass === "2" || bClass === "4") {
-         return Banana.SDecimal.invert(balance);
-      }
+         //The bClass decides which value to use
+         if (bClass === "1" || bClass === "3") {
+            return balance;
+         }
+         else if (bClass === "2" || bClass === "4") {
+            return Banana.SDecimal.invert(balance);
+         }
       }
    }
 
@@ -259,44 +281,55 @@ var BReport = class JsClass {
      */ 
    calculateCreditBalances(grText, bClass, grColumn) {
       if (!grColumn) {
-      grColumn = "Gr";
+         grColumn = "Gr";
       }
       var balance = "";
 
       if (this.banDoc.table("Categories") && (bClass === "3" || bClass === "4")) {
-      for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
-         var tRow = this.banDoc.table('Categories').row(i);
-         var gr = tRow.value(grColumn);
-         var credit = tRow.value("Credit");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, credit);
+         for (var i = 0; i < this.banDoc.table('Categories').rowCount; i++) {
+            var tRow = this.banDoc.table('Categories').row(i);
+            var gr = tRow.value(grColumn);
+            var credit = tRow.value("Credit");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, credit);
+            }
          }
-      }
-      //The bClass decides which value to use
-      if (bClass === "3") {
-         return Banana.SDecimal.invert(balance);
-      }
-      else if (bClass === "4") {
-         return balance;
-      }
+         //The bClass decides which value to use
+         if (bClass === "3") {
+            return Banana.SDecimal.invert(balance);
+         }
+         else if (bClass === "4") {
+            return balance;
+         }
       }
       else {
-      for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
-         var tRow = this.banDoc.table('Accounts').row(i);
-         var gr = tRow.value(grColumn);
-         var credit = tRow.value("Credit");
-         if (gr && gr === grText) {
-            balance = Banana.SDecimal.add(balance, credit);
+         for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
+            var tRow = this.banDoc.table('Accounts').row(i);
+            var gr = tRow.value(grColumn);
+            var codeString = gr;
+            var arrCodeString = codeString.split("-");
+            for (var j = 0; j < arrCodeString.length; j++) {
+               var codeString1 = arrCodeString[j];
+               if (codeString1 === grText) {            
+                  gr = codeString1;
+               }
+            }
+                        
+            var credit = tRow.value("Credit");
+            if (gr && gr === grText) {
+               balance = Banana.SDecimal.add(balance, credit);
+            }
+         }
+         //The bClass decides which value to use
+         if (bClass === "1" || bClass === "3") {
+            return balance;
+         }
+         else if (bClass === "2" || bClass === "4") {
+            return Banana.SDecimal.invert(balance);
          }
       }
-      //The bClass decides which value to use
-      if (bClass === "1" || bClass === "3") {
-         return balance;
-      }
-      else if (bClass === "2" || bClass === "4") {
-         return Banana.SDecimal.invert(balance);
-      }
-      }
+
+      
    }
  
    /**
@@ -353,7 +386,6 @@ var BReport = class JsClass {
       if (!grColumn) {
       grColumn = "Gr";
       }
-
       //Set object excludes duplicates
       var columnList = new Set();
 
@@ -366,7 +398,7 @@ var BReport = class JsClass {
          //We have to split them and take all values separately
          //If there are only alphanumeric characters in grColumn we know there is only one value
          var codeString = grRow;
-         var arrCodeString = codeString.split(";");
+         var arrCodeString = codeString.split("-");
          for (var j = 0; j < arrCodeString.length; j++) {
             var codeString1 = arrCodeString[j];
             if (codeString1 === grText) {
@@ -421,8 +453,6 @@ var BReport = class JsClass {
          dataGroups.push(i);
       }
 
-      //Banana.console.log(dataGroups);
-
       //Check if groups in Accounts table are valid
       for (var i = 0; i < this.banDoc.table('Accounts').rowCount; i++) {
          var tRow = this.banDoc.table('Accounts').row(i);
@@ -437,7 +467,7 @@ var BReport = class JsClass {
             }
          } else {
             if (group) {
-               if (!dataGroups.includes(group)) {
+               if (!dataGroups.includes(group) && !group.includes("-")) {
                   tRow.addMessage(getErrorMessage(ID_ERR_GROUP_ERROR, grColumn, group));
                }
             }
