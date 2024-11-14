@@ -402,7 +402,6 @@ function exec(string) {
    /* FB */
    tableRow = table.addRow();
    var total_fb = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("BA")), Banana.Converter.toInternalNumberFormat(bReport.getObjectOpeningAmountFormatted("BA")));
-   Banana.console.log("fb_opening: " + bReport.getObjectOpeningAmountFormatted("BA"));
    var total_fb_previous = 0;
    if (previous) {
       total_fb_previous = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCurrentAmountFormatted("BA")), Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectOpeningAmountFormatted("BA")));
