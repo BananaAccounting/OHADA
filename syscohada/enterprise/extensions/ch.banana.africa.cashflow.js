@@ -666,6 +666,7 @@ function exec(string) {
    var sub_total_ff_10 = Banana.SDecimal.subtract(sub_total_ff_9, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FF4")));
    var total_ff = Banana.SDecimal.subtract(sub_total_ff_10, Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FF5")));
    
+   
    var sub_total_ae_af_previous = 0;
    var sub_total_ag_ah_previous = 0;
    var sub_total_ff_1_previous = 0;
@@ -909,7 +910,7 @@ function exec(string) {
    var total_fk = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE4")));
    var total_fk_previous = 0;
    if (previous) {
-      total_fk_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FE4"))); 
+      total_fk_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FE4"))); 
    }
    tableRow.addCell("FK", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FK"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -926,7 +927,7 @@ function exec(string) {
    var total_fl = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FL")));
    var total_fl_previous = 0;
    if (previous) {
-      total_fl_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectCreditAmountFormatted("FL")));
+      total_fl_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectCreditAmountFormatted("FL")));
    }
    tableRow.addCell("FL", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FL"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -943,7 +944,7 @@ function exec(string) {
    var total_fm = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE6")));
    var total_fm_previous = 0;
    if (previous) {
-      total_fm_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE6")));
+      total_fm_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FE6")));
    }
    tableRow.addCell("FM", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FM"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -960,7 +961,7 @@ function exec(string) {
    var total_fn = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE7")));
    var total_fn_previous = 0;
    if (previous) {
-      total_fn_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReport.getObjectDebitAmountFormatted("FE7")));
+      total_fn_previous = Banana.SDecimal.invert(Banana.Converter.toInternalNumberFormat(bReportPrevious.getObjectDebitAmountFormatted("FE7")));
    }
    tableRow.addCell("FN", "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell(bReport.getObjectDescription("FN"), "align-left", 1).setStyleAttributes("border-top:thin solid black;border-left:thin solid black;border-right:thin solid black;padding-bottom:2px;padding-top:5px");
