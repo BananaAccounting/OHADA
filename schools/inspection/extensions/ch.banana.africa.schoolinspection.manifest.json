@@ -1,0 +1,15 @@
+{
+    "category": "productivity",
+    "country":"africa",
+    "countryCode":"af",
+    "description": "School Inspection Accounting Reports (OHADA) [BETA]",
+    "description.en": "School Inspection Accounting Reports (OHADA) [BETA]",
+    "description.fr": "Rapports Financiers Inspection Provinciale (OHADA) [BETA]",
+    "id":"ch.banana.africa.schoolinspection",
+    "language":"fr",
+    "publisher": "Banana.ch",
+    "title": "School Inspection Accounting Reports (OHADA) [BETA]",
+    "title.en": "School Inspection Accounting Reports (OHADA) [BETA]",
+    "title.fr": "Rapports Financiers Inspection Provinciale (OHADA) [BETA]",
+    "version": "1.0"
+}
