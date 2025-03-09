@@ -163,7 +163,7 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
     var openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
     tableRow.addCell(bReport.getObjectId("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(bReport.getObjectDescription("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-    tableRow.addCell(formatValuesDecimals(openingAmount, 2), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+    tableRow.addCell(formatValuesDecimals(openingAmount), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    /* RFF1 */
    tableRow = table.addRow();

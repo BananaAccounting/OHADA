@@ -163,7 +163,7 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
     var openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
     tableRow.addCell(bReport.getObjectId("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(bReport.getObjectDescription("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-    tableRow.addCell(formatValuesDecimals(openingAmount, 2), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+    tableRow.addCell(formatValuesDecimals(openingAmount), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    /* RFF1 */
    tableRow = table.addRow();
@@ -185,9 +185,9 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    
    /* TENASOSP */
    tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("TENASOSP"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("TENASOSP"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("TENASOSP"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectId("RTENA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA"), "align-right", 1);
 
    /* B */
    tableRow = table.addRow();
@@ -310,7 +310,7 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* DTENA03 */
    tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("DTENA013"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectId("DTENA03"), "align-left", 1);
    tableRow.addCell(bReport.getObjectDescription("DTENA03"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA03"), "align-right", 1);
 
@@ -409,12 +409,6 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectId("I"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("I"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("I"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-
-   /* J */
-   tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("J"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectDescription("J"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("J"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
 
    //addFooter(report);

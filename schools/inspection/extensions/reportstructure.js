@@ -124,8 +124,8 @@ function createReportStructureFinancialReportSecondaryPool() {
     reportStructure.push({"id":"RFF1", "type":"group", "bclass":"4", "description":"Frais Fonctionnement Appuis Parents"});
     reportStructure.push({"id":"RFF2", "type":"group", "bclass":"4", "description":"Frais Fonctionnement Trésor public"});
     reportStructure.push({"id":"A", "type":"total", "description":"Total frais Fonctionnement (RFF1+RFF2)", "sum":"RFF1;RFF2"});
-    reportStructure.push({"id":"TENASOSP", "type":"group", "bclass":"4", "description":"Participation Candidat TENASOSP"});
-    reportStructure.push({"id":"B", "type":"total", "description":"Total TENASOSP", "sum":"A;TENASOSP"});
+    reportStructure.push({"id":"RTENA", "type":"group", "bclass":"4", "description":"Participation Candidat TENASOSP"});
+    reportStructure.push({"id":"B", "type":"total", "description":"Total TENASOSP", "sum":"RTENA"});
     reportStructure.push({"id":"C", "type":"total", "description":"TOTAL GENERAL RECETTES (SI+A+B)", "sum":"SI;A;B"});
 
     reportStructure.push({"id":"DFF1", "type":"group", "bclass":"3", "description":"FOURNITURES DES BUREAUX"});
@@ -162,7 +162,7 @@ function createReportStructureFinancialReportSecondaryPool() {
 
     reportStructure.push({"id":"F", "type":"total", "description":"TOTAL GENERAL DEPENSES = (D+E)", "sum":"D;E"});
     reportStructure.push({"id":"G", "type":"total", "description":"SOLDE FRAIS DE FONCTIONNEMENT = (RFF1+RFF2) - (Somme de DFF1 à DFF14)", "sum":"A;-D"});
-    reportStructure.push({"id":"H", "type":"total", "description":"SOLDE TENASOSP = (RTENA) - (Somme de DTENA01 à DTENA14)", "sum":"B;-E"});
+    reportStructure.push({"id":"H", "type":"total", "description":"SOLDE TENASOSP = (RTENA) - (Somme de DTENA01 à DTENA14)", "sum":"RTENA;-E"});
     reportStructure.push({"id":"I", "type":"total", "description":"SOLDE GENERAL = C-F", "sum":"C;-F"});
 
 
