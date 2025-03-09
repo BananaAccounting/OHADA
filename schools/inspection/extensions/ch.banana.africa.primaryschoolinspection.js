@@ -121,14 +121,15 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    // var headerLogoSection = report.addSection("");
    // var logoFormat = Banana.Report.logoFormat("Logo"); 
 
-   // if (logoFormat) {
-   //    // Use the format as defined in the dialog File --> Logo Setup   
-   //    var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "logo"); 
-   //    report.getHeader().addChild(logoElement); } 
-   // else {
-   //       // If the format 'logo' is not defined, insert an image   
-   //       report.addImage("documents:logo", "logoStyle"); 
-   // } 
+   if (logoFormat) {
+      
+      // Use the format as defined in the dialog File --> Logo Setup   
+      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "first_page_logo"); 
+      report.getHeader().addChild(logoElement); } 
+   else {
+         // If the format 'logo' is not defined, insert an image   
+         report.addImage("documents:logo", "logoStyle"); 
+   } 
 
    tableRow = table.addRow();
    tableRow.addCell(" ", "", 3);

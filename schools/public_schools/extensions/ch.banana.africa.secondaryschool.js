@@ -103,6 +103,8 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    var months = monthDiff(Banana.Converter.toDate(endDate), Banana.Converter.toDate(startDate));
 
    var company = banDoc.info("AccountingDataBase", "Company");
+   var district = banDoc.info("AccountingDataBase", "Courtesy");
+   var schoolName = banDoc.info("AccountingDataBase", "Name");
    var address1 = banDoc.info("AccountingDataBase", "Address1");
    var zip = banDoc.info("AccountingDataBase", "Zip");
    var city = banDoc.info("AccountingDataBase", "City");
@@ -118,17 +120,17 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    var column2 = table.addColumn("column2");
    var column3 = table.addColumn("column3");
 
-   // var headerLogoSection = report.addSection("");
-   // var logoFormat = Banana.Report.logoFormat("Logo"); 
+   var headerLogoSection = report.addSection("");
+   var logoFormat = Banana.Report.logoFormat("Logo"); 
 
-   // if (logoFormat) {
-   //    // Use the format as defined in the dialog File --> Logo Setup   
-   //    var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "logo"); 
-   //    report.getHeader().addChild(logoElement); } 
-   // else {
-   //       // If the format 'logo' is not defined, insert an image   
-   //       report.addImage("documents:logo", "logoStyle"); 
-   // } 
+   if (logoFormat) {
+      // Use the format as defined in the dialog File --> Logo Setup   
+      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "first_page_logo"); 
+      report.getHeader().addChild(logoElement); } 
+   else {
+         // If the format 'logo' is not defined, insert an image   
+         report.addImage("documents:logo", "logoStyle"); 
+   } 
 
    
    tableRow = table.addRow();
@@ -137,9 +139,9 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow = table.addRow();
    tableRow.addCell(company, "bold align-left", 3);
    tableRow = table.addRow();
-   tableRow.addCell("SOUS-DIVISION DE ", "bold align-left", 3);
+   tableRow.addCell("SOUS-DIVISION DE " + district, "bold align-left", 3);
    tableRow = table.addRow();
-   tableRow.addCell("DENOMINATION ETABLISSEMENT : ", "bold align-left", 3);
+   tableRow.addCell("DENOMINATION ETABLISSEMENT : " + schoolName, "bold align-left", 3);
    tableRow = table.addRow();
    tableRow.addCell(" ", "", 3);
    tableRow = table.addRow();
