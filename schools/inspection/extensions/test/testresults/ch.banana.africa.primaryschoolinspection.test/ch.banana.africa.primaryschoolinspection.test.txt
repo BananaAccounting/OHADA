@@ -20,7 +20,7 @@
 %Begin test data
 %%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/schools/inspection/extensions/test/ch.banana.africa.primaryschoolinspection.test.js}
 %
-\begin{testcase}{SchoolInspectionReport}
+\begin{testcase}{PrimarySchoolInspectionReport}
 \begin{test}{testBananaExtension}
 \begin{reportvalue}{Test 'Rapport Financier'}
 \begin{longtable}[l]{ l  l  l }
@@ -38,7 +38,7 @@ SI  & Solde Initial  & 50'000.00 \\
 RFF1  & Frais Fonctionnement Appuis Parents  & 7'500'000.00 \\
 RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
 A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
-B  & Total Frais Examens d'Etat (Somme RX1 à RX4)  & 0.00 \\
+B  & TOTAL GENERAL RECETTES (SI+A)  & 11'150'000.00 \\
 II  & DEPENSES  & \\
 DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
 DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
@@ -53,10 +53,10 @@ DFF10  & INTERVENTIONS SOCIALES  & 0.00 \\
 DFF11  & MISSION DE SERVICE  & 0.00 \\
 DFF12  & RAFFRAICHISSEMENT BUREAUX  & 0.00 \\
 DFF13  & RENCONTRES LOCALES  & 0.00 \\
-DFF14  & IMPREVUS  & 0.00 \\
-C  & Versement Comité local TENASOSP  & 0.00 \\
-D  & TOTAL GENERAL RECETTES (SI+A+B+C)  & 11'100'000.00 \\
-E  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
+DFF14  & DIVERS  & 0.00 \\
+C  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
+D  & TOTAL GENERAL DEPENSES  & 7'550'000.00 \\
+E  & SOLDE GENERAL = B-D  & 3'600'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}

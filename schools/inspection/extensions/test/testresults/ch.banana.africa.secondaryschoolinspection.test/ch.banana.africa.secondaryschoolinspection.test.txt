@@ -40,7 +40,7 @@ RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
 A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
 RTENA  & Participation Candidat TENASOSP  & 20'000'000.00 \\
 B  & Total TENASOSP  & 20'000'000.00 \\
-C  & TOTAL GENERAL RECETTES (SI+A+B)  & 31'100'000.00 \\
+C  & TOTAL GENERAL RECETTES (SI+A+B)  & 31'450'000.00 \\
 II  & DEPENSES  & \\
 DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
 DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
@@ -75,7 +75,7 @@ E  & TOTAL DEPENSES TENASOSP = (Somme de DTENA01 à DTENA14)  & 19'440'000.00 \\
 F  & TOTAL GENERAL DEPENSES = (D+E)  & 26'990'000.00 \\
 G  & SOLDE FRAIS DE FONCTIONNEMENT = (RFF1+RFF2) - (Somme de DFF1 à DFF14)  & 3'550'000.00 \\
 H  & SOLDE TENASOSP = (RTENA) - (Somme de DTENA01 à DTENA14)  & 560'000.00 \\
-I  & SOLDE GENERAL = C-F  & 4'110'000.00 \\
+I  & SOLDE GENERAL = C-F  & 4'460'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}

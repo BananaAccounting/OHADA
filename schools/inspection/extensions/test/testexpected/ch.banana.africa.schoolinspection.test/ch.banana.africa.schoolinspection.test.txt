@@ -45,7 +45,7 @@ REX4  & Participation candidats  session  & 0.00 \\
 B  & Total Frais Examens d'Etat (Somme RX1 à RX4)  & 157'150'000.00 \\
 RTENASOS  & Versement Comité local TENASOSP  & 0.00 \\
 C  & Versement Comité local TENASOSP  & 0.00 \\
-D  & TOTAL GENERAL RECETTES (SI+A+B+C)  & 168'250'000.00 \\
+D  & TOTAL GENERAL RECETTES (SI+A+B+C)  & 193'250'000.00 \\
 II  & DEPENSES  & \\
 DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
 DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
@@ -109,7 +109,7 @@ L  & SOLDE PRELIMINAIRE EXETAT = (REX1) - (Somme de DEX11 à DEX18)  & 450'000.0
 M  & SOLDES FORMULE EXETAT = (REX2) - (Somme de DEX21 à DEX29)  & -2'400'000.00 \\
 N  & SOLDE HORS SESSION EXETAT = (REX3 - (Somme de DEX311 à DEX320)  & 15'800'000.00 \\
 O  & SOLDE SESSION EXETAT = (REX4 - (Somme de DEX410 à DEX421)  & 0.00 \\
-P  & SOLDE GENERAL = (D-J)  & 17'400'000.00 \\
+P  & SOLDE GENERAL = (D-J)  & 42'400'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}
