@@ -1,0 +1,15 @@
+{
+    "category": "productivity",
+    "country":"africa",
+    "countryCode":"af",
+    "description": "Public Schools Accounting Reports (OHADA) [BETA]",
+    "description.en": "Public Schools Accounting Reports (OHADA) [BETA]",
+    "description.fr": "Rapports Financiers Ecoles Publiques (OHADA) [BETA]",
+    "id":"ch.banana.africa.publicschools",
+    "language":"fr",
+    "publisher": "Banana.ch",
+    "title": "Public Schools Accounting Reports (OHADA) [BETA]",
+    "title.en": "Public Schools Accounting Reports (OHADA) [BETA]",
+    "title.fr": "Rapports Financiers Ecoles Publiques (OHADA) [BETA]",
+    "version": "1.0"
+}

@@ -1,0 +1,12 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file>ch.banana.africa.schoolinspection.manifest.json</file>
+        <file>reportstructure.js</file>
+        <file>breport.js</file>
+        <file>errors.js</file>
+        <file>ch.banana.africa.schoolinspection.js</file>
+        <file>ch.banana.africa.secondaryschoolinspection.js</file>
+        <file>ch.banana.africa.primaryschoolinspection.js</file>
+        <file>financialreport.css</file>
+    </qresource>
+</RCC>
