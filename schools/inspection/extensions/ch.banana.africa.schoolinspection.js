@@ -87,13 +87,13 @@ function exec(string) {
     * 3. Creates the report
     */
    var stylesheet = Banana.Report.newStyleSheet();
-   var report = printprofitlossstatement(Banana.document, userParam, bReport, stylesheet);
+   var report = printfinancialreport(Banana.document, userParam, bReport, stylesheet);
    setCss(Banana.document, stylesheet, userParam);
 
    Banana.Report.preview(report, stylesheet);
 }
 
-function printprofitlossstatement(banDoc, userParam, bReport, stylesheet) {
+function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    var report = Banana.Report.newReport("Rapport Financier");
    var startDate = userParam.selectionStartDate;
