@@ -1,0 +1,69 @@
+%%info_test_name{ch.banana.africa.secondaryschool.test}
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[margin=1cm]{geometry}
+\begin{document}
+\newenvironment{tablevalue}[2]{\textbf{Table: #1}\begin{longtable}[l]{#2}}{\end{longtable}}
+\newenvironment{reportvalue}[1]{\textbf{Report: #1}\\}{}
+\lstnewenvironment{jsonvalue}[1]{\textbf{Json: #1}\lstset{language=Java}}{}
+\lstnewenvironment{xmlvalue}[1]{\textbf{Xml: #1}\lstset{language=Xml}}{}
+\newcommand{\info}[2]{\textit{#1: #2}\\}
+\newcommand{\fatalerror}[1]{\textbf{\textcolor[rgb]{1,0,0}{Fatal error: #1}}\\}
+\newcommand{\keyvalue}[2]{\textbf{Keyvalue: #1} #2\\}
+\newcommand{\textvalue}[1]{#1\\}
+\newcommand{\excltest}[1]{\\Excluded from compare: #1}
+\newcommand{\lognewpage}{\newpage}
+\newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
+\newenvironment{test}[1]{\section*{Test case: #1}}{}
+%Begin test data
+%%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/schools/public_schools/extensions/test/ch.banana.africa.secondaryschool.test.js}
+%
+\begin{testcase}{SecondarySchoolReport}
+\begin{test}{testBananaExtension}
+\begin{reportvalue}{Test 'Rapport Financier'}
+\begin{longtable}[l]{ l  l  l }
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{INSPECTION PRINCIPALE PROVINCIALE DE KIN- LUKUNGA }\\
+\multicolumn{3}{l}{SOUS-DIVISION DE  }\\
+\multicolumn{3}{l}{DENOMINATION ETABLISSEMENT :  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{RAPPORT FINANCIER }\\
+\multicolumn{3}{l}{DU 01.01.2025 AU 31.12.2025 }\\
+\multicolumn{3}{l}{}\\
+\multicolumn{3}{l}{}\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l }
+I  & RECETTES  & MONTANT \\
+SI  & Solde Initial  & 90'000.00 \\
+RAF  & PERCEPTION DE FRAIS D'APPUI AU FONCTIONNEMENT  & 6'530'000.00 \\
+RCP  & CONTRIBUTION DES PARENTS AUX BESOINS DES ENSEIGNANTS  & 7'980'000.00 \\
+R  & TOTAL RECETTES =  SI + RAF + RCP  & 14'600'000.00 \\
+II  & DEPENSES  & \\
+DAF01  & EQUIPEMENTS DIVERS  & 0.00 \\
+DAF02  & ENTRETIENS ET REPARATIONS  & 0.00 \\
+DAF03  & ACHATS MANUELS SCOLAIRES ET INVESTISSEMENT  & 45'000.00 \\
+DAF04  & INTERVENTIONS SOCIALES  & 0.00 \\
+DAF05  & FABRICATION BANCS  & 300'000.00 \\
+DAF06  & FOURNITURES BUREAUX  & 310'000.00 \\
+DAF07  & RENCONTRES LOCALES  & 0.00 \\
+DAF08  & FONCTIONEMENT DE L'ADMINISTRATION SCOLAIRE  & 0.00 \\
+DAF09  & ACTIVITES SPORTIVES ET CULTURELLES  & 0.00 \\
+DAF10  & CARTE DE L'ELEVE  & 0.00 \\
+DAF11  & ASSAINISSEMENT  & 0.00 \\
+DAF  & TOTAL DEPENSES APPUI FONCTIONNEMENT = Somme de DAF01 à DAF11  & 655'000.00 \\
+PRIMES ENS  & PRIMES MOTIVATION PROFESSEURS ENSEIGNANTS  & 3'750'000.00 \\
+DIV DCP  & AUTRES DEPENSES SUR FONDS CONTRIBUTIONS PARENTS  & 0.00 \\
+DCP  & TOTAL DEPENSES CONTRIBUTIONS PARENTS = (PRIMES ENS)  & 3'750'000.00 \\
+D  & TOTAL GENERAL DEPENSES = (DAF + DCP)  & 4'405'000.00 \\
+SAF  & SOLDE APPUI FONCTIONNEMENT = RAF - Somme de DAF1 à DAF11  & 5'875'000.00 \\
+SCP  & SOLDE CONTRIBUTION PARENTS = RCP - DCP  & 4'230'000.00 \\
+S  & TOTAL SOLDES = R - D  & 10'195'000.00 \\
+\end{longtable}
+\end{reportvalue}
+\keyvalue{Result}{Passed}
+\end{test}
+\end{testcase}
+\end{document}
