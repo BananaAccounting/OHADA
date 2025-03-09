@@ -17,7 +17,7 @@
 // @pubdate = 2025-03-08
 // @publisher = Banana.ch SA
 // @description = Secondary School Inspection Accounting Reports (OHADA) [BETA]
-// @description.fr = Rapports Financiers Inspection Provinciale - Pool Secondaire (OHADA) [BETA]
+// @description.fr = Pool Secondaire - Rapports Financiers Inspection Provinciale (OHADA) [BETA]
 // @task = app.command
 // @doctype = 100.100;100.110;130.100
 // @docproperties = 
