@@ -168,3 +168,36 @@ function createReportStructureFinancialReportSecondaryPool() {
 
     return reportStructure;
 }
+
+//
+function createReportStructureFinancialReportPrimaryPool() {
+    var reportStructure = [];
+
+    reportStructure.push({"id":"SI", "type":"group", "bclass":"4", "description":"Solde Initial"});
+    reportStructure.push({"id":"RFF1", "type":"group", "bclass":"4", "description":"Frais Fonctionnement Appuis Parents"});
+    reportStructure.push({"id":"RFF2", "type":"group", "bclass":"4", "description":"Frais Fonctionnement Trésor public"});
+    reportStructure.push({"id":"A", "type":"total", "description":"Total frais Fonctionnement (RFF1+RFF2)", "sum":"RFF1;RFF2"});
+    reportStructure.push({"id":"B", "type":"total", "description":"TOTAL GENERAL RECETTES (SI+A)", "sum":"SI;A"});
+
+    reportStructure.push({"id":"DFF1", "type":"group", "bclass":"3", "description":"FOURNITURES DES BUREAUX"});
+    reportStructure.push({"id":"DFF2", "type":"group", "bclass":"3", "description":"INTRANTS INFORMATIQUES"});
+    reportStructure.push({"id":"DFF3", "type":"group", "bclass":"3", "description":"FORFAIT INTERNET"});
+    reportStructure.push({"id":"DFF4", "type":"group", "bclass":"3", "description":"COMMUNICATION/INFORMATION"});
+    reportStructure.push({"id":"DFF5", "type":"group", "bclass":"3", "description":"FORMULE D'EXPLOITATION"});
+    reportStructure.push({"id":"DFF6", "type":"group", "bclass":"3", "description":"FORMATION"});
+    reportStructure.push({"id":"DFF7", "type":"group", "bclass":"3", "description":"GESTION VEHICULES"});
+    reportStructure.push({"id":"DFF8", "type":"group", "bclass":"3", "description":"GESTION MATERIEL/INFORMATIQUE"});
+    reportStructure.push({"id":"DFF9", "type":"group", "bclass":"3", "description":"RENOUVELEMENT MOBILIERS"});
+    reportStructure.push({"id":"DFF10", "type":"group", "bclass":"3", "description":"INTERVENTIONS SOCIALES"});
+    reportStructure.push({"id":"DFF11", "type":"group", "bclass":"3", "description":"MISSION DE SERVICE"});
+    reportStructure.push({"id":"DFF12", "type":"group", "bclass":"3", "description":"RAFFRAICHISSEMENT BUREAUX"});
+    reportStructure.push({"id":"DFF13", "type":"group", "bclass":"3", "description":"RENCONTRES LOCALES"});
+    reportStructure.push({"id":"DFF14", "type":"group", "bclass":"3", "description":"DIVERS"});
+    reportStructure.push({"id":"C", "type":"total", "description":"TOTAL DEPENSES F F (Somme de DFF1 à DFF14)", "sum":"DFF1;DFF2;DFF3;DFF4;DFF5;DFF6;DFF7;DFF8;DFF9;DFF10;DFF11;DFF12;DFF13;DFF14"});
+    reportStructure.push({"id":"D", "type":"total", "description":"TOTAL GENERAL DEPENSES", "sum":"C"});
+    reportStructure.push({"id":"E", "type":"total", "description":"SOLDE GENERAL = B-D", "sum":"B;-D"});
+
+
+    return reportStructure;
+}
+

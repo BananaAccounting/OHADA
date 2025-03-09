@@ -6,6 +6,7 @@
         <file>errors.js</file>
         <file>ch.banana.africa.schoolinspection.js</file>
         <file>ch.banana.africa.secondaryschoolinspection.js</file>
+        <file>ch.banana.africa.primaryschoolinspection.js</file>
         <file>financialreport.css</file>
     </qresource>
 </RCC>
