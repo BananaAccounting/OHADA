@@ -123,11 +123,11 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    if (logoFormat) {
       // Use the format as defined in the dialog File --> Logo Setup   
-      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "first_page_logo"); 
+      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "logo"); 
       report.getHeader().addChild(logoElement); } 
    else {
          // If the format 'logo' is not defined, insert an image   
-         report.addImage("documents:logo", "logoStyle"); 
+         // report.addImage("documents:logo", "logoStyle"); 
    } 
 
    tableRow = table.addRow();
@@ -197,9 +197,10 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* C */
    tableRow = table.addRow();
+   var totalRecettes = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(openingAmount), Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("A")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("B"))));
    tableRow.addCell(bReport.getObjectId("C"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("C"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("C"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalRecettes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    tableRow = table.addRow();
    tableRow.addCell("II", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -406,9 +407,10 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* I */
    tableRow = table.addRow();
+   var totalSoldes = Banana.SDecimal.subtract(Banana.Converter.toInternalNumberFormat(totalRecettes), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("F")));
    tableRow.addCell(bReport.getObjectId("I"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("I"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("I"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalSoldes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
 
    //addFooter(report);

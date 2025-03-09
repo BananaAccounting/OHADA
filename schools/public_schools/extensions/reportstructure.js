@@ -70,9 +70,9 @@ function createReportStructureSecondaryFinancialReport() {
     reportStructure.push({"id":"DAF11", "type":"group", "bclass":"3", "description":"ASSAINISSEMENT"});
     reportStructure.push({"id":"DAF", "type":"total", "description":"TOTAL DEPENSES APPUI FONCTIONNEMENT = Somme de DAF01 à DAF11", "sum":"DAF01;DAF02;DAF03;DAF04;DAF05;DAF06;DAF07;DAF08;DAF09;DAF10;DAF11"});
     
-    reportStructure.push({"id":"PRIMES ENS", "type":"group", "bclass":"3", "description":"PRIMES MOTIVATION PROFESSEURS ENSEIGNANTS"});
+    // reportStructure.push({"id":"DCP", "type":"group", "bclass":"3", "description":"PRIMES MOTIVATION PROFESSEURS ENSEIGNANTS"});
     reportStructure.push({"id":"DIV DCP", "type":"group", "bclass":"3", "description":"AUTRES DEPENSES SUR FONDS CONTRIBUTIONS PARENTS"});
-    reportStructure.push({"id":"DCP", "type":"total", "description":"TOTAL DEPENSES CONTRIBUTIONS PARENTS = (PRIMES ENS)", "sum":"PRIMES ENS"});
+    reportStructure.push({"id":"DCP", "type":"group", "bclass":"3", "description":"TOTAL DEPENSES CONTRIBUTIONS PARENTS = (PRIMES ENS)"});
     reportStructure.push({"id":"D", "type":"total", "description":"TOTAL GENERAL DEPENSES = (DAF + DCP)", "sum":"DAF;DCP"});
 
     reportStructure.push({"id":"SAF", "type":"total", "description":"SOLDE APPUI FONCTIONNEMENT = RAF - Somme de DAF1 à DAF11", "sum":"RAF;-DAF"});

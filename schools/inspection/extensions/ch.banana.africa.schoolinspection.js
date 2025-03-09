@@ -130,7 +130,7 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
       report.getHeader().addChild(logoElement); } 
    else {
          // If the format 'logo' is not defined, insert an image   
-         report.addImage("documents:logo", "logoStyle"); 
+         // report.addImage("documents:logo", "logoStyle"); 
    } 
 
    tableRow = table.addRow();
@@ -230,9 +230,12 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* D */
    tableRow = table.addRow();
+   var totalRecettes1 = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(openingAmount), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("A")));
+   var totalRecettes2 = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("B")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("C")));
+   var totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
    tableRow.addCell(bReport.getObjectId("D"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("D"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("D"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalRecettes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    tableRow = table.addRow();
    tableRow.addCell("II", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -613,9 +616,10 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* P */
    tableRow = table.addRow();
+   var totalSoldes = Banana.SDecimal.subtract(totalRecettes, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("J")));
    tableRow.addCell(bReport.getObjectId("P"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("P"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("P"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalSoldes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
 
 

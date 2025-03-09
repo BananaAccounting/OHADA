@@ -125,11 +125,11 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    if (logoFormat) {
       // Use the format as defined in the dialog File --> Logo Setup   
-      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "first_page_logo"); 
+      var logoElement = logoFormat.createDocNode(headerLogoSection, stylesheet, "logo"); 
       report.getHeader().addChild(logoElement); } 
    else {
          // If the format 'logo' is not defined, insert an image   
-         report.addImage("documents:logo", "logoStyle"); 
+         // report.addImage("documents:logo", "logoStyle"); 
    } 
 
    
@@ -188,9 +188,10 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* R */
    tableRow = table.addRow();
+   var totalRecettes = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(openingAmount), Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RAF")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RCP"))));
    tableRow.addCell(bReport.getObjectId("R"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("R"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("R"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalRecettes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    tableRow = table.addRow();
    tableRow.addCell("II", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
@@ -271,9 +272,9 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* PRIMES ENS */
    tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("PRIMES ENS"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectDescription("PRIMES ENS"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("PRIMES ENS"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell("PRIMES ENS", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell("PRIMES MOTIVATION PROFESSEURS ENSEIGNANTS", "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DCP"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    /* DIV DCP */
    tableRow = table.addRow();
@@ -307,9 +308,10 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* S */
    tableRow = table.addRow();
+   var totalGeneral = totalRecettes - Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("DAF")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("DCP")));
    tableRow.addCell(bReport.getObjectId("S"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("S"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("S"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalGeneral), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
 
    //addFooter(report);

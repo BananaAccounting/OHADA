@@ -264,19 +264,19 @@ var BReport = class JsClass {
           }
        }
  
-      //  var groupsModB = createReportStructureProfitLoss();
-      //  for (var i in groupsModB) {
-      //     if (groupsModB[i]["id"] && !groupsModB[i]["id"].startsWith('d')) {
-      //        columnList.add(groupsModB[i]["id"]);
-      //     }
-      //  }
+       var groupsModB = createReportStructureFinancialReportPrimaryPool();
+       for (var i in groupsModB) {
+          if (groupsModB[i]["id"] && !groupsModB[i]["id"].startsWith('d')) {
+             columnList.add(groupsModB[i]["id"]);
+          }
+       }
  
-       // var groupsModD = createReportStructureCashFlow();
-       // for (var i in groupsModD) {
-       //    if (groupsModD[i]["id"] && !groupsModD[i]["id"].startsWith('d')) {
-       //       columnList.add(groupsModD[i]["id"]);
-       //    }
-       // }
+       var groupsModD = createReportStructureFinancialReportSecondaryPool();
+       for (var i in groupsModD) {
+          if (groupsModD[i]["id"] && !groupsModD[i]["id"].startsWith('d')) {
+             columnList.add(groupsModD[i]["id"]);
+          }
+       }
  
        //Convert Set object to array
        for (var i of columnList) {

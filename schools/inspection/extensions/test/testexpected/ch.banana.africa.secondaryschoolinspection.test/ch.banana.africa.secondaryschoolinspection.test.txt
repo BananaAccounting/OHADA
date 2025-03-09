@@ -1,0 +1,118 @@
+%%info_test_name{ch.banana.africa.secondaryschoolinspection.test}
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[margin=1cm]{geometry}
+\begin{document}
+\newenvironment{tablevalue}[2]{\textbf{Table: #1}\begin{longtable}[l]{#2}}{\end{longtable}}
+\newenvironment{reportvalue}[1]{\textbf{Report: #1}\\}{}
+\lstnewenvironment{jsonvalue}[1]{\textbf{Json: #1}\lstset{language=Java}}{}
+\lstnewenvironment{xmlvalue}[1]{\textbf{Xml: #1}\lstset{language=Xml}}{}
+\newcommand{\info}[2]{\textit{#1: #2}\\}
+\newcommand{\fatalerror}[1]{\textbf{\textcolor[rgb]{1,0,0}{Fatal error: #1}}\\}
+\newcommand{\keyvalue}[2]{\textbf{Keyvalue: #1} #2\\}
+\newcommand{\textvalue}[1]{#1\\}
+\newcommand{\excltest}[1]{\\Excluded from compare: #1}
+\newcommand{\lognewpage}{\newpage}
+\newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
+\newenvironment{test}[1]{\section*{Test case: #1}}{}
+%Begin test data
+%%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/schools/inspection/extensions/test/ch.banana.africa.secondaryschoolinspection.test.js}
+%
+\begin{testcase}{SchoolInspectionReport}
+\begin{test}{testBananaExtension}
+\begin{reportvalue}{Test 'Rapport Financier'}
+\begin{longtable}[l]{ l  l  l }
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{INSPECTION PRINCIPALE PROVINCIALE DE KIN- LUKUNGA }\\
+\multicolumn{3}{l}{RAPPORT FINANCIER }\\
+\multicolumn{3}{l}{DU 01.01.2025 AU 31.12.2025 }\\
+\multicolumn{3}{l}{}\\
+\multicolumn{3}{l}{}\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l }
+I  & RECETTES  & MONTANT \\
+SI  & Solde Initial  & 350'000.00 \\
+RFF1  & Frais Fonctionnement Appuis Parents  & 7'500'000.00 \\
+RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
+A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
+REX1  & Participation Préliminaire Autodidactes  & 0.00 \\
+REX2  & Vente des formules Examen d'Etat  & 0.00 \\
+REX3  & Participation candidats Hors session  & 0.00 \\
+REX4  & Participation candidats  session  & 0.00 \\
+B  & Total Frais Examens d'Etat (Somme RX1 à RX4)  & 0.00 \\
+RTENASOS  & Versement Comité local TENASOSP  & 0.00 \\
+C  & Versement Comité local TENASOSP  & 0.00 \\
+D  & TOTAL GENERAL RECETTES (SI+A+B+C)  & 11'100'000.00 \\
+II  & DEPENSES  & \\
+DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
+DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
+DFF3  & FORFAIT INTERNET  & 140'000.00 \\
+DFF4  & COMMUNICATION/INFORMATION  & 0.00 \\
+DFF5  & FORMULE D'EXPLOITATION  & 670'000.00 \\
+DFF6  & FORMATION  & 0.00 \\
+DFF7  & GESTION VEHICULES  & 170'000.00 \\
+DFF8  & GESTION MATERIEL/INFORMATIQUE  & 0.00 \\
+DFF9  & RENOUVELEMENT MOBILIERS  & 6'500'000.00 \\
+DFF10  & INTERVENTIONS SOCIALES  & 0.00 \\
+DFF11  & MISSION DE SERVICE  & 0.00 \\
+DFF12  & RAFFRAICHISSEMENT BUREAUX  & 0.00 \\
+DFF13  & RENCONTRES LOCALES  & 0.00 \\
+DFF14  & IMPREVUS  & 0.00 \\
+E  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
+DEX11  & RETRAIT ET CONDITIONNEMENT  & 0.00 \\
+DEX12  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
+DEX13  & DISTRIBUTION DES COLIS  & 0.00 \\
+DEX14  & PASSATION  & 0.00 \\
+DEX15  & CORRECTION ET FINALISATION  & 0.00 \\
+DEX16  & RAPPORT FINAL  & 0.00 \\
+DEX17  & FOURNITURES  & 0.00 \\
+DEX18  & IMPREVUS  & 0.00 \\
+F  & TOTAL DEPENSES Préliminaire (Somme de DEX11 à DEX18)  & 0.00 \\
+DEX21  & RETRAIT ET CONDITIONNEMENT  & 0.00 \\
+DEX22  & DISTRIBUTION  ET DEPÔT  & 0.00 \\
+DEX23  & CONTRÔLE ET TRAITEMENT  & 0.00 \\
+DEX24  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
+DEX25  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 0.00 \\
+DEX26  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 0.00 \\
+DEX27  & SUPERVISION  PROVINCIALE AUTRE  & 0.00 \\
+DEX28  & IMPREVUS  & 0.00 \\
+G  & TOTAL DEPENSES FORMULES EXEMAN D'ETAT (Somme de DEX21 à DEX29)  & 0.00 \\
+DEX310  & RETRAIT ET CONDITIONNEMENT  & 0.00 \\
+DEX311  & DISTRIBUTION DES COLIS  & 0.00 \\
+DEX312  & PASSATION  & 0.00 \\
+DEX313  & CORRECTION ET FINALISATION  & 0.00 \\
+DEX314  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
+DEX315  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 0.00 \\
+DEX316  & RAPPORT FINAL  & 0.00 \\
+DEX317  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 0.00 \\
+DEX318  & SUPERVISION DE LA PROVINCIALE AUTRE  & 0.00 \\
+DEX319  & IMPREVUS  & 0.00 \\
+H  & TOTAL DEPENSES EXEMAN D'ETAT HORS SESSION (Somme de DEX310 à DEX319)  & 0.00 \\
+DEX410  & RETRAIT ET CONDITIONNEMENT  & 0.00 \\
+DEX411  & DISTRIBUTION DES COLIS  & 0.00 \\
+DEX412  & PASSATION  & 0.00 \\
+DEX413  & CORRECTION ET FINALISATION  & 0.00 \\
+DEX414  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
+DEX415  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 0.00 \\
+DEX416  & APPUI LOGISTIQUE A LA HIERARCHIE  & 0.00 \\
+DEX417  & RAPPORT FINAL SESSION  & 0.00 \\
+DEX418  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 0.00 \\
+DEX419  & SUPERVISION  PROVINCIALE AUTRE  & 0.00 \\
+DEX420  & IMPREVUS  & 0.00 \\
+I  & TOTAL DEPENSES EXEMAN D'ETAT SESSION ORDINAIRE (Somme de DEX410 à DEX421)  & 0.00 \\
+J  & TOTAL GENERAL DEPENSES = (E+F+G+H+I)  & 7'550'000.00 \\
+K  & SOLDE FRAIS DE FONCTIONNEMENT = (RFF1+RFF2) - (Somme de DFF1 à DFF14)  & 3'550'000.00 \\
+L  & SOLDE PRELIMINAIRE EXETAT = (REX1) - (Somme de DEX11 à DEX18)  & 0.00 \\
+M  & SOLDES FORMULE EXETAT = (REX2) - (Somme de DEX21 à DEX29)  & 0.00 \\
+N  & SOLDE HORS SESSION EXETAT = (REX3 - (Somme de DEX311 à DEX320)  & 0.00 \\
+O  & SOLDE SESSION EXETAT = (REX4 - (Somme de DEX410 à DEX421)  & 0.00 \\
+P  & SOLDE GENERAL = (D-J)  & 3'550'000.00 \\
+\end{longtable}
+\end{reportvalue}
+\keyvalue{Result}{Passed}
+\end{test}
+\end{testcase}
+\end{document}
