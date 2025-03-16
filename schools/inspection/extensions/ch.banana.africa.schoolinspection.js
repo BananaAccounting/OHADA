@@ -747,10 +747,11 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* DAUT */
    tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("DTENA11"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectId("DAUT"), "align-left", 1);
    tableRow.addCell(bReport.getObjectDescription("DAUT"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DAUT"), "align-right", 1);
 
+   /* DDLSA */
    tableRow = table.addRow();
    tableRow.addCell(bReport.getObjectId("DDLSA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("DDLSA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");

@@ -491,6 +491,18 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectDescription("F"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("F"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
+   /* DDLS */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DDLS"), "align-right", 1);
+
+   /* DAUT */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DAUT"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DAUT"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DAUT"), "align-right", 1);
+
    /* DDLSA */
    tableRow = table.addRow();
    tableRow.addCell(bReport.getObjectId("DDLSA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
