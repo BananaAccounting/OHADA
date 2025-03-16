@@ -196,7 +196,9 @@ function createReportStructureFinancialReportSecondaryPool() {
     reportStructure.push({"id":"DHS", "type":"group", "bclass":"3", "description":"Versement Frais de participation Hors Session"});
     reportStructure.push({"id":"DSO", "type":"group", "bclass":"3", "description":"Versement Frais de participation Session ordinaire"});
     reportStructure.push({"id":"F", "type":"total", "description":"TOTAL DEPENSES EXEMEN D'ETAT = DE01+DHS+DSO)", "sum":"DE01;DHS;DSO"});
-    reportStructure.push({"id":"DDLSA", "type":"total", "description":"DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN", "sum":""});
+    reportStructure.push({"id":"DDLS", "type":"group", "bclass":"3", "description":"Dépenses tirées sur dons, legs et subventions"});
+    reportStructure.push({"id":"DAUT", "type":"group", "bclass":"3", "description":"Dépenses tirées sur Autofinancement"});
+    reportStructure.push({"id":"DDLSA", "type":"total", "description":"DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN", "sum":"DDLS;DAUT"});
     reportStructure.push({"id":"G", "type":"total", "description":"TOTAL GENERAL DEPENSES = (D+E+F)", "sum":"D;E;F"});
     reportStructure.push({"id":"H", "type":"total", "description":"SOLDE FRAIS DE FONCTIONNEMENT = A-D", "sum":"A;-D"});
     reportStructure.push({"id":"I", "type":"total", "description":"SOLDE TENASOSP = RTENA-E", "sum":"RTENA;-E"});
@@ -237,7 +239,9 @@ function createReportStructureFinancialReportPrimaryPool() {
     reportStructure.push({"id":"DFF13", "type":"group", "bclass":"3", "description":"Rencontres locales"});
     reportStructure.push({"id":"DFF14", "type":"group", "bclass":"3", "description":"Constructions et aménagement des Batiments"});
     reportStructure.push({"id":"C", "type":"total", "description":"TOTAL DEPENSES F F (Somme de DFF1 à DFF14)", "sum":"DFF1;DFF2;DFF3;DFF4;DFF5;DFF6;DFF7;DFF8;DFF9;DFF10;DFF11;DFF12;DFF13;DFF14"});
-    reportStructure.push({"id":"DDLSA", "type":"total", "description":"DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN", "sum":""});
+    reportStructure.push({"id":"DDLS", "type":"group", "bclass":"3", "description":"Dépenses tirées sur dons, legs et subventions"});
+    reportStructure.push({"id":"DAUT", "type":"group", "bclass":"3", "description":"Dépenses tirées sur Autofinancement"});
+    reportStructure.push({"id":"DDLSA", "type":"total", "description":"DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN", "sum":"DDLS;DAUT"});
     reportStructure.push({"id":"D", "type":"total", "description":"TOTAL GENERAL DEPENSES = (C+DDLSA)", "sum":"C;DDLSA"});
     reportStructure.push({"id":"SFF", "type":"total", "description":"SOLDE FRAIS DE FONCTIONNEMENT = A-C", "sum":"A;-C"});
     reportStructure.push({"id":"SRDLSA", "type":"total", "description":"SOLDE DONS, LEGES ET AUTOFINACEMENT = RDLSA-DDLSA", "sum":"RDLSA;-DDLSA"});
