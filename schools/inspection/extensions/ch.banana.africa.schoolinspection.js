@@ -274,11 +274,35 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectDescription("B"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("B"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
-   /* RTENASOS */
+   /* RTENA01 */
    tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("RTENASOS"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("RTENASOS"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENASOS"), "align-right", 1);
+   tableRow.addCell(bReport.getObjectId("RTENA01"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA01"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA01"), "align-right", 1);
+
+   /* RTENA02 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RTENA02"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA02"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA02"), "align-right", 1);
+
+   /* RTENA03 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RTENA03"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA03"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA03"), "align-right", 1);
+
+   /* RTENA04 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RTENA04"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA04"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA04"), "align-right", 1);
+
+   /* RTENA05 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RTENA05"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RTENA05"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RTENA05"), "align-right", 1);
 
    /* C */
    tableRow = table.addRow();
@@ -286,11 +310,30 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectDescription("C"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("C"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
+   /* RDLS */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RDLS"), "align-right", 1);
+
+   /* RAUTO */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RAUTO"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RAUTO"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RAUTO"), "align-right", 1);
+
+   /* RDLSA */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RDLSA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RDLSA"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RDLSA"), "align-right", 1);
+
    /* D */
    tableRow = table.addRow();
    var totalRecettes1 = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(openingAmount), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("A")));
    var totalRecettes2 = Banana.SDecimal.add(Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("B")), Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("C")));
-   var totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+   var totalRecettes3 = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+   var totalRecettes = Banana.SDecimal.add(totalRecettes3, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("RDLSA")));
    tableRow.addCell(bReport.getObjectId("D"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("D"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(formatValuesDecimals(totalRecettes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
@@ -432,12 +475,6 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectDescription("DEX17"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX17"), "align-right", 1);
 
-   /* DEX18 */
-   tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("DEX18"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("DEX18"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX18"), "align-right", 1);
-
    /* F */
    tableRow = table.addRow();
    tableRow.addCell(bReport.getObjectId("F"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
@@ -485,12 +522,6 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectId("DEX27"), "align-left", 1);
    tableRow.addCell(bReport.getObjectDescription("DEX27"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX27"), "align-right", 1);
-
-   /* DEX28 */
-   tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("DEX28"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("DEX28"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX28"), "align-right", 1);
 
    /* G */
    tableRow = table.addRow();
@@ -551,12 +582,6 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectId("DEX318"), "align-left", 1);
    tableRow.addCell(bReport.getObjectDescription("DEX318"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX318"), "align-right", 1);
-
-   /* DEX319 */
-   tableRow = table.addRow();
-   tableRow.addCell(bReport.getObjectId("DEX319"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectDescription("DEX319"), "align-left", 1);
-   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DEX319"), "align-right", 1);
 
    /* H */
    tableRow = table.addRow();
@@ -642,11 +667,94 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectDescription("J"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("J"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
+   /* DTENA01 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA01"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA01"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA01"), "align-right", 1);
+
+   /* DTENA02 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA02"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA02"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA02"), "align-right", 1);
+
+   /* DTENA03 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA03"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA03"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA03"), "align-right", 1);
+
+   /* DTENA04 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA04"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA04"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA04"), "align-right", 1);
+
+   /* DTENA05 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA05"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA05"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA05"), "align-right", 1);
+
+   /* DTENA06 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA06"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA06"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA06"), "align-right", 1);
+
+   /* DTENA07 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA07"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA07"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA07"), "align-right", 1);
+
+   /* DTENA08 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA08"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA08"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA08"), "align-right", 1);
+
+   /* DTENA09 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA09"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA09"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA09"), "align-right", 1);
+
+   /* DTENA10 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA10"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA10"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA10"), "align-right", 1);
+
+   /* DTENA11 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA11"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DTENA11"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DTENA11"), "align-right", 1);
+
    /* K */
    tableRow = table.addRow();
    tableRow.addCell(bReport.getObjectId("K"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("K"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("K"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+
+   /* DDLS */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DDLS"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DDLS"), "align-right", 1);
+
+   /* DAUT */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DTENA11"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("DAUT"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DAUT"), "align-right", 1);
+
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("DDLSA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("DDLSA"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("DDLSA"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
    /* L */
    tableRow = table.addRow();
@@ -674,11 +782,16 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    /* P */
    tableRow = table.addRow();
-   var totalSoldes = Banana.SDecimal.subtract(totalRecettes, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("J")));
    tableRow.addCell(bReport.getObjectId("P"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
    tableRow.addCell(bReport.getObjectDescription("P"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
-   tableRow.addCell(formatValuesDecimals(totalSoldes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("P"), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
+   /* Q */
+   tableRow = table.addRow();
+   var totalSoldes = Banana.SDecimal.subtract(totalRecettes, Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("L")));
+   tableRow.addCell(bReport.getObjectId("Q"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(bReport.getObjectDescription("Q"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
+   tableRow.addCell(formatValuesDecimals(totalSoldes), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
 
 
    //addFooter(report);
