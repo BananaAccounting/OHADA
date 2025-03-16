@@ -90,6 +90,9 @@ var BReport = class JsClass {
        
        //Sum the amounts of opening, debit, credit, total and balance for all transactions for this accounts
        var currentBal = this.banDoc.currentBalance(accounts, startDate, endDate);
+      //  Banana.console.log("currentBal: " + currentBal.balance + " - " + startDate + " - " + endDate);
+      //  Banana.console.log("currentBal: " + currentBal.total + " - " + startDate + " - " + endDate);
+       
        
        //The bClass decides which value to use
        if (bClass === "1") {

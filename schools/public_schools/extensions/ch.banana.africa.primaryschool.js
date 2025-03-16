@@ -98,9 +98,11 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    var report = Banana.Report.newReport("Rapport Financier");
    var startDate = userParam.selectionStartDate;
    var endDate = userParam.selectionEndDate;
+   var currentStartDate = startDate;
+   var currentEndDate = endDate;
    var currentYear = Banana.Converter.toDate(banDoc.info("AccountingDataBase", "OpeningDate")).getFullYear();
    var previousYear = currentYear - 1;
-   var months = monthDiff(Banana.Converter.toDate(endDate), Banana.Converter.toDate(startDate));
+   var months = monthDiff(Banana.Converter.toDate(currentEndDate), Banana.Converter.toDate(currentStartDate));
 
    var company = banDoc.info("AccountingDataBase", "Company");
    var district = banDoc.info("AccountingDataBase", "Courtesy");
@@ -110,6 +112,8 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    var city = banDoc.info("AccountingDataBase", "City");
    var state = banDoc.info("AccountingDataBase", "State");
    var email = banDoc.info("AccountingDataBase", "Email");
+   var currentStartMonth = Banana.Converter.toDate(currentStartDate).getMonth();
+   var currentEndMonth = Banana.Converter.toDate(currentEndDate).getMonth();
 
 
    /**************************************************************************************
@@ -149,7 +153,7 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow = table.addRow();
    tableRow.addCell("RAPPORT FINANCIER", "bold align-center", 3);
    tableRow = table.addRow();
-   tableRow.addCell("DU " + Banana.Converter.toLocaleDateFormat(startDate) + " AU " + Banana.Converter.toLocaleDateFormat(endDate), "bold align-center", 3);
+   tableRow.addCell("DU " + Banana.Converter.toLocaleDateFormat(currentStartDate) + " AU " + Banana.Converter.toLocaleDateFormat(currentEndDate), "bold align-center", 3);
 
    tableRow = table.addRow();
    tableRow.addCell("", "", 3);
@@ -167,9 +171,11 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell("RECETTES", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("MONTANT", "bold align-center", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    
+   var openingAmount = calculateOpeningAmount(banDoc, startDate, endDate);
+   
    /* SI */
     tableRow = table.addRow();
-    var openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
+   //  openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
     tableRow.addCell(bReport.getObjectId("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(bReport.getObjectDescription("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(formatValuesDecimals(openingAmount), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
@@ -244,6 +250,71 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    //addFooter(report);
    return report;
+}
+
+function calculateOpeningAmount(banDoc, selectedStartDate, selectedEndDate) {
+   // Convert dates to Date objects
+   const startDate = Banana.Converter.toDate(selectedStartDate);
+   Banana.console.log("Selected start date: " + selectedStartDate);
+   Banana.console.log("Selected start date: " + startDate);
+   // const firstDayOfYear = new Date(startDate.getFullYear(), 0, 1);
+   
+   // If January, get from Accounts table
+   if (startDate.getMonth() === 0) {
+       const accountsOpening = banDoc.table("Accounts").row(0).value("Opening") ? 
+           banDoc.table("Accounts").row(0).value("Opening") : 
+           banDoc.table("Accounts").row(1).value("Opening");
+      //  Banana.console.log("January - Using opening amount from Accounts table: " + accountsOpening);
+       return accountsOpening;
+   }
+   else {
+   
+   // Calculate previous month's period
+   const previousMonthEnd = new Date(startDate.getFullYear(), startDate.getMonth(), 0);
+   const previousMonthStart = new Date(startDate.getFullYear(), startDate.getMonth() - 1, 1);
+   // Banana.console.log("Previous month period: " + previousMonthStart + " to " + previousMonthEnd);
+   
+   // Format dates for Banana
+   const prevStart = Banana.Converter.toLocaleDateFormat(previousMonthStart);
+   const prevEnd = Banana.Converter.toLocaleDateFormat(previousMonthEnd);
+   // prevStart = Banana.Converter.toInternalDateFormat(prevStart);
+   // prevEnd = Banana.Converter.toInternalDateFormat(prevEnd);
+   // Banana.console.log("Calculating opening amount for: " + Banana.Converter.toLocaleDateFormat(startDate));
+   // Banana.console.log("Using previous month period: " + prevStart + " to " + prevEnd);
+
+   // Get previous month's report
+   const prevParam = initUserParam();
+   prevParam.selectionStartDate = Banana.Converter.toInternalDateFormat(prevStart);
+   prevParam.selectionEndDate = Banana.Converter.toInternalDateFormat(prevEnd);
+   // Banana.console.log("Previous month's report period: " + prevParam.selectionStartDate + " to " + prevParam.selectionEndDate);
+   
+   // Calculate previous month's opening amount recursively
+   const prevOpeningAmount = calculateOpeningAmount(banDoc, Banana.Converter.toInternalDateFormat(prevStart), Banana.Converter.toInternalDateFormat(prevEnd));
+   
+   const reportStructure = createReportStructurePrimaryFinancialReport();
+   const prevReport = new BReport(banDoc, prevParam, reportStructure);
+   
+   prevReport.validateGroups(prevParam.column);
+   prevReport.loadBalances();
+   prevReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount"]);
+   prevReport.formatValues(["currentAmount", "previousAmount", "openingAmount"]);
+   
+   // Calculate previous month's totalRecettes
+   const totalRecettes = Banana.SDecimal.add(
+       Banana.Converter.toInternalNumberFormat(prevOpeningAmount),
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("RFF"))
+   );
+   
+   
+   // Calculate previous month's totalSoldes
+   const totalSoldes = Banana.SDecimal.subtract(
+       totalRecettes,
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("D"))
+   );
+   
+   // Banana.console.log("Previous month's totalSoldes: " + totalSoldes);
+   return totalSoldes;
+   }
 }
 
 /**************************************************************************************

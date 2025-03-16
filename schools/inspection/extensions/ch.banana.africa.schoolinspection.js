@@ -93,6 +93,45 @@ function exec(string) {
    Banana.Report.preview(report, stylesheet);
 }
 
+// function exec(string) {
+//    if (!Banana.document) {
+//        return;
+//    }
+
+//    var isCurrentBananaVersionSupported = bananaRequiredVersion(BAN_VERSION, BAN_EXPM_VERSION);
+//    if (!isCurrentBananaVersionSupported) {
+//        return "@Cancel";
+//    }
+
+//    // Calculate for the year 2025, months 1-12
+//    var results = calculateMonthlyReports(2025, 1, 2025, 12);
+   
+//    // Create a report to display all monthly results
+//    var report = Banana.Report.newReport("Monthly Financial Reports 2025");
+//    var table = report.addTable("table");
+   
+//    // Add headers
+//    var tableRow = table.addRow();
+//    tableRow.addCell("Period", "header");
+//    tableRow.addCell("Opening Amount", "header");
+//    tableRow.addCell("Total Recettes", "header");
+//    tableRow.addCell("Total Soldes", "header");
+   
+//    // Add data rows
+//    results.forEach(function(monthResult) {
+//        var row = table.addRow();
+//        row.addCell(monthResult.period);
+//        row.addCell(formatValuesDecimals(monthResult.openingAmount));
+//        row.addCell(formatValuesDecimals(monthResult.totalRecettes));
+//        row.addCell(formatValuesDecimals(monthResult.totalSoldes));
+//    });
+   
+//    // Preview the report
+//    var stylesheet = Banana.Report.newStyleSheet();
+//    setCss(Banana.document, stylesheet, initUserParam());
+//    Banana.Report.preview(report, stylesheet);
+// }
+
 function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 
    var report = Banana.Report.newReport("Rapport Financier");
@@ -156,14 +195,27 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    var columnFinancialReport2 = table.addColumn("column-financial-report2");
    var columnFinancialReport3 = table.addColumn("column-financial-report3");
 
+   // var openingAmount = 0;
+
    tableRow = table.addRow();
    tableRow.addCell("I", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("RECETTES", "bold align-left", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    tableRow.addCell("MONTANT", "bold align-center", 1).setStyleAttributes("border-bottom:thin solid black;padding-bottom:2px;padding-top:5px");
    
+   // if (Banana.Converter.toDate(startDate).getMonth() === 2 && Banana.Converter.toDate(endDate).getMonth() === 2) {
+   //    Banana.console.log("February");
+   //    Banana.console.log(JSON.stringify(banDoc.currentBalance("P", startDate, endDate)));
+   // }
+//    var monthlyResults = calculateMonthlyReports(2025, 1, 2025, 12);
+// var februaryResult = monthlyResults[1]; // Index 1 for February
+// Banana.console.log("February opening amount: " + februaryResult.openingAmount);
+// Banana.console.log("February total soldes: " + februaryResult.totalSoldes);
+    var openingAmount = calculateOpeningAmount(banDoc, startDate, endDate);
+
+
    /* SI */
     tableRow = table.addRow();
-    var openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
+   //  var openingAmount = banDoc.table("Accounts").row(0).value("Opening") ? banDoc.table("Accounts").row(0).value("Opening") : banDoc.table("Accounts").row(1).value("Opening");
     tableRow.addCell(bReport.getObjectId("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(bReport.getObjectDescription("SI"), "align-left", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
     tableRow.addCell(formatValuesDecimals(openingAmount), "align-right", 1).setStyleAttributes("background-color: #C0C0C0; font-weight: bold");
@@ -179,6 +231,12 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    tableRow.addCell(bReport.getObjectId("RFF2"), "align-left", 1);
    tableRow.addCell(bReport.getObjectDescription("RFF2"), "align-left", 1);
    tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RFF2"), "align-right", 1);
+
+   /* RFF3 */
+   tableRow = table.addRow();
+   tableRow.addCell(bReport.getObjectId("RFF3"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectDescription("RFF3"), "align-left", 1);
+   tableRow.addCell(bReport.getObjectCurrentAmountFormatted("RFF3"), "align-right", 1);
 
    /* A */
    tableRow = table.addRow();
@@ -627,6 +685,136 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
    return report;
 }
 
+// function calculateOpeningAmount(banDoc, selectedStartDate, selectedEndDate) {
+//    // Convert dates to Date objects
+//    const startDate = Banana.Converter.toDate(selectedStartDate);
+//    const endDate = Banana.Converter.toDate(selectedEndDate);
+   
+//    // If it's January or first month of fiscal year, get from Accounts table
+//    if (startDate.getMonth() === 0) { // January
+//        return banDoc.table("Accounts").row(0).value("Opening") ? 
+//               banDoc.table("Accounts").row(0).value("Opening") : 
+//               banDoc.table("Accounts").row(1).value("Opening");
+//    }
+   
+//    // For other months, calculate previous month's totalSoldes
+//    const previousMonthEnd = new Date(startDate.getFullYear(), startDate.getMonth(), 0);
+//    const previousMonthStart = new Date(startDate.getFullYear(), startDate.getMonth() - 1, 1);
+   
+//    // Format dates for Banana
+//    const prevStart = Banana.Converter.toLocaleDateFormat(previousMonthStart);
+//    const prevEnd = Banana.Converter.toLocaleDateFormat(previousMonthEnd);
+   
+//    // Calculate previous month's totalSoldes
+//    const userParam = initUserParam();
+//    userParam.selectionStartDate = prevStart;
+//    userParam.selectionEndDate = prevEnd;
+//    Banana.console.log(prevStart + " - " + prevEnd);
+   
+//    const reportStructure = createReportStructureFinancialReport();
+//    const bReport = new BReport(banDoc, userParam, reportStructure);
+   
+//    bReport.validateGroups(userParam.column);
+//    bReport.loadBalances();
+//    bReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount"]);
+//    bReport.formatValues(["currentAmount", "previousAmount", "openingAmount"]);
+   
+//    // Calculate totalRecettes and totalSoldes for previous month
+//    const prevOpeningAmount = banDoc.table("Accounts").row(0).value("Opening") ? 
+//                            banDoc.table("Accounts").row(0).value("Opening") : 
+//                            banDoc.table("Accounts").row(1).value("Opening");
+   
+//    const totalRecettes1 = Banana.SDecimal.add(
+//        Banana.Converter.toInternalNumberFormat(prevOpeningAmount),
+//        Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("A"))
+//    );
+   
+//    const totalRecettes2 = Banana.SDecimal.add(
+//        Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("B")),
+//        Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("C"))
+//    );
+   
+//    const totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+   
+//    const totalSoldes = Banana.SDecimal.subtract(
+//        totalRecettes,
+//        Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("J"))
+//    );
+   
+//    return totalSoldes;
+// }
+
+function calculateOpeningAmount(banDoc, selectedStartDate, selectedEndDate) {
+   // Convert dates to Date objects
+   const startDate = Banana.Converter.toDate(selectedStartDate);
+   Banana.console.log("Selected start date: " + selectedStartDate);
+   Banana.console.log("Selected start date: " + startDate);
+   // const firstDayOfYear = new Date(startDate.getFullYear(), 0, 1);
+   
+   // If January, get from Accounts table
+   if (startDate.getMonth() === 0) {
+       const accountsOpening = banDoc.table("Accounts").row(0).value("Opening") ? 
+           banDoc.table("Accounts").row(0).value("Opening") : 
+           banDoc.table("Accounts").row(1).value("Opening");
+      //  Banana.console.log("January - Using opening amount from Accounts table: " + accountsOpening);
+       return accountsOpening;
+   }
+   else {
+   
+   // Calculate previous month's period
+   const previousMonthEnd = new Date(startDate.getFullYear(), startDate.getMonth(), 0);
+   const previousMonthStart = new Date(startDate.getFullYear(), startDate.getMonth() - 1, 1);
+   // Banana.console.log("Previous month period: " + previousMonthStart + " to " + previousMonthEnd);
+   
+   // Format dates for Banana
+   const prevStart = Banana.Converter.toLocaleDateFormat(previousMonthStart);
+   const prevEnd = Banana.Converter.toLocaleDateFormat(previousMonthEnd);
+   // prevStart = Banana.Converter.toInternalDateFormat(prevStart);
+   // prevEnd = Banana.Converter.toInternalDateFormat(prevEnd);
+   // Banana.console.log("Calculating opening amount for: " + Banana.Converter.toLocaleDateFormat(startDate));
+   // Banana.console.log("Using previous month period: " + prevStart + " to " + prevEnd);
+
+   // Get previous month's report
+   const prevParam = initUserParam();
+   prevParam.selectionStartDate = Banana.Converter.toInternalDateFormat(prevStart);
+   prevParam.selectionEndDate = Banana.Converter.toInternalDateFormat(prevEnd);
+   // Banana.console.log("Previous month's report period: " + prevParam.selectionStartDate + " to " + prevParam.selectionEndDate);
+   
+   // Calculate previous month's opening amount recursively
+   const prevOpeningAmount = calculateOpeningAmount(banDoc, Banana.Converter.toInternalDateFormat(prevStart), Banana.Converter.toInternalDateFormat(prevEnd));
+   
+   const reportStructure = createReportStructureFinancialReport();
+   const prevReport = new BReport(banDoc, prevParam, reportStructure);
+   
+   prevReport.validateGroups(prevParam.column);
+   prevReport.loadBalances();
+   prevReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount"]);
+   prevReport.formatValues(["currentAmount", "previousAmount", "openingAmount"]);
+   
+   // Calculate previous month's totalRecettes
+   const totalRecettes1 = Banana.SDecimal.add(
+       Banana.Converter.toInternalNumberFormat(prevOpeningAmount),
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("A"))
+   );
+   
+   const totalRecettes2 = Banana.SDecimal.add(
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("B")),
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("C"))
+   );
+   
+   const totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+   
+   // Calculate previous month's totalSoldes
+   const totalSoldes = Banana.SDecimal.subtract(
+       totalRecettes,
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("J"))
+   );
+   
+   // Banana.console.log("Previous month's totalSoldes: " + totalSoldes);
+   return totalSoldes;
+   }
+}
+
 /**************************************************************************************
 *
 * Functions that calculate the data for the report
@@ -805,6 +993,74 @@ function formatValuesDecimals(value, decimals) {
       return Banana.Converter.toLocaleNumberFormat(value, 2, true);
    }
 }
+
+// function calculateMonthlyReports(startYear, startMonth, endYear, endMonth) {
+//    var monthlyResults = [];
+//    var previousMonthSoldes = 0;
+   
+//    for (var year = startYear; year <= endYear; year++) {
+//        var monthStart = (year === startYear) ? startMonth : 1;
+//        var monthEnd = (year === endYear) ? endMonth : 12;
+       
+//        for (var month = monthStart; month <= monthEnd; month++) {
+//            // Calculate start and end dates for current month
+//            var startDate = new Date(year, month - 1, 1);
+//            var endDate = new Date(year, month, 0);
+           
+//            var formattedStartDate = Banana.Converter.toLocaleDateFormat(startDate);
+//            var formattedEndDate = Banana.Converter.toLocaleDateFormat(endDate);
+           
+//            // Initialize parameters for current month
+//            var userParam = initUserParam();
+//            userParam.selectionStartDate = formattedStartDate;
+//            userParam.selectionEndDate = formattedEndDate;
+           
+//            // Create report structure
+//            var reportStructure = createReportStructureFinancialReport();
+//            const bReport = new BReport(Banana.document, userParam, reportStructure);
+           
+//            // Set opening amount to previous month's totalSoldes
+//            bReport.openingAmount = previousMonthSoldes;
+           
+//            // Calculate report for current month
+//            bReport.validateGroups(userParam.column);
+//            bReport.loadBalances();
+//            bReport.calculateTotals(["currentAmount", "previousAmount", "openingAmount"]);
+//            bReport.formatValues(["currentAmount", "previousAmount", "openingAmount"]);
+           
+//            // Calculate totalRecettes and totalSoldes for current month
+//            var totalRecettes1 = Banana.SDecimal.add(
+//                Banana.Converter.toInternalNumberFormat(bReport.openingAmount), 
+//                Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("A"))
+//            );
+//            var totalRecettes2 = Banana.SDecimal.add(
+//                Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("B")), 
+//                Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("C"))
+//            );
+//            var totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+           
+//            var totalSoldes = Banana.SDecimal.subtract(
+//                totalRecettes, 
+//                Banana.Converter.toInternalNumberFormat(bReport.getObjectCurrentAmountFormatted("J"))
+//            );
+           
+//            // Store results
+//            monthlyResults.push({
+//                period: `${year}-${month.toString().padStart(2, '0')}`,
+//                startDate: formattedStartDate,
+//                endDate: formattedEndDate,
+//                openingAmount: bReport.openingAmount,
+//                totalRecettes: totalRecettes,
+//                totalSoldes: totalSoldes
+//            });
+           
+//            // Store current month's totalSoldes for next month's opening amount
+//            previousMonthSoldes = totalSoldes;
+//        }
+//    }
+   
+//    return monthlyResults;
+// }
 
 function settingsDialog() {
    var userParam = initUserParam();
