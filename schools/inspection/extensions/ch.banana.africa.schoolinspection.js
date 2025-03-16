@@ -915,12 +915,14 @@ function calculateOpeningAmount(banDoc, selectedStartDate, selectedEndDate) {
        Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("C"))
    );
    
-   const totalRecettes = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+   const totalRecettes3 = Banana.SDecimal.add(totalRecettes1, totalRecettes2);
+
+   const totalRecettes = Banana.SDecimal.add(totalRecettes3, Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("RDLSA")));
    
    // Calculate previous month's totalSoldes
    const totalSoldes = Banana.SDecimal.subtract(
        totalRecettes,
-       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("J"))
+       Banana.Converter.toInternalNumberFormat(prevReport.getObjectCurrentAmountFormatted("L"))
    );
    
    // Banana.console.log("Previous month's totalSoldes: " + totalSoldes);
