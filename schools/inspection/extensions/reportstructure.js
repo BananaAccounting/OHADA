@@ -152,7 +152,7 @@ function createReportStructureFinancialReportSecondaryPool() {
     reportStructure.push({"id":"B", "type":"total", "description":"Total RECETTES EVALUATION CERTIFICATIVE (RTNA à RSO)", "sum":"RTENA;RE01;RHS;RSO"});
     reportStructure.push({"id":"RDLS", "type":"group", "bclass":"4", "description":" Dons, Legs et Subventions de PTF"});
     reportStructure.push({"id":"RAUT", "type":"group", "bclass":"4", "description":" Autofinancement"});
-    reportStructure.push({"id":"RDLSA", "type":"total", "description":" RECETTES DONS,LEGS, SUBVENTIONS ET AUTOFINANCEMENT", "sum":"RDLS;RAUT"});
+    reportStructure.push({"id":"RDLSA", "type":"total", "description":"RECETTES DONS,LEGS, SUBVENTIONS ET AUTOFINANCEMENT", "sum":"RDLS;RAUT"});
     reportStructure.push({"id":"C", "type":"total", "description":"TOTAL GENERAL RECETTES (SI+A+B+RDLSA)", "sum":"SI;A;B;RDLSA"});
 
     reportStructure.push({"id":"DFF1", "type":"group", "bclass":"3", "description":"Fournitures de bureau"});
