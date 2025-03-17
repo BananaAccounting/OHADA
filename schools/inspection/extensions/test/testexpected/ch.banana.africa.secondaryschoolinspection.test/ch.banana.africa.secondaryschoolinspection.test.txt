@@ -26,7 +26,7 @@
 \begin{longtable}[l]{ l  l  l }
 \multicolumn{3}{l}{  }\\
 \multicolumn{3}{l}{  }\\
-\multicolumn{3}{l}{INSPECTION PRINCIPALE PROVINCIALE DE KIN- LUKUNGA }\\
+\multicolumn{3}{l}{POOL D'INSPECTION MONT NGAFULA 3 }\\
 \multicolumn{3}{l}{RAPPORT FINANCIER }\\
 \multicolumn{3}{l}{DU 01.01.2025 AU 31.12.2025 }\\
 \multicolumn{3}{l}{}\\
@@ -35,47 +35,69 @@
 \begin{longtable}[l]{ l  l  l }
 I  & RECETTES  & MONTANT \\
 SI  & Solde Initial  & 350'000.00 \\
-RFF1  & Frais Fonctionnement Appuis Parents  & 7'500'000.00 \\
-RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
-A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
+RFF1  & Frais d'appui à la supervision (Ecoles Primaires Privées)  & 7'500'000.00 \\
+RFF2  & Frais d'appui à la supervision (Ecoles Secondaires Publiques et Privées)  & 3'600'000.00 \\
+RFF3  & Frais Fonctionnement Trésor publique  & 0.00 \\
+A  & Total frais Fonctionnement (RFF1+RFF2+RFF3)  & 11'100'000.00 \\
 RTENA  & Participation Candidat TENASOSP  & 20'000'000.00 \\
-B  & Total TENASOSP  & 20'000'000.00 \\
-C  & TOTAL GENERAL RECETTES (SI+A+B)  & 31'450'000.00 \\
+RE01  & Perception des Fiche E01  & 0.00 \\
+RHS  & Participation candidat Hors Session  & 0.00 \\
+RSO  & Participation candidat Session ordinaire  & 0.00 \\
+B  & Total RECETTES EVALUATION CERTIFICATIVE (RTNA à RSO)  & 20'000'000.00 \\
+RDLS  &  Dons, Legs et Subventions de PTF  & 0.00 \\
+RAUT  &  Autofinancement  & 0.00 \\
+RDLSA  & RECETTES DONS,LEGS, SUBVENTIONS ET AUTOFINANCEMENT  & 0.00 \\
+C  & TOTAL GENERAL RECETTES (SI+A+B+RDLSA)  & 31'450'000.00 \\
 II  & DEPENSES  & \\
-DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
-DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
-DFF3  & FORFAIT INTERNET  & 140'000.00 \\
-DFF4  & COMMUNICATION/INFORMATION  & 0.00 \\
-DFF5  & FORMULE D'EXPLOITATION  & 670'000.00 \\
-DFF6  & FORMATION  & 0.00 \\
-DFF7  & GESTION VEHICULES  & 170'000.00 \\
-DFF8  & GESTION MATERIEL/INFORMATIQUE  & 0.00 \\
-DFF9  & RENOUVELEMENT MOBILIERS  & 6'500'000.00 \\
-DFF10  & INTERVENTIONS SOCIALES  & 0.00 \\
-DFF11  & MISSION DE SERVICE  & 0.00 \\
-DFF12  & RAFFRAICHISSEMENT BUREAUX  & 0.00 \\
-DFF13  & RENCONTRES LOCALES  & 0.00 \\
-DFF14  & DIVERS  & 0.00 \\
+DFF1  & Fournitures de bureau  & 70'000.00 \\
+DFF2  & Intrants informatiques  & 0.00 \\
+DFF3  & Forfait internet  & 140'000.00 \\
+DFF4  & Communication/Presse  & 0.00 \\
+DFF5  & Formule d'exploitation  & 670'000.00 \\
+DFF6  & Formation  & 0.00 \\
+DFF7  & Entretien et Réparation véhicule  & 170'000.00 \\
+DFF8  & Entretien et Réparation matériels et mobiliers  & 0.00 \\
+DFF9  & Acquisition matériels et mobiliers  & 6'500'000.00 \\
+DFF10  & Interventions sociales  & 0.00 \\
+DFF11  & Collation pour ordre de service  & 0.00 \\
+DFF12  & Cafetariat et rafraichissement   & 0.00 \\
+DFF13  & Rencontres locales  & 0.00 \\
+DFF14  & Constructions et aménagement des Bâtiments  & 0.00 \\
 D  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
-DTENA01  & Appui à la hiérarchie  & 4'000'000.00 \\
+DTENA01  & Appui à la hiérarchie pour la Coordination  & 4'000'000.00 \\
 DTENA02  & Versement à l'échelon national  & 2'320'000.00 \\
 DTENA03  & Versement à l'échelon provincial  & 2'640'000.00 \\
 DTENA04  & Appui à l'ENAFEP  & 1'600'000.00 \\
 DTENA05  & Rétrocession aux écoles  & 0.00 \\
 DTENA06  & Appui psycho-technique  & 400'000.00 \\
-DTENA07  & Distribution des colis dans les centres  & 3'200'000.00 \\
-DTENA08  & Recouvrement  & 480'000.00 \\
-DTENA09  & Centre d'administration  & 0.00 \\
-DTENA10  & Permanence  & 0.00 \\
-DTENA11  & Supervision  & 0.00 \\
-DTENA12  & Dépouillement et codification  & 0.00 \\
-DTENA13  & Planification de la correction  & 4'800'000.00 \\
-DTENA14  & Correction  & 0.00 \\
-E  & TOTAL DEPENSES TENASOSP = (Somme de DTENA01 à DTENA14)  & 19'440'000.00 \\
-F  & TOTAL GENERAL DEPENSES = (D+E)  & 26'990'000.00 \\
-G  & SOLDE FRAIS DE FONCTIONNEMENT = (RFF1+RFF2) - (Somme de DFF1 à DFF14)  & 3'550'000.00 \\
-H  & SOLDE TENASOSP = (RTENA) - (Somme de DTENA01 à DTENA14)  & 560'000.00 \\
-I  & SOLDE GENERAL = C-F  & 4'460'000.00 \\
+DTENA07  & Préparation technique  & 3'200'000.00 \\
+DTENA08  & Distribution des colis dans les centres  & 480'000.00 \\
+DTENA09  & Recouvrement  & 0.00 \\
+DTENA10  & Centre d'administration  & 0.00 \\
+DTENA11  & Permanence  & 0.00 \\
+DTENA12  & Supervision  & 0.00 \\
+DTENA13  & Dépouillement et codification  & 4'800'000.00 \\
+DTENA14  & Planification de la correction  & 0.00 \\
+DTENA15  & Correction proprement dite  & 0.00 \\
+DTENA16  & Transcription des résultats  & 0.00 \\
+DTENA17  & Délibération des résultats  & 0.00 \\
+DTENA18  & Profilage  & 0.00 \\
+DTENA19  & Publication des résultats  & 0.00 \\
+DTENA20  & Rédaction des brevets  & 0.00 \\
+E  & TOTAL DEPENSES TENASOSP = (Somme de DTENA01 à DTENA20)  & 19'440'000.00 \\
+DE01  & Versement Recettes des Fiche E01  & 0.00 \\
+DHS  & Versement Frais de participation Hors Session  & 0.00 \\
+DSO  & Versement Frais de participation Session ordinaire  & 0.00 \\
+F  & TOTAL DEPENSES EXEMEN D'ETAT = DE01+DHS+DSO)  & 0.00 \\
+DDLS  & Dépenses tirées sur dons, legs et subventions  & 0.00 \\
+DAUT  & Dépenses tirées sur Autofinancement  & 0.00 \\
+DDLSA  & DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN  & 0.00 \\
+G  & TOTAL GENERAL DEPENSES = (D+E+F)  & 26'990'000.00 \\
+H  & SOLDE FRAIS DE FONCTIONNEMENT = A-D  & 3'550'000.00 \\
+I  & SOLDE TENASOSP = RTENA-E  & 560'000.00 \\
+J  & SOLDES EXAMENS D'ETAT =(RE01+RHS+RSO) -(F)  & 0.00 \\
+K  & SOLDE DONS, LEGS, SUBV. ET AUTOFINANCEMENT = RDLSA-DDLSA  & 0.00 \\
+L  & SOLDE GENERAL = (C-G)  & 4'460'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}

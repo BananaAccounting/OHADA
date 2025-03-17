@@ -35,28 +35,37 @@
 \begin{longtable}[l]{ l  l  l }
 I  & RECETTES  & MONTANT \\
 SI  & Solde Initial  & 50'000.00 \\
-RFF1  & Frais Fonctionnement Appuis Parents  & 7'500'000.00 \\
-RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
-A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
-B  & TOTAL GENERAL RECETTES (SI+A)  & 11'150'000.00 \\
+RFF1  & Frais d'appui à la supervision (Ecoles Primaires Privées)  & 7'500'000.00 \\
+RFF2  & Frais d'appui à la supervision (Ecoles Secondaires Publiques et Privées)  & 3'600'000.00 \\
+RFF3  & Frais Fonctionnement Trésor publique  & 0.00 \\
+A  & Total frais Fonctionnement (RFF1+RFF2+RFF3)  & 11'100'000.00 \\
+RDLS  &  Dons, Legs et Subventions de PTF  & 0.00 \\
+RAUT  &  Autofinancement  & 0.00 \\
+RDLSA  & RECETTES DONS,LEGS, SUBVENTIONS ET AUTOFINANCEMENT  & 0.00 \\
+B  & TOTAL GENERAL RECETTES (SI+A+RDLSA)  & 11'150'000.00 \\
 II  & DEPENSES  & \\
-DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
-DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
-DFF3  & FORFAIT INTERNET  & 140'000.00 \\
-DFF4  & COMMUNICATION/INFORMATION  & 0.00 \\
-DFF5  & FORMULE D'EXPLOITATION  & 670'000.00 \\
-DFF6  & FORMATION  & 0.00 \\
-DFF7  & GESTION VEHICULES  & 170'000.00 \\
-DFF8  & GESTION MATERIEL/INFORMATIQUE  & 0.00 \\
-DFF9  & RENOUVELEMENT MOBILIERS  & 6'500'000.00 \\
-DFF10  & INTERVENTIONS SOCIALES  & 0.00 \\
-DFF11  & MISSION DE SERVICE  & 0.00 \\
-DFF12  & RAFFRAICHISSEMENT BUREAUX  & 0.00 \\
-DFF13  & RENCONTRES LOCALES  & 0.00 \\
-DFF14  & DIVERS  & 0.00 \\
+DFF1  & Fournitures de bureau  & 70'000.00 \\
+DFF2  & Intrants informatiques  & 0.00 \\
+DFF3  & Forfait internet  & 140'000.00 \\
+DFF4  & Communication/Presse  & 0.00 \\
+DFF5  & Formule d'exploitation  & 670'000.00 \\
+DFF6  & Formation  & 0.00 \\
+DFF7  & Entretien et Réparation véhicule  & 170'000.00 \\
+DFF8  & Entretien et Réparation matériels et mobiliers  & 0.00 \\
+DFF9  & Acquisition matériels et mobiliers  & 6'500'000.00 \\
+DFF10  & Interventions sociales  & 0.00 \\
+DFF11  & Collation pour ordre de service  & 0.00 \\
+DFF12  & Cafetariat et rafraichissement   & 0.00 \\
+DFF13  & Rencontres locales  & 0.00 \\
+DFF14  & Constructions et aménagement des Batiments  & 0.00 \\
 C  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
-D  & TOTAL GENERAL DEPENSES  & 7'550'000.00 \\
-E  & SOLDE GENERAL = B-D  & 3'600'000.00 \\
+DDLS  & Dépenses tirées sur dons, legs et subventions  & 0.00 \\
+DAUT  & Dépenses tirées sur Autofinancement  & 0.00 \\
+DDLSA  & DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN  & 0.00 \\
+D  & TOTAL GENERAL DEPENSES = (C+DDLSA)  & 7'550'000.00 \\
+SFF  & SOLDE FRAIS DE FONCTIONNEMENT = A-C  & 3'550'000.00 \\
+SRDLSA  & SOLDE DONS, LEGES ET AUTOFINACEMENT = RDLSA-DDLSA  & 0.00 \\
+S  & SOLDE GENERAL = B-D  & 3'600'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}
