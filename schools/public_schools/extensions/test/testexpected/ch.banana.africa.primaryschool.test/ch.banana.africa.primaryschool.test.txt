@@ -26,8 +26,8 @@
 \begin{longtable}[l]{ l  l  l }
 \multicolumn{3}{l}{  }\\
 \multicolumn{3}{l}{INSPECTION PRINCIPALE PROVINCIALE DE KIN- LUKUNGA }\\
-\multicolumn{3}{l}{SOUS-DIVISION DE MONT-AMBA }\\
-\multicolumn{3}{l}{DENOMINATION ETABLISSEMENT : LES PETITS CHAMPIONS }\\
+\multicolumn{3}{l}{SOUS-DIVISION DE  }\\
+\multicolumn{3}{l}{DENOMINATION ETABLISSEMENT :  }\\
 \multicolumn{3}{l}{  }\\
 \multicolumn{3}{l}{  }\\
 \multicolumn{3}{l}{RAPPORT FINANCIER }\\
@@ -38,17 +38,25 @@
 \begin{longtable}[l]{ l  l  l }
 I  & RECETTES  & MONTANT \\
 SI  & Solde Initial  & 5'400.00 \\
-RFF  & Frais Fonctionnement Trésor publiques  & 197'000.00 \\
-R  & TOTAL RECETTES =  SI + RFF  & 202'400.00 \\
+RFF  & Frais Fonctionnement Trésor publique  & 197'000.00 \\
+RDLS  & Dons, Legs et Subventions de PTF  & 0.00 \\
+RAUT  & Autofinancement  & 0.00 \\
+R  & TOTAL RECETTES  & 202'400.00 \\
 II  & DEPENSES  & \\
-DFF01  & EQUIPEMENTS DIVERS  & 3'000.00 \\
-DFF02  & ENTRETIENS ET REPARATIONS  & 20'000.00 \\
-DFF03  & INTERVENTIONS PONCTUELE  & 0.00 \\
-DFF04  & FOURNITURES BUREAUX  & 130'000.00 \\
-DFF05  & TROUSSE MEDICALE  & 0.00 \\
-DFF06  & HYGIENE ET SALUBRITE  & 15'000.00 \\
-D  & TOTAL DEPENSES FONCTIONNEMENT  = Somme de DFF1 à DFF6  & 168'000.00 \\
-S  & TOTAL SOLDES = R - D  & 34'400.00 \\
+DFF01  & Equipements Divers  & 3'000.00 \\
+DFF02  & Entretien et Réparation  & 20'000.00 \\
+DFF03  & Interventions Ponctuelles  & 0.00 \\
+DFF04  & Fournitures du Bureau  & 130'000.00 \\
+DFF05  & Trousse Médicale  & 0.00 \\
+DFF06  & Hygiène et Salubrité  & 15'000.00 \\
+DFF  & DEPENSES FONCTIONNEMENT  = Somme de DFF1 à DFF6  & 168'000.00 \\
+DDLS  & Dépenses tirées sur dons, legs et subventions  & 0.00 \\
+DAUT  & Dépenses tirées sur Autofinancement  & 0.00 \\
+DDLSA  & DEPENSES SUR DONS, LEGS ET SUBVENTIONS ET AUTOFIN  & 0.00 \\
+D  & TOTAL DEPENSES = DFF+DDLSA  & 168'000.00 \\
+SFF  & SOLDES = RFF-DFF  & 29'000.00 \\
+SDLSA  & SOLDE DONS, LEGS, SUBVENTIONS ET AUTOFINACEMENT = (RDLS+RAUT)-(DDLSA)  & 0.00 \\
+S  & SOLDE GENERAL = R-D  & 34'400.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}
