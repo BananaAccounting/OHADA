@@ -35,81 +35,101 @@
 \begin{longtable}[l]{ l  l  l }
 I  & RECETTES  & MONTANT \\
 SI  & Solde Initial  & 25'000'000.00 \\
-RFF1  & Frais Fonctionnement Appuis Parents  & 7'500'000.00 \\
-RFF2  & Frais Fonctionnement Trésor public  & 3'600'000.00 \\
-A  & Total frais Fonctionnement (RFF1+RFF2)  & 11'100'000.00 \\
+RFF1  & Frais d'appui à la supervision (Ecoles Primaires Privées)  & 7'500'000.00 \\
+RFF2  & Frais d'appui à la supervision (Ecoles Secondaires Publiques et Privées)  & 3'600'000.00 \\
+RFF3  & Frais Fonctionnement Trésor publique  & 0.00 \\
+A  & Total frais Fonctionnement (RFF1+RFF2+RFF3)  & 11'100'000.00 \\
 REX1  & Participation Préliminaire Autodidactes  & 5'650'000.00 \\
-REX2  & Vente des formules Examen d'Etat  & 31'500'000.00 \\
+REX2  & Vente des formules Examen d'Etat E01  & 34'500'000.00 \\
 REX3  & Participation candidats Hors session  & 120'000'000.00 \\
-REX4  & Participation candidats  session  & 0.00 \\
-B  & Total Frais Examens d'Etat (Somme RX1 à RX4)  & 157'150'000.00 \\
-RTENASOS  & Versement Comité local TENASOSP  & 0.00 \\
-C  & Versement Comité local TENASOSP  & 0.00 \\
-D  & TOTAL GENERAL RECETTES (SI+A+B+C)  & 193'250'000.00 \\
+REX4  & Participation candidats session ordinaire  & 0.00 \\
+B  & Total Recette Examens d'Etat (Somme RX1 à RX4)  & 160'150'000.00 \\
+RTENA01  & Quotité TENASOSP Province  & 0.00 \\
+RTENA02  & Versement reçu pour la hiérarchie pour la Coordination  & 0.00 \\
+RTENA03  & Versement reçu pour l'échelon national  & 0.00 \\
+RTENA04  & Versement reçu pour l'échelon provincial  & 0.00 \\
+RTENA05  & Appui reçu à l'ENAFEP  & 0.00 \\
+C  & TOTAL TENASOSP  & 0.00 \\
+RDLS  & Dons, Legs et Subvention  & 0.00 \\
+RAUTO  & Autofinancement  & 0.00 \\
+RDLSA  & TOTAL DONS LEGS ET SUBVENTIONS = RDLS+RAUTO  & 0.00 \\
+D  & TOTAL GENERAL RECETTES (SI+A+B+C+RDLSA)  & 196'250'000.00 \\
 II  & DEPENSES  & \\
-DFF1  & FOURNITURES DES BUREAUX  & 70'000.00 \\
-DFF2  & INTRANTS INFORMATIQUES  & 0.00 \\
-DFF3  & FORFAIT INTERNET  & 140'000.00 \\
-DFF4  & COMMUNICATION/INFORMATION  & 0.00 \\
-DFF5  & FORMULE D'EXPLOITATION  & 670'000.00 \\
-DFF6  & FORMATION  & 0.00 \\
-DFF7  & GESTION VEHICULES  & 170'000.00 \\
-DFF8  & GESTION MATERIEL/INFORMATIQUE  & 0.00 \\
-DFF9  & RENOUVELEMENT MOBILIERS  & 6'500'000.00 \\
-DFF10  & INTERVENTIONS SOCIALES  & 0.00 \\
-DFF11  & MISSION DE SERVICE  & 0.00 \\
-DFF12  & RAFFRAICHISSEMENT BUREAUX  & 0.00 \\
-DFF13  & RENCONTRES LOCALES  & 0.00 \\
-DFF14  & IMPREVUS  & 0.00 \\
+DFF1  & Fournitures de bureau  & 70'000.00 \\
+DFF2  & Intrants informatiques  & 0.00 \\
+DFF3  & Forfait internet  & 140'000.00 \\
+DFF4  & Communication/Presse  & 0.00 \\
+DFF5  & Formule d'exploitation  & 670'000.00 \\
+DFF6  & Formation  & 0.00 \\
+DFF7  & Entretien et Réparation véhicule  & 170'000.00 \\
+DFF8  & Entretien et Réparation matériels et mobiliers  & 0.00 \\
+DFF9  & Acquisition matériels et mobiliers  & 6'500'000.00 \\
+DFF10  & Interventions sociales  & 0.00 \\
+DFF11  & Collation pour ordre de service  & 0.00 \\
+DFF12  & Cafetariat et rafraichissement   & 0.00 \\
+DFF13  & Rencontres locales  & 0.00 \\
+DFF14  & Constructions et aménagement des Bâtiments  & 0.00 \\
 E  & TOTAL DEPENSES F F (Somme de DFF1 à DFF14)  & 7'550'000.00 \\
-DEX11  & RETRAIT ET CONDITIONNEMENT  & 1'500'000.00 \\
-DEX12  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 500'000.00 \\
-DEX13  & DISTRIBUTION DES COLIS  & 0.00 \\
-DEX14  & PASSATION  & 1'800'000.00 \\
-DEX15  & CORRECTION ET FINALISATION  & 1'200'000.00 \\
-DEX16  & RAPPORT FINAL  & 200'000.00 \\
-DEX17  & FOURNITURES  & 0.00 \\
-DEX18  & IMPREVUS  & 0.00 \\
-F  & TOTAL DEPENSES Préliminaire (Somme de DEX11 à DEX18)  & 5'200'000.00 \\
-DEX21  & RETRAIT ET CONDITIONNEMENT  & 15'000'000.00 \\
-DEX22  & DISTRIBUTION  ET DEPÔT  & 0.00 \\
-DEX23  & CONTRÔLE ET TRAITEMENT  & 8'700'000.00 \\
-DEX24  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 3'200'000.00 \\
-DEX25  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 7'000'000.00 \\
-DEX26  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 0.00 \\
-DEX27  & SUPERVISION  PROVINCIALE AUTRE  & 0.00 \\
-DEX28  & IMPREVUS  & 0.00 \\
-G  & TOTAL DEPENSES FORMULES EXEMAN D'ETAT (Somme de DEX21 à DEX29)  & 33'900'000.00 \\
-DEX310  & RETRAIT ET CONDITIONNEMENT  & 16'000'000.00 \\
-DEX311  & DISTRIBUTION DES COLIS  & 12'500'000.00 \\
-DEX312  & PASSATION  & 36'000'000.00 \\
-DEX313  & CORRECTION ET FINALISATION  & 24'000'000.00 \\
-DEX314  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
-DEX315  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 3'000'000.00 \\
-DEX316  & RAPPORT FINAL  & 700'000.00 \\
-DEX317  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 12'000'000.00 \\
-DEX318  & SUPERVISION DE LA PROVINCIALE AUTRE  & 0.00 \\
-DEX319  & IMPREVUS  & 0.00 \\
-H  & TOTAL DEPENSES EXEMAN D'ETAT HORS SESSION (Somme de DEX310 à DEX319)  & 104'200'000.00 \\
-DEX410  & RETRAIT ET CONDITIONNEMENT  & 0.00 \\
-DEX411  & DISTRIBUTION DES COLIS  & 0.00 \\
-DEX412  & PASSATION  & 0.00 \\
-DEX413  & CORRECTION ET FINALISATION  & 0.00 \\
-DEX414  & RENCONTRE DE SENSIBILISATION ET SUIVI DU CP  & 0.00 \\
-DEX415  & INTRANTS, TRAVAUX ET MAINTENANCE INFORMATIQUE  & 0.00 \\
-DEX416  & APPUI LOGISTIQUE A LA HIERARCHIE  & 0.00 \\
-DEX417  & RAPPORT FINAL SESSION  & 0.00 \\
-DEX418  & SUPERVISION DE LA PROVINCE ADMINISTRATIVE  & 0.00 \\
-DEX419  & SUPERVISION  PROVINCIALE AUTRE  & 0.00 \\
-DEX420  & IMPREVUS  & 0.00 \\
-I  & TOTAL DEPENSES EXEMAN D'ETAT SESSION ORDINAIRE (Somme de DEX410 à DEX421)  & 0.00 \\
-J  & TOTAL GENERAL DEPENSES = (E+F+G+H+I)  & 150'850'000.00 \\
-K  & SOLDE FRAIS DE FONCTIONNEMENT = (RFF1+RFF2) - (Somme de DFF1 à DFF14)  & 3'550'000.00 \\
-L  & SOLDE PRELIMINAIRE EXETAT = (REX1) - (Somme de DEX11 à DEX18)  & 450'000.00 \\
-M  & SOLDES FORMULE EXETAT = (REX2) - (Somme de DEX21 à DEX29)  & -2'400'000.00 \\
-N  & SOLDE HORS SESSION EXETAT = (REX3 - (Somme de DEX311 à DEX320)  & 15'800'000.00 \\
-O  & SOLDE SESSION EXETAT = (REX4 - (Somme de DEX410 à DEX421)  & 0.00 \\
-P  & SOLDE GENERAL = (D-J)  & 42'400'000.00 \\
+DEX11  & Retrait et conditionnement préliminaire  & 1'500'000.00 \\
+DEX12  & Rencontre de sensibilisation et suivi du comité provincial  & 500'000.00 \\
+DEX13  & Distribution des colis  & 0.00 \\
+DEX14  & Passation   & 1'800'000.00 \\
+DEX15  & Correction et finalisation  & 1'200'000.00 \\
+DEX16  & Rapport final  & 200'000.00 \\
+DEX17  & Fournitures  & 0.00 \\
+F  & TOTAL DEPENSES Préliminaire (Somme de DEX11 à DEX17)  & 5'200'000.00 \\
+DEX21  & Retrait et conditionnement  & 15'000'000.00 \\
+DEX22  & Distribution et dépôt  & 0.00 \\
+DEX23  & Contrôle et traitement  & 8'700'000.00 \\
+DEX24  & Rencontre de sensibilisation et suivi du comité Provincial  & 3'200'000.00 \\
+DEX25  & Intrants, travaux et maintenance informatique  & 7'000'000.00 \\
+DEX26  & Supervision de la province administrative  & 0.00 \\
+DEX27  & Supervision provinciale autre  & 0.00 \\
+G  & TOTAL DEPENSES FORMULES EXEMAN D'ETAT (Somme de DEX21 à DEX27)  & 33'900'000.00 \\
+DEX310  & Retrait et conditionnement  & 16'000'000.00 \\
+DEX311  & Distribution des colis  & 12'500'000.00 \\
+DEX312  & Passation  & 36'000'000.00 \\
+DEX313  & Correction et finalisation  & 24'000'000.00 \\
+DEX314  & Rencontre de sensibilisation et suivi du cp  & 0.00 \\
+DEX315  & Intrants, travaux et maintenance informatique  & 3'000'000.00 \\
+DEX316  & Rapport final  & 700'000.00 \\
+DEX317  & Supervision de la province administrative  & 12'000'000.00 \\
+DEX318  & Supervision provinciale autre  & 0.00 \\
+H  & TOTAL DEPENSES EXEMAN D'ETAT HORS SESSION (Somme de DEX310 à DEX318)  & 104'200'000.00 \\
+DEX410  & Retrait et conditionnement  & 0.00 \\
+DEX411  & Distribution des colis  & 0.00 \\
+DEX412  & Passation  & 0.00 \\
+DEX413  & Traitement et finalisation des documents et rapports  & 0.00 \\
+DEX414  & Rencontre de sensibilisation et suivi du CP  & 0.00 \\
+DEX415  & Intrants, travaux et maintenance informatique  & 0.00 \\
+DEX416  & Appui logistique a d'autres services  & 0.00 \\
+DEX417  & Rapport final session  & 0.00 \\
+DEX418  & Supervision de la province administrative  & 0.00 \\
+DEX419  & Supervision provinciale autre  & 0.00 \\
+DEX420  & Imprévus et Divers  & 0.00 \\
+I  & TOTAL DEPENSES EXEMAN D'ETAT SESSION ORDINAIRE (Somme de DEX410 à DEX420)  & 0.00 \\
+J  & TOTAL DEPENSES GENERAL EXAMEN D'ETAT = (F+G+H+I)  & 143'300'000.00 \\
+DTENA01  & Sensibilisation de la communauté éducationnelle sur TENASOSP  & 0.00 \\
+DTENA02  & Appui Psychopédagogiques aux Gestionnaires  & 0.00 \\
+DTENA03  & Commission Provinciale d'Etudes et conception TENASOSP  & 0.00 \\
+DTENA04  & Lancement de la Passation  & 0.00 \\
+DTENA05  & Montage de Différentes batteries de Test   & 0.00 \\
+DTENA06  & Gestion de la caisse  & 0.00 \\
+DTENA07  & Evaluation des acquis scolaires  & 0.00 \\
+DTENA08  & Supervision administratif et technique  & 0.00 \\
+DTENA09  & Commission Provinciale d'orientation  & 0.00 \\
+DTENA10  & Appui ENAFEP  & 0.00 \\
+DTENA11  & Versement Echelon National  & 0.00 \\
+K  & TOTAL DEPENSES TENASOSP = Somme de DTENA 01 à DTENA 11  & 0.00 \\
+DDLS  & Dépenses tirées sur dons, legs et subventions  & 0.00 \\
+DAUT  & Dépenses tirées sur Autofinancement  & 0.00 \\
+DDLSA  & TOTAL DEPENSES DONS, LEGS ET SUBVENTIONS ET AUTOFINANCEMENT = DDLS+DAUT  & 0.00 \\
+L  & TOTAL GENERAL DEPENSES = (E+F+G+H+I)  & 150'850'000.00 \\
+M  & SOLDE FRAIS DE FONCTIONNEMENT = A-E  & 3'550'000.00 \\
+N  & SOLDE EXAMENS D'ETAT = B-J  & 16'850'000.00 \\
+O  & SOLDE TENASOSP = C-K  & 0.00 \\
+P  & SOLDE DONS, LEGS, SUBVENTION ET AUTOFINANCEMENT = RDLSA -DDLSA  & 0.00 \\
+Q  & SOLDE GENERAL = (D-L)  & 45'400'000.00 \\
 \end{longtable}
 \end{reportvalue}
 \keyvalue{Result}{Passed}
