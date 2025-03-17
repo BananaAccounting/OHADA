@@ -554,8 +554,6 @@ function printfinancialreport(banDoc, userParam, bReport, stylesheet) {
 function calculateOpeningAmount(banDoc, selectedStartDate, selectedEndDate) {
    // Convert dates to Date objects
    const startDate = Banana.Converter.toDate(selectedStartDate);
-   Banana.console.log("Selected start date: " + selectedStartDate);
-   Banana.console.log("Selected start date: " + startDate);
    // const firstDayOfYear = new Date(startDate.getFullYear(), 0, 1);
    
    // If January, get from Accounts table
