@@ -99,7 +99,7 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"CA", "type":"group", "note":"", "bclass":"2", "description":"Capital"});
     reportStructure.push({"id":"CJT", "type":"group", "note":"", "bclass":"2", "description":"Résultat net (bénéfice + ou perte -)"});
     reportStructure.push({"id":"CJ", "type":"group", "note":"", "bclass":"1", "description":"Résultat net (bénéfice + ou perte -)", 
-                            "sum":"CJT;TA;TB;TC;TD;TE;TF;TG;TH;TI;TJ;TL;TM;TN;TO;-RA;-RB;-RC;-RD;-RE;-RF;-RG;-RH;-RI;-RJ;-RK;-RL;-RM;-RN;-RO;-RP;-RQ;-RS"});
+                            "sum":"CJT;TA;TB;TC;TD;TE;TF;TG;TH;TJ;TL;TK;-RA;-RB;-RC;-RD;-RE;-RF;-RG;-RH;-RI;-RJ;-RK;-RL"});
     reportStructure.push({"id":"CP", "type":"total", "note":"", "description":"TOTAL CAPITAUX PROPRES ET RESSOURCES = CA + CJ", "sum":"CA;CJ"});
     reportStructure.push({"id":"DA", "type":"group", "note":"", "bclass":"2", "description":"Emprunts et dettes financières diverses"});
     reportStructure.push({"id":"DD", "type":"total", "note":"", "description":"TOTAL DETTES FINANCIERES", "sum":"DA"});
