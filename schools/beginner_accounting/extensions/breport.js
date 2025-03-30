@@ -434,19 +434,19 @@ var BReport = class JsClass {
          }
       }
 
-      var groupsModB = createReportStructureProfitLoss();
-      for (var i in groupsModB) {
-         if (groupsModB[i]["id"] && !groupsModB[i]["id"].startsWith('d')) {
-            columnList.add(groupsModB[i]["id"]);
-         }
-      }
+      // var groupsModB = createReportStructureProfitLoss();
+      // for (var i in groupsModB) {
+      //    if (groupsModB[i]["id"] && !groupsModB[i]["id"].startsWith('d')) {
+      //       columnList.add(groupsModB[i]["id"]);
+      //    }
+      // }
 
-      var groupsModD = createReportStructureCashFlow();
-      for (var i in groupsModD) {
-         if (groupsModD[i]["id"] && !groupsModD[i]["id"].startsWith('d')) {
-            columnList.add(groupsModD[i]["id"]);
-         }
-      }
+      // var groupsModD = createReportStructureCashFlow();
+      // for (var i in groupsModD) {
+      //    if (groupsModD[i]["id"] && !groupsModD[i]["id"].startsWith('d')) {
+      //       columnList.add(groupsModD[i]["id"]);
+      //    }
+      // }
 
       //Convert Set object to array
       for (var i of columnList) {
@@ -568,6 +568,16 @@ var BReport = class JsClass {
       for (var i = 0; i < this.reportStructure.length; i++) {
          if (this.reportStructure[i]["id"] === searchId) {
             return this.reportStructure[i]["description"];
+         }
+      }
+      this.banDoc.addMessage("Couldn't find object with id: " + id);
+   }
+
+   getObjectId(id) {
+      var searchId = id.trim();
+      for (var i = 0; i < this.reportStructure.length; i++) {
+         if (this.reportStructure[i]["id"] === searchId) {
+            return this.reportStructure[i]["id"];
          }
       }
       this.banDoc.addMessage("Couldn't find object with id: " + id);

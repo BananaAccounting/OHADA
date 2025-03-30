@@ -5,8 +5,8 @@
         <file>breport.js</file>
         <file>errors.js</file>
         <file>ch.banana.africa.balancesheet.js</file>
-        <file>balancesheet.css</file>
+        <file>balancesheetstyle.css</file>
         <file>ch.banana.africa.profitloss.js</file>
-        <file>profitloss.css</file>
+        <file>profitlossstatement.css</file>
     </qresource>
 </RCC>
