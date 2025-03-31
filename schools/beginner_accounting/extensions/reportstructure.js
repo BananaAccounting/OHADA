@@ -143,9 +143,9 @@ function createReportStructureProfitLoss() {
     reportStructure.push({"id":"TJ", "type":"group", "note":"", "bclass":"4", "description":"Reprises d'amortissements"});
     reportStructure.push({"id":"TK", "type":"group", "note":"", "bclass":"4", "description":"Revenus financiers et assimilés"});
     
-    reportStructure.push({"id":"XH", "type":"total", "note":"", "description":"RESULTAT HORS ACTIVITES ORDINAIRES (somme TN à RP)", "sum":"TN;TO;-RO;-RP"});
-    
-    reportStructure.push({"id":"XI", "type":"total", "note":"", "description":"RESULTAT NET (XG+XH+RQ+RS)", "sum":"XG;XH;-RQ;-RS"});
+    reportStructure.push({"id":"TOTAL PRODUITS", "type":"total", "note":"", "description":"TOTAL", "sum":"TA;TB;TC;TD;TE;TF;TG;TH;TJ;TK"});
+
+    reportStructure.push({"id":"TOTAL CHARGES", "type":"total", "note":"", "description":"TOTAL", "sum":"RA;RB;RC;RD;RE;RF;RG;RH;RI;RJ;RK;RL;RM"});
     
     return reportStructure;
 
