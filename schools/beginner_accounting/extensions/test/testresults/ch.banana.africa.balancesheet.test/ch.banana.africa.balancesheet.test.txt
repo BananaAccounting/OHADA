@@ -1,0 +1,65 @@
+%%info_test_name{ch.banana.africa.balancesheet.test}
+\documentclass{report}
+\usepackage{longtable}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[margin=1cm]{geometry}
+\begin{document}
+\newenvironment{tablevalue}[2]{\textbf{Table: #1}\begin{longtable}[l]{#2}}{\end{longtable}}
+\newenvironment{reportvalue}[1]{\textbf{Report: #1}\\}{}
+\lstnewenvironment{jsonvalue}[1]{\textbf{Json: #1}\lstset{language=Java}}{}
+\lstnewenvironment{xmlvalue}[1]{\textbf{Xml: #1}\lstset{language=Xml}}{}
+\newcommand{\info}[2]{\textit{#1: #2}\\}
+\newcommand{\fatalerror}[1]{\textbf{\textcolor[rgb]{1,0,0}{Fatal error: #1}}\\}
+\newcommand{\keyvalue}[2]{\textbf{Keyvalue: #1} #2\\}
+\newcommand{\textvalue}[1]{#1\\}
+\newcommand{\excltest}[1]{\\Excluded from compare: #1}
+\newcommand{\lognewpage}{\newpage}
+\newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
+\newenvironment{test}[1]{\section*{Test case: #1}}{}
+%Begin test data
+%%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/schools/beginner_accounting/extensions/test/ch.banana.africa.balancesheet.test.js}
+%
+\begin{testcase}{BalanceSheetReport}
+\begin{test}{testBananaExtension}
+\begin{reportvalue}{Test 'Bilan'}
+\begin{longtable}[l]{ l  l  l }
+ & \multicolumn{2}{l}{Exercice clos le 31.12.2025 }\\
+ -  -   & \multicolumn{2}{l}{Durée (en mois) 12 }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{  }\\
+\multicolumn{3}{l}{BILAN ACTIF AU 31 DÉCEMBRE 2025 }\\
+\end{longtable}
+\begin{longtable}[l]{ l  l  l  l  l  l  l }
+\multicolumn{7}{l}{  }\\
+REF  & ACTIF  & Montant  & REF  & PASSIF  & Montant \\
+AF  & Brevets, licences et logiciels  & 56'000.00  & CA  & Capital  & 3'400'000.00 \\
+AG  & Fonds commercial  & 24'000.00  & CJ  & Résultat net (bénéfice + ou perte -)  & 907'000.00 \\
+AD  & IMMOBILISATIONS INCORPORELLES  & 80'000.00  & CP  & TOTAL CAPITAUX PROPRES ET RESSOURCES = CA + CJ  & 4'307'000.00 \\
+AJ  & Terrains  & 540'000.00  & DA  & Emprunts et dettes financières diverses  & 580'500.00 \\
+AK  & Bâtiments  & 2'000'000.00  & DD  & TOTAL DETTES FINANCIERES  & 580'500.00 \\
+AM  & Matériel et mobiliers  & 650'000.00  &  &  & \\
+AN  & Matériel de transport  & 800'000.00  &  &  & \\
+AI  & IMMOBILISATIONS CORPORELLES  & 3'990'000.00  &  &  & \\
+AZ  & TOTAL ACTIF IMMOBILISE  & 4'070'000.00  & DF  & TOTAL RESSOURCES STABLES = CP + DD  & 4'887'500.00 \\
+BB1  & Marchandises  & 480'000.00  & DJ  & Fournisseurs d'exploitation  & 800'000.00 \\
+BB2  & Matières premières  & 150'000.00  & DK1  & Etat  & 80'000.00 \\
+BB3  & Emballages  & 0.00  & DK2  & Organismes sociaux  & 35'000.00 \\
+BB  & STOCKS  & 630'000.00  & DM  & Créditeurs divers  & 0.00 \\
+BI  & Clients  & 0.00  &  &  & \\
+BJ  & Débiteurs divers  & 25'000.00  &  &  & \\
+BG  & CREANCES  & 25'000.00  &  &  & \\
+BK  & ACTIF CIRCULANT  & 655'000.00  & DP  & TOTAL PASSIF CIRCULANT  & 915'000.00 \\
+BS1  & Banque  & 853'500.00  & DR  & Banques, crédits de trésorerie  & 0.00 \\
+BS2  & Caisse  & 224'000.00  & DQ  & Banques, crédits d'escompte  & 0.00 \\
+BT  & TOTAL TRESORERIE ACTIF= BS1+BS2  & 1'077'500.00  & DT  & TOTAL TRESORERIE PASSIF  & 0.00 \\
+BZ  & TOTAL GENERAL  & 5'802'500.00  & DZ  & TOTAL GENERAL  & 5'802'500.00 \\
+\end{longtable}
+  \\
+  \\
+-  \#page-nr  - \\
+\end{reportvalue}
+\keyvalue{Result}{Passed}
+\end{test}
+\end{testcase}
+\end{document}
