@@ -1,0 +1,279 @@
+
+/* CSS update: 2025-03-26  */
+
+td {
+    vertical-align: top;
+  }
+  
+  @page {
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+  }
+  
+  body {
+    font-family: Helvetica;
+  }
+  
+  table {
+    font-size: 9px;
+    width: 100%;
+  }
+
+  table-balancesheet {
+    font-size: 9px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }
+
+  /* table-passive-balancesheet {
+    font-size: 9px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  } */
+  
+  /*table.table td {
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+  }*/
+  
+  .column1 {
+    width: 73%;
+  }
+  
+  .column2 {
+    width: 13%;
+  }
+  
+  .column3 {
+    width: 13%;
+  }
+
+  .column-balancesheet1 {
+    width: 4%;
+  }
+
+  .column-balancesheet2 {
+    width: 31%;
+  }
+
+  .column-balancesheet3 {
+    width: 15%;
+  }
+
+  .column-balancesheet4 {
+    width: 4%;
+  }
+
+  .column-balancesheet5 {
+    width: 31%;
+  }
+
+  .column-balancesheet6 {
+    width: 15%;
+  }
+  
+  .address-header {
+    font-size: 8px;
+  }
+
+  .bold {
+      font-weight: bold;
+  }
+  
+  .heading2 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .table-header {
+    text-align: right;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+  }
+  
+  .assets-title {
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .liabilties-title {
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .description-groups-titles {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .amount-groups-titles {
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .description-groups {
+    text-align: left;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
+
+  .bottom-line {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+  }
+  
+  .amount-groups {
+    text-align: right;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
+  
+  .description-groups-totals {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .amount-groups-totals {
+    text-align: right;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
+  
+  .description-totals {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .amount-totals {
+    text-align: right;
+    border-top-style: solid;
+    border-top-color: black;
+    border-top-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: thin;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: thin;
+    padding-top: 5px;
+    padding-bottom: 3px;
+  }
+  
+  .align-right {
+    text-align: right;
+  }
+  
+  .align-left {
+    text-align: left;
+  }
+  
+  .align-center {
+    text-align: center;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .footer {
+    font-family: Helvetica;
+    font-size: 8px;
+    text-align: center;
+  }
+  
+  .lvl0 {
+    padding-left: 0px;
+  }
+  
+  .lvl1 {
+    padding-left: 10px;
+  }
+  
+  .lvl2 {
+    padding-left: 20px;
+  }
+  
+  .lvl3 {
+    padding-left: 30px;
+  }
+  
+  .lvl4 {
+    padding-left: 40px;
+  }
+  
