@@ -19,7 +19,7 @@
 // @description = 2. Profit & Loss Dev Statement (OHADA) [BETA]
 // @description.fr = 2. Compte de résultat (OHADA) [BETA]
 // @task = app.command
-// @doctype = 100.100;100.110;130.100
+// @doctype = 100.100;100.110;100.120;100.130;130.100
 // @docproperties = 
 // @outputformat = none
 // @inputdatasource = none

@@ -19,7 +19,7 @@
 // @description = 1. Balance Sheet Dev Report  (OHADA) [BETA]
 // @description.fr = 1. Bilan (OHADA) [BETA]
 // @task = app.command
-// @doctype = 100.100;100.110;130.100
+// @doctype = 100.100;100.110;100.120;100.130;130.100
 // @docproperties = 
 // @outputformat = none
 // @inputdatasource = none
