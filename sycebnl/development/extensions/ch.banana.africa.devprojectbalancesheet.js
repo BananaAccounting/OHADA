@@ -220,8 +220,8 @@ function printBalanceSheet(banDoc, userParam, bReport, stylesheet) {
     printRow(userParam, bReport, table, "BD", "description-groups", "amount-groups");
     /* BE */
     printRow(userParam, bReport, table, "BE", "description-groups", "amount-groups");
-    /* BT */
-    printRow(userParam, bReport, table, "BT", "description-groups", "amount-groups-totals");
+    /* BF */
+    printRow(userParam, bReport, table, "BF", "description-groups", "amount-groups-totals");
     /* BV */
     printRow(userParam, bReport, table, "BV", "description-groups", "amount-groups");
     /* BW */
