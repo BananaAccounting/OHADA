@@ -46,12 +46,12 @@ function createReportStructureBalanceSheet() {
     reportStructure.push({"id":"BC", "type":"group", "note":"5", "bclass":"1", "description":"Fournisseurs débiteurs"});
     reportStructure.push({"id":"BD", "type":"group", "note":"5", "bclass":"1", "description":"Clients-usagers"});
     reportStructure.push({"id":"BE", "type":"group", "note":"5", "bclass":"1", "description":"Autres créances"});
-    reportStructure.push({"id":"BT", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BA;BB;BC;BD;BE"});
+    reportStructure.push({"id":"BF", "type":"total", "note":"", "description":"TOTAL ACTIF CIRCULANT", "sum":"BA;BB;BC;BD;BE"});
     reportStructure.push({"id":"BV", "type":"group", "note":"6", "bclass":"1", "description":"Valeurs à encaisser"});
     reportStructure.push({"id":"BW", "type":"group", "note":"6", "bclass":"1", "description":"Banques, établissements financiers, caisse et assimiles"});
     reportStructure.push({"id":"BX", "type":"total", "note":"", "description":"TOTAL TRESORERIE ACTIF", "sum":"BV;BW"});
     reportStructure.push({"id":"BY", "type":"group", "note":"7", "bclass":"1", "description":"Ecart de conversion-Actif "});
-    reportStructure.push({"id":"BZ", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"AZ;BT;BX;BY"});
+    reportStructure.push({"id":"BZ", "type":"total", "note":"", "description":"TOTAL GENERAL", "sum":"AZ;BF;BX;BY"});
     
     // To get CC, we sum up products and subtract by charges
     reportStructure.push({"id":"TA", "type":"group", "note":"14", "bclass":"4", "description":"Achats de biens, marchandises et matières premières et Fournitures liées"});
@@ -75,8 +75,8 @@ function createReportStructureBalanceSheet() {
     /* PASSIVE */
     reportStructure.push({"id":"CA", "type":"group", "note":"8", "bclass":"2", "description":"Fonds affectés aux investissements"});
     reportStructure.push({"id":"CB", "type":"group", "note":"", "bclass":"2", "description":"Report à nouveau (+ou-)"});
-    reportStructure.push({"id":"CCT", "type":"group", "note":"", "bclass":"2", "description":"Solde des opérations de l'exercice"});
-    reportStructure.push({"id":"CC", "type":"group", "note":"", "description":"Solde des opérations de l'exercice", "sum":"CCT;TA;TB;TC;TD;TG;TH;TI;TJ;TK;TL;TM;TN;-RA;-RB;-RC;-RD;-RE"});
+    reportStructure.push({"id":"CCT", "type":"group", "note":"", "bclass":"2", "description":"Solde des opérations de l'exercice (+ou-)"});
+    reportStructure.push({"id":"CC", "type":"group", "note":"", "description":"Solde des opérations de l'exercice (+ou-)", "sum":"CCT;TA;TB;TC;TD;TG;TH;TI;TJ;TK;TL;TM;TN;-RA;-RB;-RC;-RD;-RE"});
     reportStructure.push({"id":"CD", "type":"group", "note":"9", "bclass":"2", "description":"Subventions d'investissement"});
     reportStructure.push({"id":"CZ", "type":"total", "note":"", "description":"TOTAL RESSOURCES PROPRES ET ASSIMILEES", "sum":"CA;CB;CC;CD"});
     reportStructure.push({"id":"DA", "type":"group", "note":"10", "bclass":"2", "description":"Emprunts et dettes assimilées"});
@@ -110,8 +110,8 @@ function createReportStructureProfitLoss() {
     reportStructure.push({"id":"RD", "type":"group", "note":"23", "bclass":"4", "description":"Autres Produits et Transferts  de charges"});
     reportStructure.push({"id":"RE", "type":"group", "note":"23", "bclass":"4", "description":"Reprises de Provisions"});
     reportStructure.push({"id":"XA", "type":"total", "note":"", "description":"REVENUS (Somme RA a RE)", "sum":"RA;RB;RC;RD;RE"});
-    reportStructure.push({"id":"TA", "type":"group", "note":"14", "bclass":"4", "description":"Autres achats"});
-    reportStructure.push({"id":"TB", "type":"group", "note":"14", "bclass":"4", "description":"Achats de biens, marchandises et matières premières et Fournitures liées"});
+    reportStructure.push({"id":"TA", "type":"group", "note":"14", "bclass":"4", "description":"Achats de biens, marchandises et matières premières et Fournitures liées"});
+    reportStructure.push({"id":"TB", "type":"group", "note":"14", "bclass":"4", "description":"Autres achats"});
     reportStructure.push({"id":"TC", "type":"group", "note":"4", "bclass":"4", "description":"Variation de stocks des biens, marchandises et matières premières, Fournitures et autres"});
     reportStructure.push({"id":"TD", "type":"group", "note":"15", "bclass":"4", "description":"Transport"});
     reportStructure.push({"id":"TG", "type":"group", "note":"16", "bclass":"4", "description":"Services extérieurs"});
@@ -119,7 +119,7 @@ function createReportStructureProfitLoss() {
     reportStructure.push({"id":"TI", "type":"group", "note":"18", "bclass":"4", "description":"Autres charges"});
     reportStructure.push({"id":"TJ", "type":"group", "note":"19", "bclass":"4", "description":"Charges de personnel"});
     reportStructure.push({"id":"TK", "type":"group", "note":"20", "bclass":"4", "description":"Frais financiers et charges assimilées"});
-    reportStructure.push({"id":"TL", "type":"group", "note":"21", "bclass":"4", "description":"Dotations aux amortissements, aux provissions, aux dépréciations et autres"});
+    reportStructure.push({"id":"TL", "type":"group", "note":"21", "bclass":"4", "description":"Dotations aux provissions"});
     reportStructure.push({"id":"TM", "type":"group", "note":"22", "bclass":"4", "description":"Produits H.A.O"});
     reportStructure.push({"id":"TN", "type":"group", "note":"22", "bclass":"4", "description":"Charges H.A.O"});
     reportStructure.push({"id":"XB", "type":"total", "note":"", "description":"Charges de fonctionnement  (Somme TA a TN)", "sum":"TA;TB;TC;TD;TG;TH;TI;TJ;TK;TL;TM;TN"});
