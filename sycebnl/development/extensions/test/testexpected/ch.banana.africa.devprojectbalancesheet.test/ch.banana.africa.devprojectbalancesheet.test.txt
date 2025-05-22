@@ -18,7 +18,7 @@
 \newenvironment{testcase}[1]{\section*{Test: #1}}{\newpage}
 \newenvironment{test}[1]{\section*{Test case: #1}}{}
 %Begin test data
-%%SCRIPT{C:/Users/joemb/Banana/OHADA/sycebnl/development/extensions/test/ch.banana.africa.devprojectbalancesheet.test.js}
+%%SCRIPT{C:/Users/joemb/Banana/BananaRepo/OHADA/sycebnl/development/extensions/test/ch.banana.africa.devprojectbalancesheet.test.js}
 %
 \begin{testcase}{DevProjectBalanceSheetReport}
 \begin{test}{testBananaExtension}
@@ -48,7 +48,7 @@ BB  & Stocks et encours  & 4  & 22'000'000.00  & 22'000'000.00 \\
 BC  & Fournisseurs débiteurs  & 5  & 0.00  & 0.00 \\
 BD  & Clients-usagers  & 5  & 6'500'000.00  & 6'500'000.00 \\
 BE  & Autres créances  & 5  & 6'900'000.00  & 6'900'000.00 \\
-BT  & TOTAL ACTIF CIRCULANT  &    & 39'900'000.00  & 39'900'000.00 \\
+BF  & TOTAL ACTIF CIRCULANT  &    & 39'900'000.00  & 39'900'000.00 \\
 BV  & Valeurs à encaisser  & 6  & 4'000'000.00  & 4'000'000.00 \\
 BW  & Banques, établissements financiers, caisse et assimiles  & 6  & 24'404'200.00  & 14'400'000.00 \\
 BX  & TOTAL TRESORERIE ACTIF  &    & 28'404'200.00  & 18'400'000.00 \\
@@ -70,7 +70,7 @@ REF  & PASSIF  & Note  & EXERCICE AU 31/12/2024  & EXERCICE AU 31/12/2023 \\
  &  &  & NET  & NET \\
 CA  & Fonds affectés aux investissements  & 8  & 160'000'000.00  & 40'000'000.00 \\
 CB  & Report à nouveau (+ou-)  &    & 8'000'000.00  & 8'000'000.00 \\
-CC  & Solde des opérations de l'exercice  &    & 13'900'000.00  & 13'900'000.00 \\
+CC  & Solde des opérations de l'exercice (+ou-)  &    & 13'900'000.00  & 13'900'000.00 \\
 CD  & Subventions d'investissement  & 9  & 7'200'000.00  & 7'200'000.00 \\
 CZ  & TOTAL RESSOURCES PROPRES ET ASSIMILEES  &    & 189'100'000.00  & 69'100'000.00 \\
 DA  & Emprunts et dettes assimilées  & 10  & 16'000'000.00  & 16'000'000.00 \\
